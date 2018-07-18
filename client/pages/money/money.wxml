@@ -1,0 +1,14 @@
+<view>
+    <view class='headView'>
+      <p style="float:left;width:100%;margin-top:70rpx;margin-left:30rpx;">余额账户（元）</p>
+      <p style="float:left;margin-left:30rpx;margin-top:30rpx;font-size:35px;">12.00</p>
+    </view>
+    <view catchtap="eventMoney" class="function_item"  style="border-top:20rpx solid #F7F7F7;">
+        <image class="img" src="../../images/cz.png"></image>
+        <view class="title">充值</view>
+    </view>
+    <view catchtap="eventSave" class="function_item">
+        <image   class="img" src="../../images/tx.png"></image>
+        <view  class="title">提现</view>
+    </view>
+</view>

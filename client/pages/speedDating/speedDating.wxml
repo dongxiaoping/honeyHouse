@@ -1,0 +1,15 @@
+<view>
+  <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{week}}" style="line-height: 50px">{{item}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{price}}" style="line-height: 50px">{{item}}元</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{scene}}" style="line-height: 50px">{{item}}</view>
+    </picker-view-column>
+  </picker-view>
+
+  <button type="warn" size="default" plain="false" style="background-color: red;color:white;position: fixed;bottom: 0;width:100%;border-radius: 0%;" bindtap="tapRelease"> 确认发布 </button>
+</view>

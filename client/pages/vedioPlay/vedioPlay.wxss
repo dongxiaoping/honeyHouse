@@ -1,0 +1,31 @@
+.topPanel{
+}
+
+.topPanel .top{
+height:16%;width:100%;float:left;
+}
+
+.topPanel .right{
+width:25%;
+height:67%;
+float:right;
+display:flex;
+flex-direction:column;
+align-items:center;
+padding-top:30rpx;
+color:white;
+}
+
+.topPanel .right .itemImage{
+width:100rpx;
+height:100rpx;
+margin-top:50rpx;
+}
+
+.topPanel .right .itemDesc{
+margin-top:5rpx;
+}
+
+.topPanel .bottom{
+height:16%;width:100%;float:left;
+}

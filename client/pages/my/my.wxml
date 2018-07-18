@@ -1,0 +1,19 @@
+<view>
+    <view class='headView'>
+        <open-data class='icon' mode='aspectFit' type='userAvatarUrl'></open-data>
+        <view class='icon'/>
+        <view style='margin-left:280rpx;margin-top:50rpx;font-size:50rpx;font-weight:bold;'>
+            <open-data type="userNickName"></open-data>
+        </view>
+    </view>
+
+    <view catchtap="eventMoney" class="function_item"  style="border-top:20rpx solid #F7F7F7;">
+        <image class="img" src="../../images/money.png"></image>
+        <view class="title">余额</view>
+        <view style='margin-left:{{windowWidth/2.2}}px;'> 21.44 元</view>
+    </view>
+    <view catchtap="eventSave" class="function_item">
+        <image   class="img" src="../../images/collect_selected.png"></image>
+        <view  class="title">收藏</view>
+    </view>
+</view>

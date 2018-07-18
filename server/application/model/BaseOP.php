@@ -1,0 +1,45 @@
+<?php
+// +----------------------------------------------------------------------
+// | Copyright (php), BestTV.
+// +----------------------------------------------------------------------
+// | Author: karl.dong
+// +----------------------------------------------------------------------
+// | Date：2018/6/28
+// +----------------------------------------------------------------------
+// | Description: 
+// +----------------------------------------------------------------------
+namespace app\model;
+
+class BaseOP
+{
+    public function __construct($table) {
+        $this->table = $table;
+    }
+
+    /* $info ["category_name"=>$name,......] 除主键之外的表字段信息集合
+     * */
+    public function insert($info){
+        $this->table->data($info);
+        return $this->table->save();
+    }
+
+    public function del($id){
+       return $this->table->where("id",$id)->delete();
+    }
+
+   /* $info ["category_name"=>$name,......] 除主键之外的表字段信息集合
+    * */
+    public function mod($id,$info){
+        $this->table->save($info,["id"=>$id]);
+    }
+
+    public function get($id){
+        return $this->table->where("id",$id)->find(); //查询一个数据
+    }
+
+    public function getAll(){
+        $list = $this->table->select();
+        return $list;
+    }
+
+}

@@ -1,0 +1,36 @@
+/* pages/my/my.wxss */
+.headView {
+    height: 280rpx;
+    border:1px solid white;
+    border-bottom:2px solid #F7F7F7;
+    width: 100%;
+    position: relative;
+}
+
+.headView .icon {
+    position: absolute;
+    height: 180rpx;
+    width: 180rpx;
+    border-radius: 50%;
+    border: 50rpx solid white;
+}
+
+.function_item{
+    width:100%;
+    height:100rpx;
+    border-bottom:2px solid #F7F7F7;
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-start;
+}
+
+.function_item .img{
+    width:50rpx;
+    height:50rpx;
+    margin-left:20rpx;
+}
+
+.function_item .title{
+    margin-left:30rpx;
+}

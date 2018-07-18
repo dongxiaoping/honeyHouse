@@ -1,0 +1,14 @@
+{
+	"description": "项目配置文件。",
+	"client": "./client",
+	"svr": "./server",
+	"miniprogramRoot": "./client",
+	"qcloudRoot": "./server",
+	"setting": {
+		"es6": true,
+		"newFeature": true
+	},
+	"appid": "wx320e3f0457f51e5f",
+	"projectname": "happyFriend",
+	"condition": {}
+}
