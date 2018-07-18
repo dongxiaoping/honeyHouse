@@ -1,15 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/money/money",
-    "pages/upload/upload",
-    "pages/vedioPlay/vedioPlay",
-    "pages/collect/collect",
-    "pages/message/message",
-    "pages/my/my",
-    "pages/release/release",
     "pages/activity/activity",
-    "pages/speedDating/speedDating"
+    "pages/my/my"
   ],
   "debug": false,
   "tabBar": {
@@ -23,21 +16,9 @@
       },
       {
         "pagePath": "pages/activity/activity",
-        "text": "活动",
+        "text": "蜂蜜记",
         "iconPath": "images/activity_un_selected.png",
         "selectedIconPath": "images/activity_selected.png"
-      },
-      {
-        "pagePath": "pages/release/release",
-        "text": "发布",
-        "iconPath": "images/add_un_selected.png",
-        "selectedIconPath": "images/add_un_selected.png"
-      },
-      {
-        "pagePath": "pages/message/message",
-        "text": "消息",
-        "iconPath": "images/message_un_selected.png",
-        "selectedIconPath": "images/message_selected.png"
       },
       {
         "pagePath": "pages/my/my",
@@ -50,7 +31,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "navigationBarTitleText": "交友咖",
+    "navigationBarTitleText": "蜂蜜屋",
     "navigationBarTextStyle": "black"
   }
 }

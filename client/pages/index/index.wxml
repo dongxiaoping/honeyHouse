@@ -1,15 +1,3 @@
-<!--pages/index/index.wxml
-  <template is="testItemTpl" />
-<import src="../post/post-test-tpl/post-test-tpl.wxml"/>
--->
-
 <view>
-  <view class="pic_box" style="width:{{(windowWidth-18)/2}}px;height:{{windowHeight/2.8}}px;" wx:for="{{peopleList}}" wx:key="*this" bindtap='eventToDetail'> 
-    <image mode="aspectFill" class="main_pic" src="{{item.defaultImag}}"></image>
-    <view class="op_box" style=''>
-        <p class="note" style="">我的美丽女友</p>
-          <image class="like_icon" src="../../images/like_red.png" ></image>
-          <p class="like_num">123</p>
-    </view>
-  </view>
+首页
 </view>

@@ -19,7 +19,7 @@ class User
 
     public function test()
     {
-        echo "dd2d";
+        echo "user test";
     }
 
     //http://39.108.181.67:8083/happyFriendRe/happy_friend_server/public/index.php/user/test
