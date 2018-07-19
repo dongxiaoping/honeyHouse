@@ -8,11 +8,9 @@
 // +----------------------------------------------------------------------
 // | Author: 流年 <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
-define("APP_PATH",__DIR__);
 // 应用公共文件
-function cc(){
-    echo 3;
+function test(){
+    echo "common test";
 }
 
 function getJsonStringByParam($status,$message,$data){

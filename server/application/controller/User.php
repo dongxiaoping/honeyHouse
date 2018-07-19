@@ -11,6 +11,8 @@
 namespace app\controller;
 use \app\service;
 
+/*require_once APP_PATH .'common.php';*/
+
 class User
 {
     public function __construct() {
@@ -19,10 +21,12 @@ class User
 
     public function test()
     {
-        echo "user test";
+       // echo "user test";
+        echo APP_PATH;
+        echo getJsonStringByParam(0,"param_error","");
     }
 
-    //http://39.108.181.67:8083/happyFriendRe/happy_friend_server/public/index.php/user/test
+    //http://39.108.181.67:8083/honeyHouse/server/public/index.php?s=user/test
     public function get_user_info(){
         header("Access-Control-Allow-Origin: *"); //支持跨域
         if(isset($_GET["id"])){
