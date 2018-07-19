@@ -17,25 +17,25 @@ create table user
   #性别(0-未知 1-女 2-男 )
   sex tinyint not null default 0,
   #昵称
-  nick_name varchar(128) not null default "",
+  nick_name varchar(50) not null default "",
   #余额
-  amount  decimal(6,2) NOT NULL,
+  amount  decimal(6,2) not null default 0,
   #电话号码
-  phone_number varchar(10) not null default "",
+  phone_number nvarchar(20) not null default "",
   #地址
-  addr varchar(480) not null default "",
+  addr varchar(180) not null default "",
   #微信id
-  wechat_id varchar(30) not null default "",
+  wechat_id varchar(48) not null default "",
   #微信名称
-  wechat_name varchar(20) not null default "",
-  #最后一次登录时间(10位时间戳)
-  last_visit_time bigint unsigned,
+  wechat_name varchar(50) not null default "",
   #推荐码
-  recommend_code varchar(48) not null default "",
+  recommend_code varchar(50) not null default "",
   #推荐人
   reommend_user_id  bigint unsigned default null,
+  #最后一次登录时间(10位时间戳)
+  last_login_time  varchar(30) default null,
   #注册时间
-  registration_time bigint unsigned,
+  register_time varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
@@ -47,7 +47,7 @@ create table visit_record
   #用户ID
   user_id  bigint unsigned not null,
   #记录时间
-  utc bigint unsigned,
+  utc  varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
@@ -61,9 +61,9 @@ create table order_record
   #订单状态
   order_status  tinyint not null default 0,
   #订单创建时间
-  create_time  bigint unsigned,
+  create_time  varchar(30) default null,
   #最后一次修改时间
-  last_mod bigint unsigned,
+  last_mod  varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
@@ -72,15 +72,15 @@ create table order_good_record
 (
   id bigint unsigned auto_increment,
   #所属订单ID
-  order_id bigint unsigned,
+  order_id bigint unsigned not null,
   #物品ID
-  good_id bigint unsigned,
+  good_id bigint unsigned not null,
   #数量
-  count tinyint not null default 0,
+  count int  not null default 0,
   #创建时间
-  create_time  bigint unsigned,
+  create_time   varchar(30) default null,
   #最后一次修改时间
-  last_mod bigint unsigned,
+  last_mod  varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
@@ -94,11 +94,11 @@ create table good_parent
   #图片集合
   images varchar(680) not null default "",
   #描述
-  desc varchar(480) not null default "",
+  good_desc varchar(880) not null default "",
   #访问量
   visit_count bigint unsigned not null  default 0,
   #最后一次修改时间
-  last_mod bigint unsigned,
+  last_mod varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
@@ -113,9 +113,9 @@ create table good
   #库存
   stock bigint unsigned not null default 0,
   #是否上架 0 下架 1 上架
-  is_shelf tinyint not null default 0,
+  on_sale tinyint not null default 0,
   #描述
-  desc varchar(480) not null default "",
+  good_desc varchar(480) not null default "",
   #销量
   sale_count bigint unsigned not null default 0,
   #折扣
@@ -127,7 +127,9 @@ create table good
   #图片集合
   images varchar(680) not null default "",
   #最后一次修改时间
-  last_mod bigint unsigned,
+  last_mod varchar(30) default null,
+  #创建时间
+  create_time varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
@@ -140,10 +142,10 @@ create table recommend_recharge_record
   #推荐用户ID
   recommend_user_id bigint unsigned not null,
   # 1表示新增用户  2表示推荐用户首次购买
-  type not null default 0,
+  model tinyint not null default 0,
   #创建时间
-  create_time  bigint unsigned,
+  create_time  varchar(30) default null,
   #最后一次修改时间
-  last_mod bigint unsigned,
+  last_mod varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
