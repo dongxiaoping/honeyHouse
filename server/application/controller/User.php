@@ -26,7 +26,7 @@ class User
         echo getJsonStringByParam(0,"param_error","");
     }
 
-    //http://39.108.181.67:8083/honeyHouse/server/public/index.php?s=user/test
+    //http://39.108.181.67:8080/honeyHouse/server/public/index.php?s=user/test
     public function get_user_info(){
         header("Access-Control-Allow-Origin: *"); //支持跨域
         if(isset($_GET["id"])){
