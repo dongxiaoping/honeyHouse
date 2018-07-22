@@ -5,6 +5,4 @@ let userInfo={
     recommend:{people_count:5,amount:20}
 };
 
-module.exports = {
-    userInfo:userInfo
-};
+module.exports = userInfo;

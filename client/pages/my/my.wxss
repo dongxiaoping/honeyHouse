@@ -15,6 +15,13 @@
     border: 50rpx solid white;
 }
 
+.rcommend_qcode{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
 .function_item{
     width:100%;
     height:100rpx;

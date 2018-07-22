@@ -1,19 +1,47 @@
 <view>
-    <view class='headView'>
-        <open-data class='icon' mode='aspectFit' type='userAvatarUrl'></open-data>
-        <view class='icon'/>
-        <view style='margin-left:280rpx;margin-top:50rpx;font-size:50rpx;font-weight:bold;'>
-            <open-data type="userNickName"></open-data>
-        </view>
+  <view class='headView'>
+    <open-data class='icon' mode='aspectFit' type='userAvatarUrl'></open-data>
+    <view class='icon' />
+    <view style='margin-left:280rpx;margin-top:50rpx;font-size:50rpx;font-weight:bold;'>
+      <open-data type="userNickName"></open-data>
     </view>
+  </view>
 
-    <view catchtap="eventMoney" class="function_item"  style="border-top:20rpx solid #F7F7F7;">
-        <image class="img" src="../../images/money.png"></image>
-        <view class="title">余额</view>
-        <view style='margin-left:{{windowWidth/2.2}}px;'> 21.44 元</view>
+  <view class="function_item">
+    <view class="title">我来推广挣现金</view>
+  </view>
+
+  <view catchtap="eventMoney" class="function_item" style="border-top:20rpx solid #F7F7F7;">
+    <view class="title">挣取金额</view>
+    <!-- 余　　额 -->
+    <view style='margin-left:{{windowWidth/3}}px;'> 16 元</view>
+  </view>
+  <view catchtap="eventSave" class="function_item">
+    <view class="title">推广人数</view>
+    <view style='margin-left:{{windowWidth/3}}px;'> 12
+      <span style="font-size:12px;"> (0.5元/人)</span>
     </view>
-    <view catchtap="eventSave" class="function_item">
-        <image   class="img" src="../../images/collect_selected.png"></image>
-        <view  class="title">收藏</view>
+  </view>
+  <view catchtap="eventSave" class="function_item">
+    <view class="title">购买人数</view>
+    <view style='margin-left:{{windowWidth/3}}px;'> 2
+      <span style="font-size:12px;"> (5元/人)</span>
     </view>
+  </view>
+  <view style="height:280px;" class="function_item">
+    <text>
+            说明:
+            （1）您有自己唯一的推荐二维码，扫描该二维码可以直接进入到蜂蜜屋小程序中。
+            （2）通过该二维码进入小程序的用户都为您的推广用户。
+            （3）每增加一个推广用户，您将获取1元的收益。
+            （4）推广用户每购买一份蜂蜜，您将获取5元的收益。
+            （5）蜂蜜记里面每篇文章都有该推荐二维码，都可以转发到您的朋友圈。
+            </text>
+  </view>
+  <view catchtap="eventSave" class="function_item">
+    <view class="title">点击转发二维码</view>
+  </view>
+  <view style="height:{{windowWidth*1.1}}px;" class="rcommend_qcode">
+    <image style="width:100%;height:{{windowWidth}}px;" src="../../images/test/qcode.png"></image>
+  </view>
 </view>
