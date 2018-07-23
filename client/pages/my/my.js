@@ -5,7 +5,10 @@ Page({
      */
     data: {
         windowHeight:"",
-        windowWidth:""
+        windowWidth:"",
+        userInfo:"", //用户基本信息
+        recommendQCode:"", //推荐二维码地址
+        recommendDataOfUser:"" //推荐数据
     },
 
     /**
@@ -13,8 +16,12 @@ Page({
      */
     onLoad: function (options) {
         let that = this;
-        dataAccess.getRecommendQCode();
-        dataAccess.getUserInfo();
+        let recommendQCode = dataAccess.getRecommendQCode();
+        let userInfo = dataAccess.getUserInfo();
+        let recommendDataOfUser = dataAccess.getRecommendDataOfUser();
+        that.setData({recommendDataOfUser: recommendDataOfUser});
+        that.setData({userInfo: userInfo});
+        that.setData({recommendQCode: recommendQCode});
         wx.getSystemInfo({
             success: function (res) {
                 that.setData({
@@ -58,5 +65,8 @@ Page({
      */
     onReachBottom: function () {
 
+    },
+    honeyPromotionEvent:function(){
+        console.log("转发推广二维码");
     }
 })
