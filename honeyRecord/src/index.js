@@ -8,6 +8,7 @@
 // | Description: 
 // +----------------------------------------------------------------------
 import _ from 'lodash';
+import $ from 'jquery';
 function component() {
     var element = document.createElement('div');
 
@@ -18,7 +19,8 @@ function component() {
 }
 
 document.body.appendChild(component());
-
+console.log($);
+//http://localhost/honeyHouse/honeyRecord/dist/index.html
 /*
 *
 *  created() {
