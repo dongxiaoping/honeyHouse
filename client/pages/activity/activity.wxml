@@ -1,3 +1,1 @@
-<view>
-    <image mode="aspectFill" style="width:100%;" src="../../images/jqqd.jpg"></image>
-</view>
+<web-view src="{{url}}?id={{id}}&token={{token}}" ></web-view>

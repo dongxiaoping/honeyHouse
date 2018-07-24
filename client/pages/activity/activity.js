@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      id:"dongxiaoping",
+      url:"https://imlx6us7.qcloud.la/test.html",
+      token:"xxx"
   },
 
   /**
