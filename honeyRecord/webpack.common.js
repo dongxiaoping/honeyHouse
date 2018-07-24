@@ -16,7 +16,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: '[name].[chunkhash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dists')
     },
     //分内置插件和外置插件
     plugins: [
