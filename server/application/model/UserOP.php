@@ -20,7 +20,11 @@ class UserOP extends BaseOP{
 
     public function get_user_info_by_wechat_id($wechat_id){
         $info =  $this->user->where("wechat_id",$wechat_id)->find();
-        dump($info->tagRecords);
+        return $info;
+    }
+
+    public function get_max_recommend_code(){
+        $info =  $this->user->max("recommend_code");
         return $info;
     }
 

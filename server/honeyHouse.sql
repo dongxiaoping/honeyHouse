@@ -29,9 +29,9 @@ create table user
   #微信名称
   wechat_name varchar(50) not null default "",
   #推荐码
-  recommend_code varchar(50) not null default "",
+  recommend_code bigint unsigned default NULL,
   #推荐人
-  reommend_user_id  bigint unsigned default null,
+  reommend_user_id  bigint unsigned default NULL ,
   #最后一次登录时间(10位时间戳)
   last_login_time  varchar(30) default null,
   #注册时间

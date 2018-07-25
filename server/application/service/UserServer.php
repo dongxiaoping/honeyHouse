@@ -24,4 +24,10 @@ class UserServer{
     public function insert_user($info){
         return $this->UserOP->insert($info);
     }
+
+    public function get_max_recommend_code(){
+        return $this->UserOP->get_max_recommend_code();
+
+    }
+
 }

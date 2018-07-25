@@ -13,7 +13,4 @@ use think\Model;
 class User extends Model
 {
     protected $table = "user";
-    public function tagRecords(){
-        return $this->hasMany("TagRecord","user_id");
-    }
 }
