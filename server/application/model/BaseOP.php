@@ -20,7 +20,12 @@ class BaseOP
      * */
     public function insert($info){
         $this->table->data($info);
-        return $this->table->save();
+        $isOk = $this->table->save();
+        if($isOk){
+            return $this->table->id;
+        }else{
+            return false;
+        }
     }
 
     public function del($id){

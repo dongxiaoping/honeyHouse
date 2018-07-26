@@ -23,6 +23,11 @@ class UserOP extends BaseOP{
         return $info;
     }
 
+    public function get_user_info_by_recommend_code($recommend_code){
+        $info =  $this->user->where("recommend_code",$recommend_code)->find();
+        return $info;
+    }
+
     public function get_max_recommend_code(){
         $info =  $this->user->max("recommend_code");
         return $info;

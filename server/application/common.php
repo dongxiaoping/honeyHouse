@@ -13,10 +13,20 @@ function test(){
     echo "common test";
 }
 
+
 function getJsonStringByParam($status,$message,$data){
+    $return_array = getInterFaceArray($status,$message,$data);
+    return arrayToJson($return_array);
+}
+
+function getInterFaceArray($status,$message,$data){
     $value = array("status"=>0,"message"=>"not init","data"=>null);
     $value["status"] = $status;
     $value["message"] = $message;
     $value["data"] = $data;
-    return json_encode($value,JSON_UNESCAPED_UNICODE);
+    return $value;
+}
+
+function arrayToJson($info){
+    return json_encode($info,JSON_UNESCAPED_UNICODE);
 }

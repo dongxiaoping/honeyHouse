@@ -30,8 +30,8 @@ create table user
   wechat_name varchar(50) not null default "",
   #推荐码
   recommend_code bigint unsigned default NULL,
-  #推荐人
-  reommend_user_id  bigint unsigned default NULL ,
+  #推荐人的推荐码
+  recommend_user_code  bigint unsigned default NULL ,
   #最后一次登录时间(10位时间戳)
   last_login_time  varchar(30) default null,
   #注册时间
@@ -135,12 +135,13 @@ create table good
 
 
 #推荐赠送金额记录表
-create table recommend_recharge_record
+create table recommend_record
 (
   id bigint unsigned auto_increment,
-  user_id  bigint unsigned not null,
-  #推荐用户ID
-  recommend_user_id bigint unsigned not null,
+  # 获取赠金的用户
+  own_cash_user_id  bigint unsigned not null,
+  # 推荐用户ID
+  new_user_id bigint unsigned not null,
   # 1表示新增用户  2表示推荐用户首次购买
   model tinyint not null default 0,
   # 奖励金额

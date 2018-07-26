@@ -11,23 +11,55 @@
 
 namespace app\service;
 use \app\model;
+use \app\service;
 
 class UserServer{
     public function __construct() {
         $this->UserOP = new model\UserOP();
+        $this->RecommendRecordServer = new service\RecommendRecordServer();
     }
+
 
     public function get_user_info_by_wechat_id($wechat_id){
-        return $this->UserOP->get_user_info_by_wechat_id($wechat_id);
+        $user_info = $this->UserOP->get_user_info_by_wechat_id($wechat_id);
+        if($user_info){
+            return  getInterFaceArray(1,"right",$user_info);
+        }else{
+            return getInterFaceArray(0,"not_exist","");
+        }
     }
 
-    public function insert_user($info){
-        return $this->UserOP->insert($info);
-    }
-
-    public function get_max_recommend_code(){
-        return $this->UserOP->get_max_recommend_code();
-
+    public function add_user($user_info){
+        $user_info["register_time"] = date("Y-m-d H:i:s");
+        $user_info["last_login_time"] =$user_info["register_time"];
+        $last_recommend_code = $this->UserOP->get_max_recommend_code();
+        $user_info["recommend_code"] =$last_recommend_code+1;
+        $user = $this->UserOP->get_user_info_by_wechat_id($user_info["wechat_id"]);
+        if($user){ //用户已存在，无法创建
+            return getInterFaceArray(0,"user_is_exist","");
+        }
+        $new_user_id =$this->UserOP->insert($user_info);
+        if(!$new_user_id){//创建异常失败
+            return  getInterFaceArray(0,"fail_unknown","");
+        }
+        $recommend_user_code = $user_info["recommend_user_code"];
+        $own_cash_user_info =  $this->UserOP->get_user_info_by_recommend_code($recommend_user_code);
+        if(!$own_cash_user_info){
+            return getInterFaceArray(1,"success_not_recommend",$new_user_id);//没有推荐用户
+        }
+        $own_cash_user_id = $own_cash_user_info["id"];
+        $record_info = [
+            "own_cash_user_id" => $own_cash_user_id,
+            "new_user_id"=>$new_user_id,
+  /*          "model"=>REWARD_TYPE["recommend_user"],
+            "reward_price"=>RECOMMEND_PRICE["people"],*/
+            "model"=>11,
+            "reward_price"=>4,
+            "create_time"=>date("Y-m-d H:i:s"),
+            "last_mod"=>date("Y-m-d H:i:s")
+        ];
+        $this->RecommendRecordServer->insert_record($record_info);
+        return getInterFaceArray(1,"success_has_recommend",$new_user_id);//有推荐用户
     }
 
 }

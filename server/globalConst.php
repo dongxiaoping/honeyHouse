@@ -28,3 +28,8 @@ TEMP_PATH 应用缓存目录（默认为 RUNTIME_PATH.'Temp/'）
 DATA_PATH 应用数据目录 （默认为 RUNTIME_PATH.'Data/'）
  * */
 define("APP_PATH",__DIR__.'/application/');
+
+
+define('RECOMMEND_PRICE',array('people'=>1,'buy'=>5));
+
+define('REWARD_TYPE',array('recommend_user'=>1,'buy'=>5));
