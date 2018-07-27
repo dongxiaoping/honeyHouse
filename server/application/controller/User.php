@@ -11,8 +11,6 @@
 namespace app\controller;
 use \app\service;
 
-/*require_once APP_PATH .'common.php';*/
-
 class User
 {
     public function __construct() {
@@ -30,9 +28,10 @@ class User
         // echo "user test";
         // echo APP_PATH;
         // echo getJsonStringByParam(0,"param_error","");
-        echo 1;
+        echo getJsonStringByParam(0,"param_error",RECOMMEND_PRICE);
     }
 
+    /*获取用户基本信息*/
     public function get_user_info_by_wechat_id(){
         header("Access-Control-Allow-Origin: *"); //支持跨域
         if(isset($_GET["id"])){
@@ -44,12 +43,13 @@ class User
         }
     }
 
+    /*新增用户*/
     public function add_user(){
         $user_info = [
             "sex" => 1,
             "nick_name"=>"dxp",
             "phone_number"=>"13396080754",
-            "wechat_id"=>"wuhane3eMd",
+            "wechat_id"=>"wuhane3eMdc",
             "wechat_name"=>"",
             "addr"=>"",
             "recommend_code"=>"",
@@ -59,5 +59,17 @@ class User
         ];
         $result_array = $this->UserServer->add_user($user_info);
         echo arrayToJson($result_array);
+    }
+
+    /*用户访问记录*/
+    public function user_visit(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["id"])){
+            $user_id = $_GET["id"];
+            $result_array = $this->UserServer->user_visit($user_id);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
     }
 }

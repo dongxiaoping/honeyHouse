@@ -17,6 +17,7 @@ class UserServer{
     public function __construct() {
         $this->UserOP = new model\UserOP();
         $this->RecommendRecordServer = new service\RecommendRecordServer();
+        $this->VisitRecordOP = new model\VisitRecordOP();
     }
 
 
@@ -51,10 +52,8 @@ class UserServer{
         $record_info = [
             "own_cash_user_id" => $own_cash_user_id,
             "new_user_id"=>$new_user_id,
-  /*          "model"=>REWARD_TYPE["recommend_user"],
-            "reward_price"=>RECOMMEND_PRICE["people"],*/
-            "model"=>11,
-            "reward_price"=>4,
+            "model"=>REWARD_TYPE["recommend_user"],
+            "reward_price"=>RECOMMEND_PRICE["recommend_user"],
             "create_time"=>date("Y-m-d H:i:s"),
             "last_mod"=>date("Y-m-d H:i:s")
         ];
@@ -62,4 +61,14 @@ class UserServer{
         return getInterFaceArray(1,"success_has_recommend",$new_user_id);//有推荐用户
     }
 
+    public function user_visit($user_id){
+        $info = ["user_id"=>$user_id,
+            "utc"=>date("Y-m-d H:i:s")
+        ];
+        $new_id = $this->VisitRecordOP->insert($info);
+        if($new_id){
+            return  getInterFaceArray(1,"success","");
+        }
+        return  getInterFaceArray(0,"fail","");
+    }
 }

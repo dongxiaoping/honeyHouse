@@ -29,7 +29,14 @@ DATA_PATH 应用数据目录 （默认为 RUNTIME_PATH.'Data/'）
  * */
 define("APP_PATH",__DIR__.'/application/');
 
+/*推荐价格定义
+ *recommend_user ：推荐一个用户的获取收益值
+ * recommend_user_buy：推荐用户购买一次的获取收益值
+ * */
+define('RECOMMEND_PRICE',array('recommend_user'=>1,'recommend_user_buy'=>5));
 
-define('RECOMMEND_PRICE',array('people'=>1,'buy'=>5));
-
-define('REWARD_TYPE',array('recommend_user'=>1,'buy'=>5));
+/*获取收益的方式定义
+ *recommend_user ：推荐用户
+ * recommend_user_buy：推荐用户购买
+ * */
+define('REWARD_TYPE',array('recommend_user'=>1,'recommend_user_buy'=>2));
