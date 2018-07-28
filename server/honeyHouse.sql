@@ -86,7 +86,7 @@ create table order_good_record
 
 
 #物品父类表
-create table good_parent
+create table good_category
 (
   id bigint unsigned auto_increment,
   #名称
@@ -97,6 +97,8 @@ create table good_parent
   good_desc varchar(880) not null default "",
   #访问量
   visit_count bigint unsigned not null  default 0,
+  #创建时间
+  create_time   varchar(30) default null,
   #最后一次修改时间
   last_mod varchar(30) default null,
   primary key(id)
@@ -107,7 +109,7 @@ create table good
 (
   id bigint unsigned auto_increment,
   #父ID
-  parent_id  bigint unsigned not null,
+  category_id  bigint unsigned not null,
   #规格名称
   name varchar(80) not null default "",
   #库存
