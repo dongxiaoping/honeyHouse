@@ -46,7 +46,11 @@ class GoodServer
     }
 
     public function get_goods_by_category($category_id){
-        return  getInterFaceArray(0,"faill","");
+        $list = $this->GoodOP->get_goods_by_category($category_id);
+        if($list===null){
+            return getInterFaceArray(0,"category_not_exist","");
+        }
+        return  getInterFaceArray(1,"success",$list);
     }
 
 

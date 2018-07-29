@@ -17,11 +17,12 @@ class Good{
         $this->GoodServer = new service\GoodServer();
     }
 
+//http://localhost/honeyHouse/server/public/index.php?s=good/add_good
     public function add_good(){
         $info = [
             "category_id" => "1",
-            "name"=>"1L装",
-            "stock"=>50,
+            "name"=>"2L装",
+            "stock"=>39,
             "on_sale"=>1,
             "good_desc"=>"好物品",
             "sale_count"=>0,
