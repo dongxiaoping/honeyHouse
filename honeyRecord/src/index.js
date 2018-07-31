@@ -7,19 +7,29 @@
 // +----------------------------------------------------------------------
 // | Description: 
 // +----------------------------------------------------------------------
-import _ from 'lodash';
-import $ from 'jquery';
-function component() {
+//var $ = require('jquery-mobile');
+
+/*import _ from 'lodash';
+import $ from 'jquery';*/
+/*import $.mobile from "jquery-mobile"
+console.log($);*/
+/*require('jquery');
+require('jquery-mobile');
+console.log($.mobile);*/
+//console.log($);
+//var $ = require('jquery-mobile');
+//console.log($);
+/*function component() {
     var element = document.createElement('div');
 
     // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
     return element;
-}
+}*/
 
-document.body.appendChild(component());
-console.log($);
+/*document.body.appendChild(component());
+console.log($);*/
 //http://localhost/honeyHouse/honeyRecord/dist/index.html
 /*
 *
