@@ -6,7 +6,7 @@ Page({
    */
   data: {
       id:"dongxiaoping",
-      url:"https://imlx6us7.qcloud.la/test.html",
+      url:"https://dongxiaoping.cn/honeyHouse/honeyRecord/src/",
       token:"xxx"
   },
 

@@ -1,11 +1,13 @@
-console.log(indexList);
 var bodyOb = document.body;
 var articleString = "";
-for(var i=0;i<indexList.length;i++){
-    articleString += getHtmlStringByArticle(indexList[i]);
+for(var i=0;i<contentIndex.length;i++){
+    articleString += getHtmlStringByArticle(contentIndex[i]);
     console.log(articleString);
 }
 bodyOb.innerHTML = articleString;
+
+var userId = getUserId("id");
+console.log(userId);
 
 function getHtmlStringByArticle(item){
     var imgString = "";
@@ -23,10 +25,20 @@ function getHtmlStringByArticle(item){
         imgString+= "<img class='img-set' src='"+imageUrl+"'>";
     }
     var setString = "<div ontouchend='tapEvent(\""+item.content+"\")' class='article-title'><p class='title'>"+item.title+"</p><div class='pic-box'>"+imgString+"</div>" +
-        "<div class='desc'> <p>2018-07-10  分享到朋友圈</p> </div> </div>";
+        "<div class='desc'> <p>"+item.date+"</p> </div> </div>";
     return setString;
 }
 
 function tapEvent(content){
-    alert(content);
+    var recommendCode = 123;
+    var pageUrl = "./page/"+content+"?recommendCode="+recommendCode;
+    $.mobile.changePage(pageUrl,{transition:"slideup"});
 }
+
+function getUserId(name)
+{
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+

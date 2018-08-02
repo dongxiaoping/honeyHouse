@@ -7,4 +7,17 @@
 // +----------------------------------------------------------------------
 // | Description: 
 // +----------------------------------------------------------------------
-
+var contentIndex =[
+    {
+        title:"各随所采花色，性之温凉，亦相近也。蜜脾之底为蜡",
+        images:["./image/test/555.png","./image/test/666.png"],
+        content:"demo.html",
+        date:"2018-07-10"
+    },
+    {
+        title:"旋归于本位矣。安五脏者，安五脏之形",
+        images:["./image/test/9999.png","./image/test/ddd.png","./image/test/nn.png"],
+        content:"demo.html",
+        date:"2017-12-3"
+    }
+];

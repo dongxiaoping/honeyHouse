@@ -26,7 +26,7 @@ class Pic{
             ->setErrorCorrectionLevel(ErrorCorrectionLevel::HIGH)
             ->setForegroundColor(['r' => 0, 'g' => 0, 'b' => 0])
             ->setBackgroundColor(['r' => 255, 'g' => 255, 'b' => 255])
-            ->setLabel('蜂蜜佬文章地址', 16,null, LabelAlignment::CENTER)
+            ->setLabel('小程序蜂蜜佬', 16,null, LabelAlignment::CENTER)
             ->setLogoPath(APP_PATH.'/image/honey.jpg')
             ->setLogoWidth(60)
             ->setValidateResult(false)
