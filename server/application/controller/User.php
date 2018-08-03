@@ -45,7 +45,14 @@ class User
 
     /*新增用户*/
     public function add_user(){
-        $user_info = [
+        header('Access-Control-Allow-Origin: *');
+        $content = file_get_contents("php://input");
+        $content = (string)$content;
+        $contents = json_decode($content,true);
+        if(!isset($contents["wechat_id"])){
+              echo getJsonStringByParam(0,"param_error","");
+        }
+    /*    $user_info = [
             "sex" => 1,
             "nick_name"=>"dxp",
             "phone_number"=>"13396080754",
@@ -56,8 +63,8 @@ class User
             "recommend_user_code"=>1,
             "last_login_time"=>"",
             "register_time"=>""
-        ];
-        $result_array = $this->UserServer->add_user($user_info);
+        ];*/
+        $result_array = $this->UserServer->add_user($contents);
         echo arrayToJson($result_array);
     }
 
