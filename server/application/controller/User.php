@@ -52,18 +52,6 @@ class User
         if(!isset($contents["wechat_id"])){
               echo getJsonStringByParam(0,"param_error","");
         }
-    /*    $user_info = [
-            "sex" => 1,
-            "nick_name"=>"dxp",
-            "phone_number"=>"13396080754",
-            "wechat_id"=>"wuhane3eMdc",
-            "wechat_name"=>"",
-            "addr"=>"",
-            "recommend_code"=>"",
-            "recommend_user_code"=>1,
-            "last_login_time"=>"",
-            "register_time"=>""
-        ];*/
         $result_array = $this->UserServer->add_user($contents);
         echo arrayToJson($result_array);
     }

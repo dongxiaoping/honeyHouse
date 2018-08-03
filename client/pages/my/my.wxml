@@ -45,6 +45,6 @@
     <view class="title">点击转发推广二维码</view>
   </view>
   <view style="height:{{windowWidth*1.1}}px;" class="rcommend_qcode">
-    <image style="width:100%;height:{{windowWidth}}px;" src="{{recommendQCode}}"></image>
+    <image style="width:100%;height:{{windowWidth}}px;" src="https://dongxiaoping.cn/honeyHouse/server/public/index.php?s=pic/getRecommendHoneyLocationQRcode"></image>
   </view>
 </view>
