@@ -4,10 +4,10 @@ for(var i=0;i<contentIndex.length;i++){
     articleString += getHtmlStringByArticle(contentIndex[i]);
     console.log(articleString);
 }
-bodyOb.innerHTML = articleString;
+bodyOb.innerHTML = "<button type=\"primary\" open-type=\"share\" data-name=\"pageShare\" id=\"share\">点击分享</button>\n";
 
-var userId = getUserId("id");
-console.log(userId);
+var recommendQCode = getUrlParam("recommendQCode");
+console.log(recommendQCode);
 
 function getHtmlStringByArticle(item){
     var imgString = "";
@@ -30,12 +30,11 @@ function getHtmlStringByArticle(item){
 }
 
 function tapEvent(content){
-    var recommendCode = 123;
-    var pageUrl = "./page/"+content+"?recommendCode="+recommendCode;
+    var pageUrl = "./page/"+content+"?recommendCode="+recommendQCode;
     $.mobile.changePage(pageUrl,{transition:"slideup"});
 }
 
-function getUserId(name)
+function getUrlParam(name)
 {
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);
