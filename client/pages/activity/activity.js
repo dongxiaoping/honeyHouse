@@ -17,6 +17,7 @@ Page({
         let url = "";
         if(this.isShareCome(options)){
             recommendQCode = options.recommendQCode;
+            app.globalData.recommend_user_code = recommendQCode;
             url = options.url;
         }else{
             let userInfo = app.globalData.userInfo;
@@ -29,6 +30,7 @@ Page({
         this.setData({
             url: url
         });
+        app.initUser();
     },
 
     /**

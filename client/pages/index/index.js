@@ -1,5 +1,6 @@
 let app = getApp();
 let dataAccess = require('../../common/dataAccess');
+let Log = require('../../common/Log');
 Page({
 
   /**
@@ -13,13 +14,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+     app.initUser();
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
   /**
    * 生命周期函数--监听页面显示
