@@ -81,10 +81,10 @@ Page({
     },
 
     onShareAppMessage(options) {
-        let url = "https://dongxiaoping.cn/honeyHouse/honeyRecord/src/page/demo.html";//options.webViewUrl;
-        let recommendQCode = 4;
-        let appUrl = "pages/activity/activity?url="+url+"&recommendQCode="+recommendQCode;
-        console.log(appUrl);
+        let webViewUrl = options.webViewUrl;
+        let url = this.getUrlFromWebViewUrl(webViewUrl);
+        let param = this.getParamFromWebViewUrl(webViewUrl);
+        let appUrl = "pages/activity/activity?url="+url+"&"+param;
         return {
             title: "来自蜂蜜屋的文章",
             path: appUrl,
@@ -93,5 +93,13 @@ Page({
             fail: function(res) {
             }
         }
+    },
+    getUrlFromWebViewUrl(webViewUrl){
+       let list =  webViewUrl.split("?");
+       return list[0];
+    },
+    getParamFromWebViewUrl(webViewUrl){
+        let list =  webViewUrl.split("?");
+        return list[1];
     }
 })
