@@ -2,12 +2,10 @@ var bodyOb = document.body;
 var articleString = "";
 for(var i=0;i<contentIndex.length;i++){
     articleString += getHtmlStringByArticle(contentIndex[i]);
-    console.log(articleString);
 }
-bodyOb.innerHTML = "<button type=\"primary\" open-type=\"share\" data-name=\"pageShare\" id=\"share\">点击分享</button>\n";
+bodyOb.innerHTML = articleString;
 
 var recommendQCode = getUrlParam("recommendQCode");
-console.log(recommendQCode);
 
 function getHtmlStringByArticle(item){
     var imgString = "";
