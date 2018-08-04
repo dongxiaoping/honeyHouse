@@ -30,7 +30,7 @@ function getHtmlStringByArticle(item){
 }
 
 function tapEvent(content){
-    var pageUrl = "./page/"+content+"?recommendCode="+recommendQCode;
+    var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode;
     $.mobile.changePage(pageUrl,{transition:"slideup"});
 }
 
