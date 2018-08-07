@@ -41,10 +41,4 @@
             （4）蜂蜜记里面每篇文章都有属于您的推荐二维码，转发文章到您的朋友圈赚取现金吧！
             </text>
   </view>
-  <view catchtap="honeyPromotionEvent" class="function_item">
-    <view class="title">点击转发推广二维码</view>
-  </view>
-  <view style="height:{{windowWidth*1.1}}px;" class="rcommend_qcode">
-    <image style="width:100%;height:{{windowWidth}}px;" src="https://dongxiaoping.cn/honeyHouse/server/public/index.php?s=pic/getRecommendHoneyLocationQRcode"></image>
-  </view>
 </view>

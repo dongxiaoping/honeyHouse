@@ -1,3 +1,99 @@
-<view>
-首页
+<!--BEGIN 图片轮播-->
+<view class="swiper_area">
+  <swiper indicator-dots="{{indicatorDots}}" indicator-color="#fff" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item data-img="{{item.flower_image}}" bindtap="seeSwiperAll">
+        <image data-id="{{item.flower_id}}" src="{{item.flower_image}}" class="slide-image" />
+      </swiper-item>
+    </block>
+  </swiper>
 </view>
+<!--END 图片轮播-->
+
+<!--BEGIN 物品简单描述-->
+<view class="goods_infor_top">
+  <view class="goods_title">{{good.good_name}}
+  </view>
+  <view class="good_description">
+    <text class="description_content">{{good.good_mark}}</text>
+  </view>
+  <view class="good_info_bottom display-flex-row" style="">
+    <view class="good_price">
+      <text class="color_ff6700 good_dis_price pdr10rpx display-ib">¥{{goodPrice}}/{{good.good_unit}}</text>
+      <block wx:if="{{good.good_column=='100903'}}">
+        <text class="good_orin_price td-lt display-ib">
+          ¥{{goodOrinPrice}}
+        </text>
+      </block>
+    </view>
+    <view class="sale">
+      <text class="good_sale_count display-ib" style="">销量:{{good.good_sell}}</text>
+    </view>
+  </view>
+</view>
+<!--END 物品简单描述-->
+
+<!--BEGIN 物品子类型选择入口-->
+<view bindtap="viewFlowerArea" class="choose_catalog_area bg_fff display-flex-row">
+  <view class="fl">选择类型: {{flowerNameSelect}}
+  </view>
+  <image class="arrow_right fr" src="../../images/right.png" />
+</view>
+<!--END 物品子类型选择入口-->
+
+<!--BEGIN 物品详情参数面板-->
+<!-- 暂时不要 -->
+<!--END 物品详情参数面板-->
+
+<!--BEGIN 底部操作区-->
+<view class="{{isHidden == 0 ? 'display-block':'display-none'}}">
+  <view class="goods_bottom"></view>
+  <view class="goods_bottom_btn display-flex-row">
+    <view bindtap="saveOrder" class="goods_bug_button bg_ff6700 color_fff">立即购买</view>
+  </view>
+</view>
+<!--END 底部操作区-->
+
+
+<!--BEGIN 物品子类型选择面板-->
+<!-- 灰色遮罩-->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+
+<view animation="{{animationData}}" class="catalog_area bg_fff {{isHidden == 1 ? 'display-block':'display-none'}}">
+  <view class="catalog_title">
+    <image class="thumbnails" src="{{flowerImgSelect}}" mode="aspectFill"></image>
+    <view class="info_tip">
+      <view class="good_dis_price">¥{{goodPrice}}</view>
+      <view class="choosed_catalog text-hidden">{{flowerNameSelect}}</view>
+    </view>
+    <image class="cancel" bindtap="hideModal" src="../../images/delete.png"></image>
+  </view>
+  <scroll-view scroll-y="true" style="height: 640rpx;margin-top:175rpx">
+    <view class="info_choose">
+      <view class="catalog_name">花型</view>
+      <view class="catalog_items display-flex-row">
+        <block wx:for="{{goodflowers}}">
+          <text data-img="{{globalData.root}}{{item.flower_image}}" data-select="{{item.flower_id}}" data-flower-name="{{item.flower_name}}" class="{{item.flower_id == flowerSelect ? 'active':''}} catalog_item" bindtap="chooseFlower">{{item.flower_name}}
+            </text>
+        </block>
+      </view>
+      <view class="borderTop"></view>
+      <view class="catalog_count display-flex-row">
+        <view class="catalog_name">
+          购买数量
+        </view>
+        <view class="count_control display-flex-row">
+          <span class="item_reduce item_btn" bindtap="{{goodNum>1?'goodReduce':''}}">-</span>
+          <span class="item_num" bindtap="carRemove">{{goodNum}}</span>
+          <span class="item_add item_btn" bindtap="goodAdd">+</span>
+        </view>
+      </view>
+      <view class="borderTop"></view>
+    </view>
+  </scroll-view>
+  <view class="btn_hidden"></view>
+  <view class="btn_area display-flex-row">
+    <view bindtap="saveOrder" class="goods_bug_button bg_ff6700 color_fff">立即购买</view>
+  </view>
+</view>
+<!--END 物品子类型选择面板-->

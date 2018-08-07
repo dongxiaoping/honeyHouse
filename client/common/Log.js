@@ -61,5 +61,9 @@ class LogManage {
             console.log(v);
         }
     };
+    isArray(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+
 }
 module.exports = new LogManage();
