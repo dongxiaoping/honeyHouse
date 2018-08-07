@@ -1,48 +1,29 @@
 let goodDemo={
     "good": {
-        "visible": "101",
-        "tourist_dis_price": 510,
-        "good_identity": "00204",
-        "good_sell": "100",
-        "good_brand": "",
-        "last_modify_time": "2017-08-08 20:10:05",
-        "good_place": "101",
-        "good_type": "2",
-        "good_display_img": "../../images/test/qcode.png",
-        "dealer_price": 0,
-        "last_modify_id": "1",
-        "good_id": "17",
-        "good_fill": "",
-        "good_number": 35,
-        "good_status": "9001",
-        "good_unit": "套",
-        "good_format": "",
-        "good_column": "100902",
-        "wholesaler_dis_price": 255,
-        "dealer_dis_price": 265,
-        "tourist_price": 0,
-        "good_name": "绚彩活性棉提花四件套",
-        "wholesaler_price": 0,
-        "good_mark": "床单270x270cm被套200x230cm枕套48x74+6cm"
+        "good_sell": "660", //ok 销量
+        "good_display_img": "http://papwt4d89.bkt.clouddn.com/fm_1.png",//ok
+        "good_id": "17", //ok
+        "good_price":"30",//单位价格
+        "good_orin_price":"35",//折扣之前的价格
+        "good_unit": "L", //ok 单位
+        "good_column": "100903",//ok 折扣标志位 等于100903表示有折扣
+        "good_name": "土蜂蜜",//ok 名称
+        "good_mark": "原汁原味 按升计价 分小瓶装大瓶装" //ok 描述
     },
-    "goodflowers": [
+    "goodChildList": [
         {
-            "flower_name": "朝花夕拾",
-            "flower_id": "11d75c6a560a4345b232706f7642de22",
-            "flower_image": "../../images/jqqd.jpg",
-            "good_id": "17",
-            "flower_identity": ""
+            "child_name": "小瓶装",
+            "child_good_id": "11d75c6a560a4345b232706f7642de22",
+            "child_image": "http://papwt4d89.bkt.clouddn.com/fm_2.png",
+            "good_id": "17"
         },
         {
-            "flower_name": "幻彩花园",
-            "flower_id": "eff884ebeb7c42008f38a58785818031",
-            "flower_image": "../../images/activity_un_selected.png",
-            "good_id": "17",
-            "flower_identity": ""
+            "child_name": "大瓶装",
+            "child_good_id": "eff884ebeb7c42008f38a58785818031",
+            "child_image": "http://papwt4d89.bkt.clouddn.com/fm_3.png",
+            "good_id": "17"
         }
-    ],
-    "roleType": "2",
-    "isAdmin": true
+    ]
 };
 
 module.exports = goodDemo;
