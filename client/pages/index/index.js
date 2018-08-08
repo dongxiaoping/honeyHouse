@@ -2,27 +2,11 @@ let goodDemo = require('../../mock/goodDemo');
 let Log = require('../../common/Log');
 Page({
     data: {
-        //////////////////////////////////////////////
-        //不可变量
-        good: { },//商品基本信息
-        goodChildList: [], //商品子类信息
+        goodInfo:null,
         swipeImages: [], ////轮播图
-        /////////////////////////////////////////////
-
-        //////////////////////////////////////////////
-        //可变量
-        goodNum: 1, //购买商品数量
-        childImgSelect: '', //选中子类物品图片
-        childNameSelect: "", //选中子类物品名称
-        selectedChildGoodId: 0, //选中子类型物品ID
-        /////////////////////////////////////////////
-
-        //////////////////////////////////////////////
-        //控制变量
+        selectedChildInfo:null,
         isChildPanelShow: false,
         animationData: {}, //物品子类型选中面板显示动画
-        showModalStatus: false, //显示子类型选中面板的遮罩
-        /////////////////////////////////////////////
     },
 
 
@@ -38,10 +22,11 @@ Page({
         }
         let goodInfo = goodDemo;//接口原始商品数据
         let swipeImages = this.getSwipeImages(goodInfo.good,goodInfo.goodChildList);
+        let selectedChildInfo = goodInfo.goodChildList[0];
+        selectedChildInfo.buy_count = 1;
         that.setData({
-            childImgSelect: goodInfo.good.good_display_img,
-            good: goodInfo.good,
-            goodChildList: goodInfo.goodChildList,
+            goodInfo:goodInfo,
+            selectedChildInfo:selectedChildInfo,
             swipeImages: swipeImages
         });
         if (wx.hideLoading()) {
@@ -61,29 +46,29 @@ Page({
     /**选择类型 */
     chooseChildGood: function(data) {
         let that = this;
-        Log.d( data);
-        let child_good_id = data.currentTarget.dataset.select;
-        let child_name = data.currentTarget.dataset.flowerName;
-        that.setData({ //把选中值，放入判断值中
-            childNameSelect: child_name,
-            selectedChildGoodId: child_good_id
-        });
-        let str = child_good_id + ',' + child_name;
+        let item = data.currentTarget.dataset;
+        let childInfo ={
+            child_good_id:item.goodCode,
+            child_name:item.goodName,
+            buy_count:1,
+            child_image:item.childImage
+        };
+        Log.d(childInfo);
         that.setData({
-            childImgSelect: data.currentTarget.dataset.img
-        })
+            selectedChildInfo:childInfo
+        });
     },
 
     /**点击选择花色按钮、显示页面 */
     viewChildSelectArea: function(data) {
         let that = this;
+        Log.d(that.data.selectedChildInfo);
         let animation = wx.createAnimation({ //动画
             duration: 500, //动画持续时间
             timingFunction: 'linear', //动画的效果 动画从头到尾的速度是相同的
         });
         animation.translateY(0).step(); //在Y轴偏移tx，单位px
         that.setData({
-            showModalStatus: true, //显示遮罩
             animationData: animation.export()
         });
         that.setData({ //把选中值，放入判断值中
@@ -91,34 +76,31 @@ Page({
         })
     },
 
-    /**隐藏物品子类型选择面板 */
     hideModal: function(data) {
         let that = this;
         that.setData({
-            showModalStatus: false, //显示遮罩
             isChildPanelShow: false,
         })
     },
 
     goodAdd: function(data) {
         let that = this;
-        let goodCount = that.data.goodNum + 1;
-        that.setData({ //商品数量+1
-            goodNum: goodCount
+        let selectedChildInfo = that.data.selectedChildInfo;
+        selectedChildInfo.buy_count+=1;
+        that.setData({
+            selectedChildInfo: selectedChildInfo
         })
     },
 
     goodReduce: function(data) {
         let that = this;
-        let goodCount = that.data.goodNum - 1;
-        that.setData({ //商品数量+1
-            goodNum: goodCount
+        let selectedChildInfo = that.data.selectedChildInfo;
+        selectedChildInfo.buy_count=(selectedChildInfo.buy_count>=2)?(selectedChildInfo.buy_count-1):1;
+        that.setData({
+            selectedChildInfo: selectedChildInfo
         })
     },
 
-    /**
-     * 生成订单
-     */
     saveOrder: function(data) {
 /*        let that = this;
         let thatData = that.data;

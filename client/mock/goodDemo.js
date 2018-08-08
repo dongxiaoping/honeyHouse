@@ -14,14 +14,12 @@ let goodDemo={
         {
             "child_name": "小瓶装",
             "child_good_id": "11d75c6a560a4345b232706f7642de22",
-            "child_image": "http://papwt4d89.bkt.clouddn.com/fm_2.png",
-            "good_id": "17"
+            "child_image": "http://papwt4d89.bkt.clouddn.com/fm_2.png"
         },
         {
             "child_name": "大瓶装",
             "child_good_id": "eff884ebeb7c42008f38a58785818031",
-            "child_image": "http://papwt4d89.bkt.clouddn.com/fm_3.png",
-            "good_id": "17"
+            "child_image": "http://papwt4d89.bkt.clouddn.com/fm_3.png"
         }
     ]
 };

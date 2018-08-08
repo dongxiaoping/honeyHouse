@@ -12,16 +12,10 @@
   </view>
 
   <view class="function_item" style="border-top:20rpx solid #F7F7F7;">
-    <view class="title">我来推广挣现金</view>
-  </view>
-
-  <view catchtap="eventMoney" class="function_item">
-    <view class="title">挣取金额</view>
-    <!-- 余　　额 -->
-    <view style='margin-left:{{windowWidth/3}}px;'> {{recommendDataOfUser.recommend_amount}}元</view>
+    <view class="title">我来卖蜂蜜</view>
   </view>
   <view class="function_item">
-    <view class="title">推广人数</view>
+    <view class="title">围观人数</view>
     <view style='margin-left:{{windowWidth/3}}px;'> {{recommendDataOfUser.visit_count}}
       <span style="font-size:12px;"> (0.5元/人)</span>
     </view>
@@ -32,7 +26,7 @@
       <span style="font-size:12px;"> (5元/人)</span>
     </view>
   </view>
-  <view style="height:280px;" class="function_item">
+<!--  <view style="height:280px;" class="function_item">
     <text>
             说明:
             （1）扫描下方的推荐二维码进入到蜂蜜佬的用户准为您的推广用户。
@@ -40,5 +34,5 @@
             （3）推广用户每购买一份蜂蜜，您将获取5元的收益。
             （4）蜂蜜记里面每篇文章都有属于您的推荐二维码，转发文章到您的朋友圈赚取现金吧！
             </text>
-  </view>
+  </view> -->
 </view>
