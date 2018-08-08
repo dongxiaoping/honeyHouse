@@ -7,6 +7,20 @@ let recommendDataOfUser = require('../mock/recommendDataOfUser');
 let globalConst = require('./globalConst');
 let serverHttp = "https://dongxiaoping.cn/honeyHouse/server/public/index.php";
 class DataAccess {
+    getGoodByGoodCategoryId(args){
+        wx.request({
+            url: serverHttp + '?s=good/get_goods_by_category',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     //个人推荐二维码地址
     getRecommendQCode(args) {
         wx.request({

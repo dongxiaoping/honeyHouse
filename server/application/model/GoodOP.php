@@ -24,6 +24,7 @@ class GoodOP extends BaseOP{
         if(!$category_info){
             return null;
         }
+        $category_info = $category_info[0];
         $good_list =  Db::query("select *from good as t2 where t2.category_id=".$category_id);
         $category_info["child_list"] = $good_list;
         return $category_info;

@@ -1,5 +1,7 @@
 let goodDemo = require('../../mock/goodDemo');
 let Log = require('../../common/Log');
+let dataAccess = require('../../common/dataAccess');
+let globalConst = require('../../common/globalConst');
 var app = getApp();
 Page({
     data: {
@@ -21,6 +23,15 @@ Page({
                 title: '加载中',
             })
         }
+        dataAccess.getGoodByGoodCategoryId({
+            data:{id:1},
+            callback: function(status, res) {
+                Log.d(res);
+                if(res.status ===globalConst.interfaceStatus.SUCCESS){
+
+                }
+            }
+        });
         app.initUser();
         let goodInfo = goodDemo;//接口原始商品数据
         goodInfo.good_sell_count = this.getGoodSellCount(goodInfo);
