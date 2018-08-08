@@ -1,4 +1,3 @@
-let goodDemo = require('../../mock/goodDemo');
 let Log = require('../../common/Log');
 let dataAccess = require('../../common/dataAccess');
 let globalConst = require('../../common/globalConst');
@@ -26,23 +25,22 @@ Page({
         dataAccess.getGoodByGoodCategoryId({
             data:{id:1},
             callback: function(status, res) {
-                Log.d(res);
                 if(res.status ===globalConst.interfaceStatus.SUCCESS){
-
+                    let goodInfo = res.data;//接口原始商品数据
+                    goodInfo.good_sell_count = that.getGoodSellCount(goodInfo);
+                    let swipeImages = that.getSwipeImages(goodInfo);
+                    let selectedChildInfo = goodInfo.child_list[0];
+                    selectedChildInfo.buy_count = 1;
+                    that.setData({
+                        goodInfo:goodInfo,
+                        selectedChildInfo:selectedChildInfo,
+                        swipeImages: swipeImages
+                    });
+                    Log.d(goodInfo);
                 }
             }
         });
         app.initUser();
-        let goodInfo = goodDemo;//接口原始商品数据
-        goodInfo.good_sell_count = this.getGoodSellCount(goodInfo);
-        let swipeImages = this.getSwipeImages(goodInfo);
-        let selectedChildInfo = goodInfo.child_list[0];
-        selectedChildInfo.buy_count = 1;
-        that.setData({
-            goodInfo:goodInfo,
-            selectedChildInfo:selectedChildInfo,
-            swipeImages: swipeImages
-        });
         if (wx.hideLoading()) {
             wx.hideLoading()
         }
@@ -60,7 +58,10 @@ Page({
     getSwipeImages:function(goodInfo){
         let child_list = goodInfo.child_list;
         let swipeImages = [];
-        goodInfo.image_list.forEach(item=>{
+        let listStr = goodInfo.image_list;
+        Log.d(listStr);
+        let list = JSON.parse(listStr);
+        list.forEach(item=>{
             let it = {child_image: item}
             swipeImages.push(it);
         });
