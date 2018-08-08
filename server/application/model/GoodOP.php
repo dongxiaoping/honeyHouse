@@ -20,12 +20,12 @@ class GoodOP extends BaseOP{
     }
 
     public function get_goods_by_category($category_id){
-        $category_info= Db::query("select name,images,good_desc,visit_count from good_category as t1 where t1.id=".$category_id);
+        $category_info= Db::query("select *from good_category as t1 where t1.id=".$category_id);
         if(!$category_info){
             return null;
         }
         $good_list =  Db::query("select *from good as t2 where t2.category_id=".$category_id);
-        $category_info["goods"] = $good_list;
+        $category_info["child_list"] = $good_list;
         return $category_info;
     }
 

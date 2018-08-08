@@ -50,6 +50,7 @@ class Good{
         echo arrayToJson($result_array);
     }
 
+    //http://localhost/honeyHouse/server/public/index.php?s=good/get_goods_by_category&id=1
     public function get_goods_by_category(){
         header("Access-Control-Allow-Origin: *");
         if(isset($_GET["id"])){

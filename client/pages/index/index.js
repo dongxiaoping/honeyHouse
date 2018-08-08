@@ -1,5 +1,6 @@
 let goodDemo = require('../../mock/goodDemo');
 let Log = require('../../common/Log');
+var app = getApp();
 Page({
     data: {
         goodInfo:null,
@@ -20,6 +21,7 @@ Page({
                 title: '加载中',
             })
         }
+        app.initUser();
         let goodInfo = goodDemo;//接口原始商品数据
         goodInfo.good_sell_count = this.getGoodSellCount(goodInfo);
         let swipeImages = this.getSwipeImages(goodInfo);
