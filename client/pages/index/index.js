@@ -23,7 +23,7 @@ Page({
         let goodInfo = goodDemo;//接口原始商品数据
         goodInfo.good_sell_count = this.getGoodSellCount(goodInfo);
         let swipeImages = this.getSwipeImages(goodInfo);
-        let selectedChildInfo = goodInfo.goodChildList[0];
+        let selectedChildInfo = goodInfo.child_list[0];
         selectedChildInfo.buy_count = 1;
         that.setData({
             goodInfo:goodInfo,
@@ -37,7 +37,7 @@ Page({
 
     getGoodSellCount:function(goodInfo){
         let count = 0;
-        let list = goodInfo.goodChildList;
+        let list = goodInfo.child_list;
         list.forEach(item=>{
             count +=item.good_sell_count;
         });
@@ -45,13 +45,13 @@ Page({
     },
 
     getSwipeImages:function(goodInfo){
-        let goodChildList = goodInfo.goodChildList;
+        let child_list = goodInfo.child_list;
         let swipeImages = [];
-        goodInfo.good_main_img_list.forEach(item=>{
+        goodInfo.image_list.forEach(item=>{
             let it = {child_image: item}
             swipeImages.push(it);
         });
-        goodChildList.forEach(item=>{
+        child_list.forEach(item=>{
             let it = {child_image: item.child_image}
             swipeImages.push(it);
         });
@@ -63,8 +63,8 @@ Page({
         let that = this;
         let item = data.currentTarget.dataset;
         let childInfo ={
-            child_good_id:item.goodCode,
-            child_name:item.goodName,
+            id:item.goodCode,
+            name:item.goodName,
             good_orin_price:item.goodOrinPrice,
             good_price:item.goodPrice,
             good_unit:item.goodUnit,
@@ -123,10 +123,10 @@ Page({
 /*        let that = this;
         let thatData = that.data;
         let good_id = thatData.good.good_id; //good_id
-        let good_name = thatData.good.good_name; //good_name
+        let good_name = thatData.good.name; //good_name
         let gn = thatData.goodNum; //数量
         let good_price = thatData.goodPrice; //价格
-        let goodDisplayImg = thatData.good.good_main_img_list;//主图
+        let goodDisplayImg = thatData.good.image_list;//主图
         if (ja.length > 0) {
             wx.showToast({
                 title: '成功！',

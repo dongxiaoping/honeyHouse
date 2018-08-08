@@ -89,12 +89,18 @@ create table order_good_record
 create table good_category
 (
   id bigint unsigned auto_increment,
+  #是否上架 0 下架 1 上架
+  on_sale tinyint not null default 0,
   #名称
   name varchar(80) not null default "",
-  #图片集合
-  images varchar(680) not null default "",
+  #图片集合 存图片的json数组
+  image_list varchar(480) not null default "",
   #描述
-  good_desc varchar(880) not null default "",
+  good_mark varchar(680) not null default "",
+  #物品详情 存图片的json数组
+  good_detail varchar(480) not null default "",
+  #物品规格 存图片的json数组
+  good_standard varchar(480) not null default "",
   #访问量
   visit_count bigint unsigned not null  default 0,
   #创建时间
@@ -116,18 +122,16 @@ create table good
   stock bigint unsigned not null default 0,
   #是否上架 0 下架 1 上架
   on_sale tinyint not null default 0,
-  #描述
-  good_desc varchar(480) not null default "",
   #销量
-  sale_count bigint unsigned not null default 0,
-  #折扣
-  discount decimal(3,2) NOT NULL default 1,
+  good_sell_count bigint unsigned not null default 0,
   #价格
-  price decimal(6,2) NOT NULL,
+  good_price decimal(6,2) NOT NULL,
+  #折扣之前的价格
+  good_orin_price decimal(6,2) NOT NULL,
   #单位
-  unit varchar(30) not null default "",
+  good_unit varchar(30) not null default "",
   #图片集合
-  images varchar(680) not null default "",
+  child_image varchar(480) not null default "",
   #最后一次修改时间
   last_mod varchar(30) default null,
   #创建时间
