@@ -21,7 +21,7 @@ Page({
             })
         }
         let goodInfo = goodDemo;//接口原始商品数据
-        let swipeImages = this.getSwipeImages(goodInfo.good,goodInfo.goodChildList);
+        let swipeImages = this.getSwipeImages(goodInfo,goodInfo.goodChildList);
         let selectedChildInfo = goodInfo.goodChildList[0];
         selectedChildInfo.buy_count = 1;
         that.setData({
@@ -50,6 +50,9 @@ Page({
         let childInfo ={
             child_good_id:item.goodCode,
             child_name:item.goodName,
+            good_orin_price:item.goodOrinPrice,
+            good_price:item.goodPrice,
+            good_unit:item.goodUnit,
             buy_count:1,
             child_image:item.childImage
         };

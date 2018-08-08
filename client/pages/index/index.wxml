@@ -12,22 +12,22 @@
 
 <!--BEGIN 物品简单描述-->
 <view class="goods_infor_top">
-  <view class="goods_title">{{goodInfo.good.good_name}}
+  <view class="goods_title">{{goodInfo.good_name}}
   </view>
   <view class="good_description">
-    <text class="description_content">{{goodInfo.good.good_mark}}</text>
+    <text class="description_content">{{goodInfo.good_mark}}</text>
   </view>
   <view class="good_info_bottom display-flex-row" style="">
     <view class="good_price">
-      <text class="color_ff6700 good_dis_price pdr10rpx display-ib">¥{{goodInfo.good.good_price}}/{{goodInfo.good.good_unit}}</text>
-      <block wx:if="{{goodInfo.good.good_column=='100903'}}">
+      <text class="color_ff6700 good_dis_price pdr10rpx display-ib">¥{{selectedChildInfo.good_price}}/{{selectedChildInfo.good_unit}}</text>
+      <block>
         <text class="good_orin_price td-lt display-ib">
-          ¥{{goodInfo.good.good_orin_price}}
+          ¥{{selectedChildInfo.good_orin_price}}
         </text>
       </block>
     </view>
     <view class="sale">
-      <text class="good_sale_count display-ib" style="">销量:{{goodInfo.good.good_sell}}</text>
+      <text class="good_sale_count display-ib" style="">销量:{{goodInfo.good_sell}}</text>
     </view>
   </view>
 </view>
@@ -63,7 +63,7 @@
   <view class="catalog_title">
     <image class="thumbnails" src="{{selectedChildInfo.child_image}}" mode="aspectFill"></image>
     <view class="info_tip">
-      <view class="good_dis_price">¥{{goodInfo.good.good_price}}</view>
+      <view class="good_dis_price">¥{{selectedChildInfo.good_price}}</view>
       <view class="choosed_catalog text-hidden">{{selectedChildInfo.child_name}}</view>
     </view>
     <image class="cancel" bindtap="hideModal" src="../../images/delete.png"></image>
@@ -73,7 +73,7 @@
       <view class="catalog_name">类型</view>
       <view class="catalog_items display-flex-row">
         <block wx:key="good_id" wx:for="{{goodInfo.goodChildList}}">
-          <text data-child-image="{{globalData.root}}{{item.child_image}}" data-good-code="{{item.child_good_id}}" data-good-name="{{item.child_name}}" class="{{item.child_good_id == selectedChildInfo.child_good_id ? 'active':''}} catalog_item" bindtap="chooseChildGood">{{item.child_name}}
+          <text data-child-image="{{item.child_image}}"  data-good-price="{{item.good_price}}" data-good-orin-price="{{item.good_orin_price}}" data-good-unit="{{item.good_unit}}"   data-good-code="{{item.child_good_id}}" data-good-name="{{item.child_name}}" class="{{item.child_good_id == selectedChildInfo.child_good_id ? 'active':''}} catalog_item" bindtap="chooseChildGood">{{item.child_name}}
             </text>
         </block>
       </view>
