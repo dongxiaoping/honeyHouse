@@ -21,7 +21,8 @@ Page({
             })
         }
         let goodInfo = goodDemo;//接口原始商品数据
-        let swipeImages = this.getSwipeImages(goodInfo,goodInfo.goodChildList);
+        goodInfo.good_sell_count = this.getGoodSellCount(goodInfo);
+        let swipeImages = this.getSwipeImages(goodInfo);
         let selectedChildInfo = goodInfo.goodChildList[0];
         selectedChildInfo.buy_count = 1;
         that.setData({
@@ -34,12 +35,26 @@ Page({
         }
     },
 
-    getSwipeImages:function(goodBaseMsg,goodChildList){
-        let swipeImages = [{child_image: goodBaseMsg.good_display_img}];
-        for (let i = 0; i < goodChildList.length; i++) {
-            let jo = {child_image: goodChildList[i].child_image};
-            swipeImages.push(jo);
-        }
+    getGoodSellCount:function(goodInfo){
+        let count = 0;
+        let list = goodInfo.goodChildList;
+        list.forEach(item=>{
+            count +=item.good_sell_count;
+        });
+        return count;
+    },
+
+    getSwipeImages:function(goodInfo){
+        let goodChildList = goodInfo.goodChildList;
+        let swipeImages = [];
+        goodInfo.good_main_img_list.forEach(item=>{
+            let it = {child_image: item}
+            swipeImages.push(it);
+        });
+        goodChildList.forEach(item=>{
+            let it = {child_image: item.child_image}
+            swipeImages.push(it);
+        });
         return swipeImages;
     },
 
@@ -111,7 +126,7 @@ Page({
         let good_name = thatData.good.good_name; //good_name
         let gn = thatData.goodNum; //数量
         let good_price = thatData.goodPrice; //价格
-        let goodDisplayImg = thatData.good.good_display_img;//主图
+        let goodDisplayImg = thatData.good.good_main_img_list;//主图
         if (ja.length > 0) {
             wx.showToast({
                 title: '成功！',

@@ -27,7 +27,7 @@
       </block>
     </view>
     <view class="sale">
-      <text class="good_sale_count display-ib" style="">销量:{{goodInfo.good_sell}}</text>
+      <text class="good_sale_count display-ib" style="">销量:{{goodInfo.good_sell_count}}</text>
     </view>
   </view>
 </view>
