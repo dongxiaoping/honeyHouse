@@ -23,7 +23,8 @@ class RecommendRecordServer
     }
 
     public function get_recommend_records_by_user_id($id){
-        return $this->RecommendRecordOP->get_recommend_records_by_user_id($id);
+        $return_info = $this->RecommendRecordOP->get_recommend_records_by_user_id($id);
+        return  getInterFaceArray(1,"success",$return_info);
     }
 
 }
