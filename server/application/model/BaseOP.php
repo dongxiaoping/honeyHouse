@@ -28,6 +28,16 @@ class BaseOP
         }
     }
 
+    public function insertAll($list){
+        $isOk = $this->table->insertAll($list);
+        if($isOk){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
     public function del($id){
        return $this->table->where("id",$id)->delete();
     }

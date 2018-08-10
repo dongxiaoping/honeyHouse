@@ -58,6 +58,8 @@ create table order_record
   id bigint unsigned auto_increment,
   #用户ID
   user_id bigint unsigned,
+  #支付方式 1 微信支付 2账户支付 3混合支付 4其它
+  pay_type tinyint not null default 0,
   #订单状态
   order_status  tinyint not null default 0,
   #订单创建时间
@@ -75,6 +77,12 @@ create table order_good_record
   order_id bigint unsigned not null,
   #物品ID
   good_id bigint unsigned not null,
+  #物品名称
+  name varchar(80) not null default "",
+  #单位
+  good_unit varchar(30) not null default "",
+  #实际购入价格
+  price decimal(6,2) not null default 0,
   #数量
   count int  not null default 0,
   #创建时间
@@ -116,7 +124,7 @@ create table good
   id bigint unsigned auto_increment,
   #父ID
   category_id  bigint unsigned not null,
-  #规格名称
+  #物品名称
   name varchar(80) not null default "",
   #库存
   stock bigint unsigned not null default 0,

@@ -40,3 +40,18 @@ define('RECOMMEND_PRICE',array('recommend_user'=>1,'recommend_user_buy'=>5));
  * recommend_user_buy：推荐用户购买
  * */
 define('REWARD_TYPE',array('recommend_user'=>1,'recommend_user_buy'=>2));
+
+define('ORDER_STATUS',array(
+'wait_pay'=>1,//等待买家付款
+'has_pay'=>2, //买家已付款
+'good_delivered'=>3,//卖家已发货
+'success'=>4,//交易成功
+'cancel'=>5 //已取消：订单成功提交但7天内未付款的订单状态
+));
+
+define('PAY_TYPE',array(
+    'wechat'=>1,//微信
+    'account'=>2,//账户
+    'mix'=>3,//混合支付
+    'other'=>4
+));

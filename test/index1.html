@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../honeyRecord/src/lib/jquery/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var orderInfo={
+        user_id:233,
+        goods:[
+            {
+                good_id:1,
+                price:3,
+                name:"小",
+                good_unit:"",
+                count:1
+            },
+            {
+                good_id:2,
+                price:3,
+                name:"大",
+                good_unit:"通",
+                count:2
+            }
+        ]
+    };
+/*    $.get("http://localhost/honeyHouse/server/public/index.php?s=user/test", function(result){
+        console.log(result);
+    });*/
+
+    $.post("http://localhost/honeyHouse/server/public/index.php?s=order/submit_order",JSON.stringify(orderInfo),function(result){
+        console.log(result);
+    },"json");
+
+
+</script>
+</html>

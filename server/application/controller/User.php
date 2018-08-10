@@ -17,7 +17,7 @@ class User
         $this->UserServer = new service\UserServer();
     }
 
-    //http://39.108.181.67:8080/honeyHouse/server/public/index.php?s=user/test
+    //http://localhost/honeyHouse/server/public/index.php?s=user/test
     public function test()
     {
         /*        if(isset($_POST["sex"])&&isset($_POST["wechat_id"])){
