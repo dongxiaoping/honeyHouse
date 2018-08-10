@@ -21,4 +21,9 @@ class RecommendRecordServer
     public function insert_record($info){
         return $this->RecommendRecordOP->insert($info);
     }
+
+    public function get_recommend_records_by_user_id($id){
+        return $this->RecommendRecordOP->get_recommend_records_by_user_id($id);
+    }
+
 }

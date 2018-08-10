@@ -19,4 +19,8 @@ class OrderGoodRecordOP extends BaseOP{
         parent::__construct($this->order_good_record);
     }
 
+    public function get_goods_by_order_id($order_id){
+        $good_list =  Db::query("select *from order_good_record as t2 where t2.order_id=".$order_id);
+        return $good_list;
+    }
 }

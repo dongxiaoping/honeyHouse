@@ -32,38 +32,42 @@ class LogManage {
 
     e(v) {
         if (this.level<=this.levels.e) {
-           // console.log("flash:e("+v+")");
-            console.log("honey:e");
-            console.log(v);
+            if(typeof (v)==="string"){
+                console.log("log:e("+v+")");
+            }else{
+                console.log("log:e("+JSON.stringify(v)+")");
+            }
         }
     };
 
     w(v) {
         if (this.level<=this.levels.w) {
-            //console.log("flash:w("+v+")");
-            console.log("honey:w");
-            console.log(v);
+            if(typeof (v)==="string"){
+                console.log("log:w("+v+")");
+            }else{
+                console.log("log:w("+JSON.stringify(v)+")");
+            }
         }
     };
 
     i(v) {
         if (this.level<=this.levels.i) {
-            //console.log("flash:i("+v+")");
-            console.log("honey:i");
-            console.log(v);
+            if(typeof (v)==="string"){
+                console.log("log:i("+v+")");
+            }else{
+                console.log("log:i("+JSON.stringify(v)+")");
+            }
         }
     };
 
     d(v) {
         if (this.level<=this.levels.d) {
-           // console.log("flash:d("+v+")");
-            console.log("honey:d");
-            console.log(v);
+            if(typeof (v)==="string"){
+                console.log("log:d("+v+")");
+            }else{
+                console.log("log:d("+JSON.stringify(v)+")");
+            }
         }
     };
-    isArray(obj) {
-        return Object.prototype.toString.call(obj) === '[object Array]';
-    }
-
 }
 module.exports = new LogManage();

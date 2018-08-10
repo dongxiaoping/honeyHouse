@@ -152,13 +152,13 @@ create table good
 create table recommend_record
 (
   id bigint unsigned auto_increment,
-  # 获取赠金的用户
+  #获取赠金的用户
   own_cash_user_id  bigint unsigned not null,
-  # 推荐用户ID
+  #被推荐用户ID
   new_user_id bigint unsigned not null,
-  # 1表示新增用户  2表示推荐用户首次购买
+  #1表示新增用户  2表示推荐用户首次购买
   model tinyint not null default 0,
-  # 奖励金额
+  #奖励金额
   reward_price decimal(6,2) not null default 0,
   #创建时间
   create_time  varchar(30) default null,

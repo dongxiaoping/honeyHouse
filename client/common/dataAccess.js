@@ -7,6 +7,34 @@ let recommendDataOfUser = require('../mock/recommendDataOfUser');
 let globalConst = require('./globalConst');
 let serverHttp = "https://dongxiaoping.cn/honeyHouse/server/public/index.php";
 class DataAccess {
+    submitOrder(args){
+        wx.request({
+            url: serverHttp + '?s=order/submit_order',
+            data: args.data,
+            method: 'POST',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
+    getRecommendRecordsByUserId(args){
+        wx.request({
+            url: serverHttp + '?s=recommend/get_recommend_records_by_user_id',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     getGoodByGoodCategoryId(args){
         wx.request({
             url: serverHttp + '?s=good/get_goods_by_category',
@@ -100,11 +128,6 @@ class DataAccess {
                 args.callback(globalConst.interfaceStatus.FAILL, "");
             }
         })
-    }
-
-    //用户推荐成绩数据
-    getRecommendDataOfUser() {
-        return recommendDataOfUser;
     }
 }
 module.exports = new DataAccess();

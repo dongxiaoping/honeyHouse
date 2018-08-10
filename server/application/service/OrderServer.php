@@ -41,4 +41,20 @@ class OrderServer{
         }
         return  getInterFaceArray(0,"fail","");
     }
+
+    public function get_order_info($id){
+        $info = $this->OrderRecordOP->get($id);
+        if($info){
+            $order_id = $info["id"];
+            $list = $this->OrderGoodRecordOP->get_goods_by_order_id($order_id);
+            $info["goods"] = $list;
+            return  getInterFaceArray(1,"success",$info);
+        }
+        return getInterFaceArray(0,"fail","");
+    }
+
+    public function change_order_status($info){
+        $order_id = $info["order_id"];
+
+    }
 }

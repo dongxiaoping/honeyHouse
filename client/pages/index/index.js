@@ -56,17 +56,12 @@ Page({
     },
 
     getSwipeImages:function(goodInfo){
-        let child_list = goodInfo.child_list;
         let swipeImages = [];
         let listStr = goodInfo.image_list;
-        Log.d(listStr);
         let list = JSON.parse(listStr);
+        Log.d(listStr);
         list.forEach(item=>{
             let it = {child_image: item}
-            swipeImages.push(it);
-        });
-        child_list.forEach(item=>{
-            let it = {child_image: item.child_image}
             swipeImages.push(it);
         });
         return swipeImages;
