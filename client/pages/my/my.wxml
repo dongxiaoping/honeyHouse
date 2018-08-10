@@ -16,13 +16,13 @@
   </view>
   <view class="function_item">
     <view class="title">围观人数</view>
-    <view style='margin-left:{{windowWidth/3}}px;'> {{recommendDataOfUser.visit_count}}
+    <view style='margin-left:{{windowWidth/3}}px;'> {{recommendUserCount}}
       <span style="font-size:12px;"> (0.5元/人)</span>
     </view>
   </view>
   <view class="function_item">
     <view class="title">购买人数</view>
-    <view style='margin-left:{{windowWidth/3}}px;'>  {{recommendDataOfUser.buy_count}}
+    <view style='margin-left:{{windowWidth/3}}px;'>  {{recommendBuyCount}}
       <span style="font-size:12px;"> (5元/人)</span>
     </view>
   </view>

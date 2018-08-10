@@ -11,8 +11,8 @@ let interfaceStatus = {
 };
 
 let rewardType = {
-    "recommend_user": 0,
-    "recommend_user_buy":1
+    "recommend_user": 1,
+    "recommend_user_buy":2
 };
 
 let webPageUrl = "https://dongxiaoping.cn/honeyHouse/honeyRecord/src/index.html"

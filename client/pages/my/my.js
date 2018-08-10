@@ -10,8 +10,8 @@ Page({
         windowHeight: "",
         windowWidth: "",
         userInfo: "", //用户基本信息
-        recommendQCode: "", //推荐二维码地址
-        recommendDataOfUser: "" //推荐数据
+        recommendUserCount:0,
+        recommendBuyCount:0
     },
 
     /**
@@ -19,14 +19,14 @@ Page({
      */
     onLoad: function(options) {
         let that = this;
-        let recommendQCode = "";
         Log.d(app.globalData.userInfo);
-
         dataAccess.getRecommendRecordsByUserId({
             data:{id:app.globalData.userInfo.id},
             callback: function(status, res) {
                 if(res.status ===globalConst.interfaceStatus.SUCCESS){
-                    Log.d(res);
+                    let recordList = res.data;
+                    that.setRecommendCount(recordList);
+                    Log.d(recordList);
                 }
             }
         });
@@ -40,6 +40,22 @@ Page({
                     windowWidth: res.windowWidth
                 })
             }
+        });
+    },
+
+    setRecommendCount(recordList){
+        let recommendUserCount = 0;
+        let recommendBuyCount = 0;
+        recordList.forEach(item=>{
+            if(item.model===globalConst.rewardType.recommend_user){
+                recommendUserCount++;
+            }else{
+                recommendBuyCount++;
+            }
+        });
+        this.setData({
+            recommendUserCount: recommendUserCount,
+            recommendBuyCount: recommendBuyCount
         });
     },
 
