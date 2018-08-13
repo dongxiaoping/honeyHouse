@@ -129,6 +129,9 @@ Page({
     },
 
     saveOrder: function(data) {
+        wx.navigateTo({
+            url: "../pay/pay"
+        });
 /*        let that = this;
         let thatData = that.data;
         let good_id = thatData.good.good_id; //good_id

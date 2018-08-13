@@ -2,6 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/activity/activity",
+    "pages/pay/pay",
+    "pages/paySuccessTrans/paySuccessTrans",
     "pages/my/my"
   ],
   "debug": false,
