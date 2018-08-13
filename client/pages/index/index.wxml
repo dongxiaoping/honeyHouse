@@ -47,7 +47,7 @@
 
 <!--BEGIN 底部操作区-->
   <view class="{{isChildPanelShow == false ? 'display-block':'display-none'}} goods_bottom_btn display-flex-row">
-    <view bindtap="saveOrder" class="goods_bug_button bg_ff6700 color_fff">立即购买</view>
+    <view bindtap="saveOrder" class="goods_bug_button bg_ff0036 color_fff">立即购买</view>
   </view>
 <!--END 底部操作区-->
 
@@ -90,7 +90,7 @@
   </scroll-view>
   <view class="btn_hidden"></view>
   <view style="margin:0rpx;" class="btn_area display-flex-row">
-    <view bindtap="saveOrder" class="goods_bug_button bg_ff6700 color_fff">立即购买</view>
+    <view bindtap="saveOrder" class="goods_bug_button bg_ff0036 color_fff">立即购买</view>
   </view>
 </view>
 <!--END 物品子类型选择面板-->

@@ -14,7 +14,8 @@ App({
             recommend_user_code:"",
             last_login_time:"",
             register_time:""
-        }
+        },
+        orderInfo:null//订单信息
     },
     onLaunch: function () {
 

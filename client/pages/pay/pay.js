@@ -1,5 +1,5 @@
-//获取应用实例
-let app = getApp()
+let Log = require('../../common/Log');
+let app = getApp();
 let productData = require('../../mock/productData');
 let curAddressData = require('../../mock/curAddressData');
 Page({
@@ -14,8 +14,10 @@ Page({
 
     onLoad: function (e) {
         let that = this;
+        let goodsList = app.globalData.orderInfo;
+        Log.d(goodsList);
         that.setData({
-            goodsList: productData,
+            goodsList: goodsList,
             curAddressData:curAddressData
         });
         this.totalPrice();
@@ -23,12 +25,12 @@ Page({
 
     // 计算订单总价
     totalPrice: function () {
-        let that = this
+        let that = this;
         let goodsList = this.data.goodsList;
         let allGoodsPrice = 0;
         for (let i = 0; i < goodsList.length; i++) {
             let carShopBean = goodsList[i];
-            allGoodsPrice += carShopBean.price * carShopBean.goods_num;
+            allGoodsPrice += carShopBean.good_price * carShopBean.buy_count;
         }
         that.setData({
             allGoodsPrice: allGoodsPrice.toFixed(2)
