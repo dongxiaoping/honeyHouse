@@ -58,7 +58,7 @@ create table order_record
   id bigint unsigned auto_increment,
   #用户ID
   user_id bigint unsigned,
-  #支付方式 1 微信支付 2账户支付 3混合支付 4其它
+  #支付方式 1 微信支付 2账户支付 3其它
   pay_type tinyint not null default 0,
   #订单状态
   order_status  tinyint not null default 0,
