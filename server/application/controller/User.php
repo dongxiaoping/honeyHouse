@@ -18,17 +18,10 @@ class User
     }
 
     //http://localhost/honeyHouse/server/public/index.php?s=user/test
-    public function test()
-    {
-        /*        if(isset($_POST["sex"])&&isset($_POST["wechat_id"])){
-
-        }else{
-            echo getJsonStringByParam(0,"param_error","");
-        }*/
-        // echo "user test";
-        // echo APP_PATH;
-        // echo getJsonStringByParam(0,"param_error","");
-        echo getJsonStringByParam(0,"param_error",RECOMMEND_PRICE);
+    public function test(){
+        $ddnumber=substr(date("ymdHis"),2,8).mt_rand(100000,999999);
+        echo $ddnumber;
+        //echo getJsonStringByParam(0,"param_error",RECOMMEND_PRICE);
     }
 
     //通过临时微信ID获取用户唯一ID

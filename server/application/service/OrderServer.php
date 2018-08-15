@@ -22,7 +22,9 @@ class OrderServer{
         $user_id = $info["user_id"];
         $good_list = $info["goods"];
         $set_time = date("Y-m-d H:i:s");
+        $order_id=substr(date("ymdHis"),2,8).mt_rand(100000,999999);
         $order = array(
+            "id"=>$order_id,
             "user_id"=>$user_id,
             "pay_type"=>PAY_TYPE["other"],
             "order_status"=>ORDER_STATUS["wait_pay"],

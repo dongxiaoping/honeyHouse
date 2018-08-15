@@ -55,7 +55,7 @@ create table visit_record
 #订单记录
 create table order_record
 (
-  id bigint unsigned auto_increment,
+  id  varchar(32) not null,
   #用户ID
   user_id bigint unsigned,
   #支付方式 1 微信支付 2账户支付 3其它
