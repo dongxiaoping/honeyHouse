@@ -50,7 +50,7 @@ App({
                               Log.i(that.globalData.userInfo);
                               return ;
                           }
-                          that.globalData.userInfo.wechat_id = code;
+                          that.globalData.userInfo.wechat_id = openid;
                           dataAccess.add_user({
                               data:that.globalData.userInfo,
                               callback: function(status, res3) {
