@@ -21,6 +21,20 @@ class DataAccess {
         })
     }
 
+    onLogin(args){
+        wx.request({
+            url: serverHttp + '?s=user/on_login',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     getRecommendRecordsByUserId(args){
         wx.request({
             url: serverHttp + '?s=recommend/get_recommend_records_by_user_id',
@@ -86,7 +100,7 @@ class DataAccess {
     }
 
     //获取临时登录凭证（code）
-    getWechatLoginCode(args){
+    login(args){
         wx.login({
             success: function(res) {
                 if (res.code) {

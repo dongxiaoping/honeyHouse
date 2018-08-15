@@ -71,4 +71,13 @@ class UserServer{
         }
         return  getInterFaceArray(0,"fail","");
     }
+
+    public function on_login($temp_id){
+        $appid = "wx295e9a9b71a0ac11";
+        $secret = "854a73a08838e6484adcf774474e151b";
+        $http_string = "https://api.weixin.qq.com/sns/jscode2session?appid=".$appid."&secret=".$secret."&js_code=".$temp_id."&grant_type=authorization_code";
+        $result = file_get_contents($http_string);
+        $result = json_decode($result);
+        return  getInterFaceArray(1,"success",$result);
+    }
 }

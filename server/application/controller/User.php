@@ -31,6 +31,18 @@ class User
         echo getJsonStringByParam(0,"param_error",RECOMMEND_PRICE);
     }
 
+    //通过临时微信ID获取用户唯一ID
+    public function on_login(){
+        header("Access-Control-Allow-Origin: *"); //支持跨域
+        if(isset($_GET["id"])){
+            $temp_id = $_GET["id"];
+            $result_array = $this->UserServer->on_login($temp_id);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
+
     /*获取用户基本信息*/
     public function get_user_info_by_wechat_id(){
         header("Access-Control-Allow-Origin: *"); //支持跨域
