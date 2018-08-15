@@ -30,3 +30,14 @@ function getInterFaceArray($status,$message,$data){
 function arrayToJson($info){
     return json_encode($info,JSON_UNESCAPED_UNICODE);
 }
+
+function getRandCode(){
+    $charts = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz0123456789";
+    $max = strlen($charts)-1;
+    $noncestr = "";
+    for ($i = 0; $i < 16; $i++) {
+        $noncestr .= $charts[mt_rand(0, $max)];
+    }
+    return $noncestr;
+}
+
