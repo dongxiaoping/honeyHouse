@@ -33,13 +33,14 @@ class Pay{
     public function test(){
         $appid = "wx295e9a9b71a0ac11";
         $mch_id = "1511988301";
-        $notify_url = "fdsf";
-        $key = "854a73a08838e6484adcf774474e151b";
+        $notify_url = "https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test";
+        $key = "854a73af8838e6b84adcf77y474e1i1b";
         $wechatAppPay = new common\WechatAppPay($appid, $mch_id, $notify_url, $key);
         $params['body'] = '好蜂味蜂产销售部-蜂蜜'; //商品描述
         $params['out_trade_no'] = "O20160617021323-001";//自定义的订单号
         $params['total_fee'] = '100'; //订单金额 只能为整数 单位为分
         $params['trade_type'] = 'JSAPI'; //交易类型 JSAPI | NATIVE | APP | WAP
+        $params['openid'] = 'okaH949YZhPCpEOXuH9bfX3wyy10'; //用户在商户appid下的唯一标识
         $result = $wechatAppPay->unifiedOrder( $params );
         echo getJsonStringByParam(0,"param_error",$result);
     }

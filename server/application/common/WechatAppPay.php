@@ -39,6 +39,9 @@ class WechatAppPay{
     private $notify_url;
 //交易类型
     private $trade_type;
+
+    //用户在商户appid下的唯一标识
+    private $openid;
 //支付密钥
     private $key;
 //证书路径
@@ -64,6 +67,7 @@ class WechatAppPay{
         $this->trade_type = $params['trade_type'];
         $this->nonce_str = $this->genRandomString();
         $this->spbill_create_ip = "123.12.12.123";
+        $this->openid = $params["openid"];
         $this->params['appid'] = $this->appid;
         $this->params['mch_id'] = $this->mch_id;
         $this->params['nonce_str'] = $this->nonce_str;
@@ -73,6 +77,7 @@ class WechatAppPay{
         $this->params['spbill_create_ip'] = $this->spbill_create_ip;
         $this->params['notify_url'] = $this->notify_url;
         $this->params['trade_type'] = $this->trade_type;
+        $this->params['openid'] = $this->openid;
 //获取签名数据
         $this->sign = $this->MakeSign( $this->params );
         $this->params['sign'] = $this->sign;
