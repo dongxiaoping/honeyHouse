@@ -47,7 +47,7 @@ class OrderServer{
             $trade_type = 'JSAPI';
             $openid = $info["wechat_id"];
             $result = $this->payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid);
-            echo $result;
+            print_r($result);
         }
     }
 
