@@ -47,12 +47,8 @@ class OrderServer{
             $trade_type = 'JSAPI';
             $openid = $info["wechat_id"];
             $result = $this->payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid);
-            if($result){
-                return  getInterFaceArray(1,"success",$result);
-            }
-            return  getInterFaceArray(0,"统一订单接口异常","");
+            echo $result;
         }
-        return  getInterFaceArray(0,"fail","");
     }
 
     public function get_order_price($order_good_list){
@@ -100,6 +96,7 @@ class OrderServer{
         $params['trade_type'] = $trade_type; //交易类型 JSAPI | NATIVE | APP | WAP
         $params['openid'] = $openid; //用户在商户appid下的唯一标识
         $result = $wechatAppPay->unifiedOrder( $params );
-        return $result;
+        $data = @$wechatAppPay->getAppPayParams( $result['prepay_id'] );
+        return $data;
     }
 }

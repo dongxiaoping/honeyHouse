@@ -23,8 +23,7 @@ class Order{
         $content = file_get_contents("php://input");
         $content = (string)$content;
         $content = json_decode($content,true);
-        $result_array =  $this->OrderServer->submit_order($content);
-        echo arrayToJson($result_array);
+        $this->OrderServer->submit_order($content);
     }
 
     public function get_order_info(){

@@ -46,7 +46,6 @@ Page({
             data: orderForSubmit,
             callback: function(status, res) {
                 Log.d(res);
-                if (res.status === globalConst.interfaceStatus.SUCCESS) {}
             }
         });
         Log.d(orderForSubmit);
