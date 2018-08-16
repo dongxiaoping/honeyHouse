@@ -42,12 +42,15 @@ class OrderServer{
 
             $body = '好蜂味蜂产销售部-蜂蜜';
             $out_trade_no = $order_id;
-            $total_fee = $this->get_order_price($good_list);//订单金额 分
+            $total_fee =10; //$this->get_order_price($good_list);//订单金额 分
             $spbill_create_ip =  $_SERVER["REMOTE_ADDR"];//用户ip
             $trade_type = 'JSAPI';
             $openid = $info["wechat_id"];
             $result = $this->payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid);
-            return  getInterFaceArray(1,"success",$result);
+            if($result){
+                return  getInterFaceArray(1,"success",$result);
+            }
+            return  getInterFaceArray(0,"统一订单接口异常","");
         }
         return  getInterFaceArray(0,"fail","");
     }

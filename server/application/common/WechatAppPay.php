@@ -82,16 +82,15 @@ class WechatAppPay{
         $this->sign = $this->MakeSign( $this->params );
         $this->params['sign'] = $this->sign;
         $xml = $this->data_to_xml($this->params);
-      //  $response = $this->postXmlCurl($xml, self::API_URL_PREFIX.self::UNIFIEDORDER_URL);
-        return $xml;
-/*        if( !$response ){
+        $response = $this->postXmlCurl($xml, self::API_URL_PREFIX.self::UNIFIEDORDER_URL);
+        if( !$response ){
             return false;
         }
         $result = $this->xml_to_data( $response );
         if( !empty($result['result_code']) && !empty($result['err_code']) ){
             $result['err_msg'] = $this->error_code( $result['err_code'] );
         }
-        return $result;*/
+        return $result;
     }
     /**
      * 查询订单信息
