@@ -12,6 +12,6 @@
 namespace app\model\table;
 use think\Model;
 
-class Address{
+class Address extends Model{
     protected $table = "address";
 }
