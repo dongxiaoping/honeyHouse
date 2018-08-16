@@ -9,7 +9,7 @@
 
 </body>
 <script>
-    var orderInfo={
+    var info={
         user_id:233,
         goods:[
             {
@@ -32,7 +32,8 @@
         console.log(result);
     });*/
 
-    $.post("http://localhost/honeyHouse/server/public/index.php?s=order/submit_order",JSON.stringify(orderInfo),function(result){
+    info={"name":"李四","postalCode":"510000","nationalCode":"510000","tel":"020-81167888","province":"广东省","city":"广州市","area":"海珠区","address":"新港中路397号","user_id":1};
+    $.post("http://localhost/honeyHouse/server/public/index.php?s=address/add_address",JSON.stringify(info),function(result){
         console.log(result);
     },"json");
 

@@ -133,9 +133,18 @@ Page({
                     area: res.countyName,
                     address: res.detailInfo
                 };
-                Log.d(curAddressData);
                 that.setData({
                     curAddressData:curAddressData
+                });
+                curAddressData.user_id = app.globalData.userInfo.id;
+                Log.d(curAddressData);
+                dataAccess.addAddress({
+                    data: curAddressData,
+                    callback: function(status, res) {
+                        Log.d(res);
+                        if (res.status === globalConst.interfaceStatus.SUCCESS) {
+                        }
+                    }
                 });
             }
         })
