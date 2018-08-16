@@ -43,7 +43,7 @@ class OrderServer{
             $body = '好蜂味蜂产销售部-蜂蜜';
             $out_trade_no = $order_id;
             $total_fee = $this->get_order_price($good_list);//订单金额 分
-            $spbill_create_ip = "127.0.0.1";//用户ip
+            $spbill_create_ip =  $_SERVER["REMOTE_ADDR"];//用户ip
             $trade_type = 'JSAPI';
             $openid = $info["wechat_id"];
             $result = $this->payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid);
