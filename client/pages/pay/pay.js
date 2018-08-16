@@ -46,9 +46,17 @@ Page({
             data: orderForSubmit,
             callback: function(status, res) {
                 Log.d(res);
+                if (res.status === globalConst.interfaceStatus.SUCCESS) {
+                    let orderReturnInfo = res.data;
+                    that.toStartPayPage(orderReturnInfo);
+                }
             }
         });
         Log.d(orderForSubmit);
+    },
+
+    toStartPayPage:function(orderReturnInfo){
+        console.log(orderReturnInfo);
     },
 
     getOrderForSubmit() {
