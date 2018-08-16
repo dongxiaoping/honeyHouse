@@ -34,8 +34,7 @@ class AddressOP extends BaseOP{
             'city' => $info['city'],
             'area' => $info['area'],
             'address' => $info['address'],
-            'create_time' => date("Y-m-d H:i:s"),
-            'email' => 'thinkphp@qq.com'
+            'create_time' => $info["create_time"]
         ],['user_id' => $info["user_id"]]);
        return $result;
     }

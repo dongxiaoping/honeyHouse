@@ -20,6 +20,7 @@ class AddressServer{
 
     public function add_address($info){
         $user_id = $info["user_id"];
+        $info["create_time"] = date("Y-m-d H:i:s");
         $list = $this->AddressOP->get_addr_by_user_id($user_id);
         if(count($list)<=0){
             $return_info = $this->AddressOP->insert($info);
