@@ -20,6 +20,21 @@ class DataAccess {
             }
         })
     }
+
+    addAddress(args){
+        wx.request({
+            url: serverHttp + '?s=address/add_address',
+            data: args.data,
+            method: 'POST',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     getPaySign(args){
         wx.request({
             url: serverHttp + '?s=order/get_pay_sign',

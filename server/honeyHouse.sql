@@ -166,3 +166,23 @@ create table recommend_record
   last_mod varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
+
+#用户地址
+create table address
+(
+  id bigint unsigned auto_increment,
+  #用户ID
+  user_id  bigint unsigned not null,
+  #用户名称
+  name varchar(80) not null default "",
+  postalCode varchar(80) not null default "",
+  nationalCode  varchar(80) not null default "",
+  tel varchar(80) not null default "",
+  province varchar(48) not null default "",
+  city varchar(48) not null default "",
+  area varchar(120) not null default "",
+  address varchar(480) not null default "",
+  #创建时间
+  create_time  varchar(30) default null,
+  primary key(id)
+)ENGINE=InnoDB default charset=utf8;
