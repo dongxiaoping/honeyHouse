@@ -45,7 +45,7 @@ class OrderServer{
             $total_fee = $this->get_order_price($good_list);//订单金额 分
             $spbill_create_ip = "127.0.0.1";//用户ip
             $trade_type = 'JSAPI';
-            $openid = $user_id;
+            $openid = $info["wechat_id"];
             $result = $this->payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid);
             return  getInterFaceArray(1,"success",$result);
         }
