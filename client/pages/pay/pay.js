@@ -3,7 +3,6 @@ let app = getApp();
 let dataAccess = require('../../common/dataAccess');
 let globalConst = require('../../common/globalConst');
 let productData = require('../../mock/productData');
-let curAddressData = require('../../mock/curAddressData');
 Page({
     data: {
         goodsList: [],
@@ -24,6 +23,13 @@ Page({
         this.totalPrice();
     },
 
+    isAddressExist(){
+        if(this.data.curAddressData===''){
+            return false;
+        }
+        return true;
+    },
+
     // 计算订单总价
     totalPrice: function() {
         let that = this;
@@ -40,11 +46,22 @@ Page({
 
     // 提交订单
     createOrder: function(e) {
+        if(!this.isAddressExist()){
+            wx.showToast({
+                title: '请填写地址!',
+                icon:'none'
+            });
+            return;
+        }
+        wx.showLoading({
+            title: '加载中',
+        });
         let that = this;
         let orderForSubmit = this.getOrderForSubmit();
         dataAccess.submitOrder({
             data: orderForSubmit,
             callback: function(status, res) {
+                wx.hideLoading();
                 Log.d(res);
                 if (res.status === globalConst.interfaceStatus.SUCCESS) {
                     let orderReturnInfo = res.data;
@@ -148,8 +165,5 @@ Page({
                 });
             }
         })
-    },
-    selectAddress: function() {
-
     }
 })
