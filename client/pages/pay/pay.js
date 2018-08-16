@@ -57,6 +57,44 @@ Page({
 
     toStartPayPage:function(orderReturnInfo){
         console.log(orderReturnInfo);
+        let appid = orderReturnInfo.appid;
+        let noncestr = orderReturnInfo.noncestr;
+        let packaged = orderReturnInfo.package;
+        let partnerid = orderReturnInfo.partnerid;
+        let prepayid = orderReturnInfo.prepayid;
+        let sign = orderReturnInfo.sign;
+        let timestamp = ""+orderReturnInfo.timestamp;
+
+        let paySignArray = {
+            appId:appid,
+            timeStamp:timestamp,
+            nonceStr:noncestr,
+            package:"prepay_id="+prepayid,
+            signType:'MD5'
+        };
+        dataAccess.getPaySign({
+            data: paySignArray,
+            callback: function(status, res) {
+                Log.d(res);
+                if (res.status === globalConst.interfaceStatus.SUCCESS) {
+                    wx.requestPayment({//                'total_fee':10,
+                        'timeStamp': timestamp,
+                        'nonceStr': noncestr,
+                        'package': "prepay_id="+prepayid,
+                        'signType': 'MD5',
+                        'paySign': res.data,
+                        'success':function(res){
+                            console.log(res);
+                        },
+                        'fail':function(res){
+                            console.log(res);
+                        }
+                    })
+                }
+            }
+        });
+
+
     },
 
     getOrderForSubmit() {

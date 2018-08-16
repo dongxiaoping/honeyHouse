@@ -14,8 +14,13 @@ use \app\model;
 use \app\common;
 class OrderServer{
     public function __construct() {
+        $this->appid = "wx295e9a9b71a0ac11";
+        $this->mch_id = "1511988301";
+        $this->key = "854a73af8838e6b84adcf77y474e1i1b";
+        $this->notify_url = "https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test";
         $this->OrderRecordOP = new model\OrderRecordOP();
         $this->OrderGoodRecordOP = new model\OrderGoodRecordOP();
+        $this->wechatAppPay = new common\WechatAppPay($this->appid, $this->mch_id, $this->notify_url, $this->key);
     }
 
     public function submit_order($info){
@@ -73,6 +78,12 @@ class OrderServer{
         return getInterFaceArray(0,"fail","");
     }
 
+    public function get_pay_sign($list){
+        $result = $this->wechatAppPay->MakeSign($list);
+        return  getInterFaceArray(1,"success",$result);
+    }
+
+
     public function change_order_status($info){
         $order_id = $info["order_id"];
     }
@@ -86,23 +97,17 @@ class OrderServer{
      * $openid //用户在商户appid下的唯一标识
      * */
     public function payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid){
-        $appid = "wx295e9a9b71a0ac11";
-        $mch_id = "1511988301";
-        $key = "854a73af8838e6b84adcf77y474e1i1b";
-        $notify_url = "https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test";
-        $wechatAppPay = new common\WechatAppPay($appid, $mch_id, $notify_url, $key);
-
         $params['body'] = $body;
         $params['out_trade_no'] = $out_trade_no;
         $params['total_fee'] = $total_fee; //订单金额 只能为整数 单位为分
         $params['spbill_create_ip'] = $spbill_create_ip; //客户端用户IP
         $params['trade_type'] = $trade_type; //交易类型 JSAPI | NATIVE | APP | WAP
         $params['openid'] = $openid; //用户在商户appid下的唯一标识
-        $result = $wechatAppPay->unifiedOrder( $params );
+        $result = $this->wechatAppPay->unifiedOrder( $params );
         if(!$result){
             return false;
         }
-        $data = @$wechatAppPay->getAppPayParams( $result['prepay_id'] );
+        $data = @$this->wechatAppPay->getAppPayParams( $result['prepay_id'] );
         return $data;
     }
 }

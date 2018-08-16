@@ -20,6 +20,19 @@ class DataAccess {
             }
         })
     }
+    getPaySign(args){
+        wx.request({
+            url: serverHttp + '?s=order/get_pay_sign',
+            data: args.data,
+            method: 'POST',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
 
     onLogin(args){
         wx.request({
