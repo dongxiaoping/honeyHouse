@@ -14,10 +14,10 @@ use \app\model;
 use \app\common;
 class OrderServer{
     public function __construct() {
-        $this->appid = "wx295e9a9b71a0ac11";
-        $this->mch_id = "1511988301";
-        $this->key = "854a73af8838e6b84adcf77y474e1i1b";
-        $this->notify_url = "https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test";
+        $this->appid = WECHAT["appid"];
+        $this->mch_id = WECHAT["mch_id"];
+        $this->key = WECHAT["key"];
+        $this->notify_url = WECHAT["notify_url"];
         $this->OrderRecordOP = new model\OrderRecordOP();
         $this->OrderGoodRecordOP = new model\OrderGoodRecordOP();
         $this->wechatAppPay = new common\WechatAppPay($this->appid, $this->mch_id, $this->notify_url, $this->key);

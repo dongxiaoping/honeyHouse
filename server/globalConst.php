@@ -55,3 +55,10 @@ define('PAY_TYPE',array(
     'mix'=>3,//混合支付
     'other'=>4
 ));
+
+define('WECHAT',array(
+    'appid'=>"wx295e9a9b71a0ac11",
+    'mch_id'=>"1511988301",
+    'key'=>"",
+    'notify_url'=>"https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test"
+));
