@@ -49,17 +49,4 @@ class Order{
             echo getJsonStringByParam(0,"error","");
         }
     }
-
-    public function get_pay_sign(){
-        header('Access-Control-Allow-Origin: *');
-        $content = file_get_contents("php://input");
-        $content = (string)$content;
-        $content = json_decode($content,true);
-        if($content["nonceStr"]){
-            $result_array = $this->OrderServer->get_pay_sign($content);
-            echo arrayToJson($result_array);
-        }else{
-            echo getJsonStringByParam(0,"error","");
-        }
-    }
 }
