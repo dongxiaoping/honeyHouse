@@ -66,7 +66,7 @@ class WechatAppPay{
         $this->total_fee = $params['total_fee'];
         $this->trade_type = $params['trade_type'];
         $this->nonce_str = $this->genRandomString();
-        $this->spbill_create_ip = "123.12.12.123";
+        $this->spbill_create_ip = $params['spbill_create_ip'];
         $this->openid = $params["openid"];
         $this->params['appid'] = $this->appid;
         $this->params['mch_id'] = $this->mch_id;
@@ -83,14 +83,15 @@ class WechatAppPay{
         $this->params['sign'] = $this->sign;
         $xml = $this->data_to_xml($this->params);
         $response = $this->postXmlCurl($xml, self::API_URL_PREFIX.self::UNIFIEDORDER_URL);
-        if( !$response ){
+        return $response;
+/*        if( !$response ){
             return false;
         }
         $result = $this->xml_to_data( $response );
         if( !empty($result['result_code']) && !empty($result['err_code']) ){
             $result['err_msg'] = $this->error_code( $result['err_code'] );
         }
-        return $result;
+        return $result;*/
     }
     /**
      * 查询订单信息

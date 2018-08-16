@@ -11,7 +11,7 @@
 
 namespace app\service;
 use \app\model;
-
+use \app\common;
 class OrderServer{
     public function __construct() {
         $this->OrderRecordOP = new model\OrderRecordOP();
@@ -39,9 +39,25 @@ class OrderServer{
                 $good_list[$i]["last_mod"] = $set_time;
             }
             $this->OrderGoodRecordOP->insertAll($good_list);
-            return  getInterFaceArray(1,"success",$new_id);
+
+            $body = '好蜂味蜂产销售部-蜂蜜';
+            $out_trade_no = $order_id;
+            $total_fee = $this->get_order_price($good_list);//订单金额 分
+            $spbill_create_ip = "127.0.0.1";//用户ip
+            $trade_type = 'JSAPI';
+            $openid = $user_id;
+            $result = $this->payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid);
+            return  getInterFaceArray(1,"success",$result);
         }
         return  getInterFaceArray(0,"fail","");
+    }
+
+    public function get_order_price($order_good_list){
+        $price = 0;
+        foreach( $order_good_list as $key => $value ){
+            $price = $price+$value["price"]*$value["count"];
+        }
+        return 100*$price;
     }
 
     public function get_order_info($id){
@@ -57,6 +73,30 @@ class OrderServer{
 
     public function change_order_status($info){
         $order_id = $info["order_id"];
+    }
 
+    /* 微信的统一支付下单
+     * $body 商品描述
+     * $out_trade_no //订单号
+     * $total_fee //订单金额 只能为整数 单位分
+     * $spbill_create_ip //客户端用户IP
+     * $trade_type //交易类型 JSAPI | NATIVE | APP | WAP
+     * $openid //用户在商户appid下的唯一标识
+     * */
+    public function payOrderReqToWechat($body,$out_trade_no,$total_fee,$spbill_create_ip,$trade_type,$openid){
+        $appid = "wx295e9a9b71a0ac11";
+        $mch_id = "1511988301";
+        $key = "854a73af8838e6b84adcf77y474e1i1b";
+        $notify_url = "https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test";
+        $wechatAppPay = new common\WechatAppPay($appid, $mch_id, $notify_url, $key);
+
+        $params['body'] = $body;
+        $params['out_trade_no'] = $out_trade_no;
+        $params['total_fee'] = $total_fee; //订单金额 只能为整数 单位为分
+        $params['spbill_create_ip'] = $spbill_create_ip; //客户端用户IP
+        $params['trade_type'] = $trade_type; //交易类型 JSAPI | NATIVE | APP | WAP
+        $params['openid'] = $openid; //用户在商户appid下的唯一标识
+        $result = $wechatAppPay->unifiedOrder( $params );
+        return $result;
     }
 }

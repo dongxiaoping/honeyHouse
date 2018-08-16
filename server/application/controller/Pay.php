@@ -39,6 +39,7 @@ class Pay{
         $params['body'] = '好蜂味蜂产销售部-蜂蜜'; //商品描述
         $params['out_trade_no'] = "O20160617021323-001";//自定义的订单号
         $params['total_fee'] = '100'; //订单金额 只能为整数 单位为分
+        $params['spbill_create_ip'] = '123.12.12.123'; //客户端用户IP
         $params['trade_type'] = 'JSAPI'; //交易类型 JSAPI | NATIVE | APP | WAP
         $params['openid'] = 'okaH949YZhPCpEOXuH9bfX3wyy10'; //用户在商户appid下的唯一标识
         $result = $wechatAppPay->unifiedOrder( $params );
