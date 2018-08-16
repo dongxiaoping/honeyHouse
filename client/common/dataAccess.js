@@ -37,7 +37,7 @@ class DataAccess {
 
     getPaySign(args){
         wx.request({
-            url: serverHttp + '?s=order/get_pay_sign',
+            url: serverHttp + '?s=pay/get_pay_sign',
             data: args.data,
             method: 'POST',
             success: function(res) {
