@@ -41,7 +41,7 @@ class OrderServer{
             }
             $this->OrderGoodRecordOP->insertAll($good_list);
             $out_trade_no = $order_id;
-            $total_fee = 10;$this->get_order_price($good_list);//订单金额 分
+            $total_fee = $this->get_order_price($good_list);//订单金额 分
             $openid = $info["wechat_id"];
             $result =$this->PayServer->payOrderReqToWechat($out_trade_no,$total_fee,$openid);
             if($result){
