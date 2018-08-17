@@ -1,13 +1,22 @@
 var bodyOb = document.body;
 var articleString = "";
 for(var i=0;i<contentIndex.length;i++){
-    articleString += getHtmlStringByArticle(contentIndex[i]);
+    articleString += getHtmlStringByArticle(contentIndex[i],i);
 }
 bodyOb.innerHTML = articleString;
 
+for(var i=0;i<contentIndex.length;i++){
+    $("#item0b_"+i).on("tap",function(event){
+        var content = $(this).attr("content");
+        var randNum = GetRandomNum(1,9999999);
+        var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode+"&rand="+randNum;
+        $.mobile.changePage(pageUrl,{transition:"slideup"});
+    })
+}
+
 var recommendQCode = getUrlParam("recommendQCode");
 
-function getHtmlStringByArticle(item){
+function getHtmlStringByArticle(item,i){
     var imgString = "";
     if(item.images[0]){
         var imageUrl = item.images[0];
@@ -22,7 +31,7 @@ function getHtmlStringByArticle(item){
         var imageUrl = item.images[2];
         imgString+= "<img class='img-set' src='"+imageUrl+"'>";
     }
-    var setString = "<div ontouchend='tapEvent(\""+item.content+"\")' class='article-title'><p class='title'>"+item.title+"</p><div class='pic-box'>"+imgString+"</div>" +
+    var setString = "<div id=item0b_"+i+" content='"+item.content+"' class='article-title'><p class='title'>"+item.title+"</p><div class='pic-box'>"+imgString+"</div>" +
         "<div class='desc'> <p>"+item.date+"</p> </div> </div>";
     return setString;
 }
