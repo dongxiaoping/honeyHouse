@@ -17,9 +17,14 @@ let rewardType = {
 
 let webPageUrl = "https://dongxiaoping.cn/honeyHouse/honeyRecord/src/index.html"
 
+let PageSort = {
+    ACTIVITY:"pages/activity",
+    INDEX:"pages/index",
+};
 module.exports = {
     sex: sex,
     webPageUrl:webPageUrl,
     rewardType:rewardType,
-    interfaceStatus: interfaceStatus
+    interfaceStatus: interfaceStatus,
+    PageSort:PageSort
 };

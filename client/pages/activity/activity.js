@@ -1,5 +1,6 @@
 // pages/activity/activity.js
 let app = getApp();
+let Log = require('../../common/Log');
 let globalConst = require('../../common/globalConst');
 Page({
     /**
@@ -13,24 +14,31 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let recommendQCode = "";
+        let time = 10;
+        let that = this;
         let url = "";
         if(this.isShareCome(options)){
-            recommendQCode = options.recommendQCode;
-            app.globalData.recommend_user_code = recommendQCode;
+            app.clearUser();
+            app.globalData.userInfo.recommend_user_code = options.recommendQCode;
             url = options.url;
+            time=1000;
+            Log.d("转发文章进入Activity");
+            Log.d("推荐人推荐码:"+options.recommendQCode);
         }else{
-            let userInfo = app.globalData.userInfo;
-            recommendQCode =  userInfo.recommend_code;
+            Log.d("Tab跳转进入Activity");
             url = globalConst.webPageUrl;
         }
-        this.setData({
-            recommendQCode: recommendQCode
-        });
-        this.setData({
-            url: url
-        });
-        app.initUser();
+        Log.d(time);
+        setTimeout(function(){
+            let userInfo = app.globalData.userInfo;
+            let recommendQCode =  userInfo.recommend_code;
+            Log.d(recommendQCode);
+            that.setData({
+                recommendQCode: recommendQCode,
+                url: url
+            });
+        },time);
+        app.initUser(globalConst.PageSort.ACTIVITY);
     },
 
     /**

@@ -42,7 +42,7 @@ Page({
         }
       }
     });
-    app.initUser();
+    app.initUser(globalConst.PageSort.INDEX);
     if (wx.hideLoading()) {
       wx.hideLoading()
     }
