@@ -1,16 +1,41 @@
 .article{
-    width: 92%;
-    margin-left: 4%;
+    width: 88%;
+    margin-left: 6%;
     height:auto;
     text-align:justify;
 }
 .article .main-title{
-    font-size: 24px;
-    line-height: 35px;
+    color: rgb(51,51,51);
+    letter-spacing:0.544px;
+    font-size: 22px;
+    line-height: 30.8px;
+    font-family:-apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;
 }
+
+.article .second-title{
+    font-size: 18px;
+    letter-spacing:1px;
+    text-align: justify;
+    line-height: 34px;
+    font-weight: 700;
+    margin-bottom: 0px;
+    color: rgb(51,51,51);
+    font-family:-apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;
+}
+
 .article .main-content{
-    font-size: 16px;
-    letter-spacing:1.2px;
-    line-height: 25px;
+    font-size: 18px;
+    letter-spacing:1px;
+    color: rgb(51,51,51);
+    font-family:-apple-system-font,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei UI","Microsoft YaHei",Arial,sans-serif;
+    line-height: 34px;
+    text-align: justify;
     margin-top: 20px;
+}
+
+.article .image-set{
+    width: 100%;
+    height:auto;
+    margin-top:10px;
+    margin-bottom: 10px;
 }

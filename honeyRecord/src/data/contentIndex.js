@@ -9,10 +9,10 @@
 // +----------------------------------------------------------------------
 var contentIndex =[
     {
-        title:"各随所采花色，性之温凉，亦相近也。蜜脾之底为蜡",
-        images:["./image/test/555.png","./image/test/666.png"],
+        title:"蜂蜜应该什么时候喝最好？早上还是晚上？",
+        images:["http://papwt4d89.bkt.clouddn.com/20180817192424.png","http://papwt4d89.bkt.clouddn.com/20180817192846.png"],
         content:"demo.html",
-        date:"2018-07-10"
+        date:"蜂之屋 2018-07-10"
     },
     {
         title:"旋归于本位矣。安五脏者，安五脏之形",
