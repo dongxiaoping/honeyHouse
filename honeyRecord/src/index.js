@@ -28,8 +28,15 @@ function getHtmlStringByArticle(item){
 }
 
 function tapEvent(content){
-    var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode;
+    var randNum = GetRandomNum(1,9999999);
+    var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode+"&rand="+randNum;
     $.mobile.changePage(pageUrl,{transition:"slideup"});
+}
+
+function GetRandomNum(Min,Max) {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
 }
 
 function getUrlParam(name)

@@ -2,12 +2,14 @@
 let app = getApp();
 let Log = require('../../common/Log');
 let globalConst = require('../../common/globalConst');
+let util = require('../../common/util');
 Page({
     /**
      * 页面的初始数据
      */
     data: {
         recommendQCode:"",
+        randNum:1,
         url:""
     },
     /**
@@ -17,6 +19,11 @@ Page({
         let time = 10;
         let that = this;
         let url = "";
+        let randNum= util.getRandomNum(1,999999);
+        this.setData({
+            randNum: randNum
+        });
+        Log.d(randNum);
         if(this.isShareCome(options)){
             app.clearUser();
             app.globalData.userInfo.recommend_user_code = options.recommendQCode;

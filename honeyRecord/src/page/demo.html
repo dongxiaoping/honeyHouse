@@ -9,6 +9,10 @@
 
 </style>
 <body>
+<div data-role="header">
+    <a href="#" id="navId" data-role="button" data-icon="arrow-l">返回</a>
+    <h1>&nbsp;</h1>
+</div>
 <div class="article">
     <p class="main-title" style="">
         蜂蜜应该什么时候喝最好？早上还是晚上？
@@ -53,6 +57,10 @@
 
     </p>
 </div>
-
+<script>
+    $("#navId").on("tap",function(){
+        javascript:history.back();
+    });
+</script>
 </body>
 </html>
