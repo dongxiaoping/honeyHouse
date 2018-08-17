@@ -98,7 +98,7 @@ App({
                               if (location === globalConst.PageSort.ACTIVITY) {
                                 Log.d("新用户，从别人转发的文章进入");
                                   wx.showToast({
-                                      title: '欢迎进入蜜之屋！',
+                                      title: '欢迎加入蜜之屋！',
                                       duration:3000,
                                       icon: 'none'
                                   });
