@@ -104,7 +104,7 @@ Page({
         let param = this.getParamFromWebViewUrl(webViewUrl);
         let appUrl = "pages/activity/activity?url="+url+"&"+param;
         return {
-            title: "",
+            title: "土蜂蜜 原汁原味",
             path: appUrl,
             success: function(res) {
             },
