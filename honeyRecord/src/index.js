@@ -10,6 +10,7 @@ for(var i=0;i<contentIndex.length;i++){
         var content = $(this).attr("content");
         var randNum = GetRandomNum(1,9999999);
         var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode+"&rand="+randNum;
+      //  console.log(pageUrl);
         $.mobile.changePage(pageUrl,{transition:"slideup"});
     })
 }
@@ -36,22 +37,11 @@ function getHtmlStringByArticle(item,i){
     return setString;
 }
 
-function tapEvent(content){
-    var randNum = GetRandomNum(1,9999999);
-    var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode+"&rand="+randNum;
-    $.mobile.changePage(pageUrl,{transition:"slideup"});
-}
-
 function GetRandomNum(Min,Max) {
     var Range = Max - Min;
     var Rand = Math.random();
     return(Min + Math.round(Rand * Range));
 }
 
-function getUrlParam(name)
-{
-    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if(r!=null)return  unescape(r[2]); return null;
-}
+
 
