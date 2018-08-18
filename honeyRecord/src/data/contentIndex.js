@@ -12,7 +12,7 @@ var contentIndex =[
         title:"蜂蜜应该什么时候喝最好？早上还是晚上？",
         images:["http://papwt4d89.bkt.clouddn.com/20180817192424.png","http://papwt4d89.bkt.clouddn.com/20180817192846.png"],
         content:"demo.html",
-        date:"蜂之屋 2018-07-10"
+        date:"蜜之屋 2018-07-10"
     },
     {
         title:"好蜜要放在冰箱保存？你搞错了...",
@@ -22,7 +22,7 @@ var contentIndex =[
             "http://papwt4d89.bkt.clouddn.com/20180818155619.png"
         ],
         content:"article-1.html",
-        date:"蜂之屋 2018-08-18"
+        date:"蜜之屋 2018-08-18"
     },
     {
         title:"为什么我不建议购买超市蜜 ，这里面有个大秘密",
@@ -32,6 +32,6 @@ var contentIndex =[
             "http://papwt4d89.bkt.clouddn.com/20180818162353.png"
         ],
         content:"article-2.html",
-        date:"蜂之屋 2018-08-18"
+        date:"蜜之屋 2018-08-18"
     }
 ];

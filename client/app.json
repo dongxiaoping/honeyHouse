@@ -18,7 +18,7 @@
       },
       {
         "pagePath": "pages/activity/activity",
-        "text": "蜂蜜记",
+        "text": "关于蜜",
         "iconPath": "images/activity_un_selected.png",
         "selectedIconPath": "images/activity_selected.png"
       },
@@ -33,7 +33,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F8F8F8",
-    "navigationBarTitleText": "蜂蜜屋",
+    "navigationBarTitleText": "蜜之屋",
     "navigationBarTextStyle": "black"
   }
 }

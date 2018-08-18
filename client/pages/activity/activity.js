@@ -27,7 +27,8 @@ Page({
         if(this.isShareCome(options)){
             app.clearUser();
             app.globalData.userInfo.recommend_user_code = options.recommendQCode;
-            url = options.url;
+           // url = options.url;
+            url = globalConst.webPageUrl;
             time=1000;
             Log.d("转发文章进入Activity");
             Log.d("推荐人推荐码:"+options.recommendQCode);
@@ -103,7 +104,7 @@ Page({
         let param = this.getParamFromWebViewUrl(webViewUrl);
         let appUrl = "pages/activity/activity?url="+url+"&"+param;
         return {
-            title: "来自蜂蜜屋的文章",
+            title: "",
             path: appUrl,
             success: function(res) {
             },
