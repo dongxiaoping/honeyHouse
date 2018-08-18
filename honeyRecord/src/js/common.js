@@ -9,7 +9,7 @@ function getUrlParam(name) {
 
 function backToMainEvent(){
     var recommendQCode = getUrlParam("recommendQCode");
-    var pageUrl = "../index.html?recommendQCode="+recommendQCode;
+    var pageUrl = "https://dongxiaoping.cn/honeyHouse/honeyRecord/src/index.html?recommendQCode="+recommendQCode;
     console.log(pageUrl);
     $.mobile.changePage(pageUrl,{transition:"slideup"});
 }
