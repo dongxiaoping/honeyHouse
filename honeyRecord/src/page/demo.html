@@ -58,11 +58,7 @@
 </div>
 <script>
     $("#navId").on("tap",function(){
-        var recommendQCode = getUrlParam("recommendQCode");
-        var pageUrl = "https://dongxiaoping.cn/honeyHouse/honeyRecord/src/index.html?recommendQCode="+recommendQCode;
-        console.log(pageUrl);
-       // $.mobile.changePage(pageUrl,{transition:"slideup"});
-     //   backToMainEvent()
+        $.mobile.toolbar.prototype.options.addBackBtn = true;
     });
 </script>
 </body>
