@@ -14,10 +14,6 @@
 </style>
 <body>
 <div data-role="page"  id="pageone">
-    <div id="bottomNavId" class="bottomNav">
-        <img id="bottomNavBacId" class="imgSet" style="margin-left: 30%;float: left;" src="../image/left.png">
-        <img class="imgSet" style="float: right;margin-right: 30%;" src="../image/right.png">
-    </div>
     <div data-role="header">
        <img id="navId" style="height:45px;" src="../image/left.png">
     </div>
@@ -71,10 +67,8 @@
 </body>
 <script>
     $(document).on("pagecreate","#pageone",function(){
+        var startY =
         $("#navId").on("tap",function(event){
-            javascript:history.back();
-        });
-        $("#bottomNavId").on("tap",function(event){
             javascript:history.back();
         });
     });
