@@ -39,3 +39,14 @@
     margin-top:10px;
     margin-bottom: 10px;
 }
+
+.bottomNav{
+    position:fixed;
+    width: 100%;
+    height: 45px;
+    bottom:0px;
+    background-color:white;
+}
+.bottomNav .imgSet{
+    height: 100%;
+}
