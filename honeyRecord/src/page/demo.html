@@ -14,7 +14,7 @@
 </style>
 <body>
 <div data-role="page"  id="pageone">
-    <div id="bottomNavId"  style="display: none;"  class="bottomNav">
+    <div id="bottomNavId"   class="bottomNav">
         <img id="bottomNavBacId" class="imgSet" style="margin-left: 30%;float: left;" src="../image/left.png">
         <img class="imgSet" style="float: right;margin-right: 30%;" src="../image/right.png">
     </div>
@@ -70,22 +70,8 @@
 </body>
 <script>
     $(document).on("pagecreate","#pageone",function(){
-        var scrollTop = 0;
         $("#bottomNavId").on("tap",function(event){
             javascript:history.back();
-        });
-
-        $(document).on("scrollstart",function(event){
-            scrollTop=document.documentElement.scrollTop;
-        });
-
-        $(document).on("scrollstop",function(event){
-            var endScrollTop = document.documentElement.scrollTop;
-            if(endScrollTop>scrollTop){
-                $("#bottomNavId").attr("style","display:none");
-            }else{
-                $("#bottomNavId").attr("style","display:block");
-            }
         });
     });
 </script>
