@@ -19,7 +19,6 @@
         <img class="imgSet" style="float: right;margin-right: 30%;" src="../image/right.png">
     </div>
     <div data-role="header">
-       <img id="navId" style="height:45px;" src="../image/left.png">
     </div>
     <div  data-role="content" style="padding: 0px;">
         <div class="article">
@@ -71,20 +70,22 @@
 </body>
 <script>
     $(document).on("pagecreate","#pageone",function(){
-        var startY =
-        $("#navId").on("tap",function(event){
-            javascript:history.back();
-        });
+        var scrollTop = 0;
         $("#bottomNavId").on("tap",function(event){
             javascript:history.back();
         });
 
         $(document).on("scrollstart",function(event){
-
+            scrollTop=document.documentElement.scrollTop;
         });
 
         $(document).on("scrollstop",function(){
-
+            var endScrollTop = document.documentElement.scrollTop;
+            if(endScrollTop>scrollTop){
+                $("#bottomNavId").attr("style","display:none");
+            }else{
+                $("#bottomNavId").attr("style","display:block");
+            }
         });
     });
 </script>
