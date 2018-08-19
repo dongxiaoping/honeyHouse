@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <title>土蜂蜜</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/article.css">
+    <link rel="stylesheet" href="../lib/jquery.mobile/jquery.mobile-1.4.5.min.css">
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <style type="text/css">
 
 </style>
 <body>
-<div data-role="header">
-    <a href="#" id="navId" data-role="button" data-icon="arrow-l">返回</a>
-    <h1>&nbsp;</h1>
-</div>
+<div data-role="page"  id="pageone">
+    <div data-role="header">
+        <img id="navId" style="height:45px;" src="../image/left.png">
+    </div>
+    <div  data-role="content" style="padding: 0px;">
 <div class="article">
     <p class="main-title" style="">
         为什么我不建议购买超市蜜 ，这里面有个大秘密
     </p>
-    <img class="image-set" src="http://papwt4d89.bkt.clouddn.com/20180818203415.png">
+    <img class="image-set" style="margin-top:0px;" src="http://papwt4d89.bkt.clouddn.com/20180818203415.png">
     <p class="main-content">
         在蜂蜜的买卖关系中，价格一直是双方的爱恨情仇。
     </p>
@@ -85,9 +90,13 @@
         到底品质更重要还是价格？其实每个人心里都有一杆秤，我认为品质对称价格，不浮夸，也不委屈自己，才是我们大众所能认同的吧！
     </p>
 </div>
+    </div>
+</div>
 <script>
-    $("#navId").on("tap",function(){
-        javascript:history.back();
+    $(document).on("pagecreate","#pageone",function(){
+        $("#navId").on("tap",function(event){
+            javascript:history.back();
+        });
     });
 </script>
 </body>

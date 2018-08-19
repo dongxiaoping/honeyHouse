@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <title>土蜂蜜</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/article.css">
+    <link rel="stylesheet" href="../lib/jquery.mobile/jquery.mobile-1.4.5.min.css">
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <style type="text/css">
 
 </style>
 <body>
-<div data-role="header">
-    <a href="#" id="navId" data-role="button" data-icon="arrow-l">返回</a>
-    <h1>&nbsp;</h1>
-</div>
+<div data-role="page"  id="pageone">
+    <div data-role="header">
+        <img id="navId" style="height:45px;" src="../image/left.png">
+    </div>
+    <div  data-role="content" style="padding: 0px;">
 <div class="article">
     <p class="main-title" style="">
         好蜜要放在冰箱保存？你搞错了...
     </p>
-    <img class="image-set" src="http://papwt4d89.bkt.clouddn.com/20180818155731.png">
+    <img class="image-set" style="margin-top:0px;" src="http://papwt4d89.bkt.clouddn.com/20180818155731.png">
     <p class="main-content">
         小蜂最近又听到很多蜂友跟我絮叨了，说是刚买了几瓶好蜂蜜，是不是要放在冰箱里保存？这个疑惑一直在困扰着很多的朋友，因为大家觉得，蜂蜜要注重“鲜”，要放在较低温度里保存！如果你是这样想，那就错大了！
     </p>
@@ -43,10 +48,14 @@
         <span style="font-size: 14px;max-width: 100%;color: rgb(255, 76, 0);box-sizing: border-box !important;word-wrap: break-word !important;">赚现金）</span>
     </p>
 </div>
+    </div>
+</div>
+</body>
 <script>
-    $("#navId").on("tap",function(){
-        javascript:history.back();
+    $(document).on("pagecreate","#pageone",function(){
+        $("#navId").on("tap",function(event){
+            javascript:history.back();
+        });
     });
 </script>
-</body>
 </html>

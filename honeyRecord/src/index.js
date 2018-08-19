@@ -10,8 +10,7 @@ for(var i=0;i<contentIndex.length;i++){
         var content = $(this).attr("content");
         var randNum = GetRandomNum(1,9999999);
         var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode+"&rand="+randNum;
-      //  console.log(pageUrl);
-        $.mobile.changePage(pageUrl,{transition:"slideup"});
+        window.location.href = pageUrl;
     })
 }
 
