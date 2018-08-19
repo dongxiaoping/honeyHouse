@@ -79,7 +79,7 @@
             scrollTop=document.documentElement.scrollTop;
         });
 
-        $(document).on("scrollstop",function(){
+        $(document).on("scrollstop",function(event){
             var endScrollTop = document.documentElement.scrollTop;
             if(endScrollTop>scrollTop){
                 $("#bottomNavId").attr("style","display:none");
