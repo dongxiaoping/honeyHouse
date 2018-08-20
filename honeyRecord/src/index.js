@@ -17,7 +17,7 @@ $(function(){
                 var content = $(this).attr("content");
                 var articleId = $(this).attr("article_id");
                 console.log(articleId);
-                $.get(httpLocation+"/honeyHouse/server/public/index.php?s=article/add_article_visit?id="+articleId,function(res,status){});
+                $.get(httpLocation+"/honeyHouse/server/public/index.php?s=article/add_article_visit&id="+articleId,function(res,status){});
                 var randNum = GetRandomNum(1,9999999);
                 var pageUrl = "./page/"+content+"?recommendQCode="+recommendQCode+"&rand="+randNum;
                 window.location.href = pageUrl;
