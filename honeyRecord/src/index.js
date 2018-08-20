@@ -38,7 +38,7 @@ function getHtmlStringByArticle(item,i){
         imgString+= "<img class='img-set' src='"+imageUrl+"'>";
     }
     var setString = "<div id=item0b_"+i+" content='"+item.content+"' class='article-title'><p class='title'>"+item.title+"</p><div class='pic-box'>"+imgString+"</div>" +
-        "<div class='desc'> <p>"+item.date+"</p> </div> </div>";
+        "<div class='desc'> <p>"+item.date+"  "+item.visit_count+"访问量</p> </div> </div>";
     return setString;
 }
 

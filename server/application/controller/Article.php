@@ -19,6 +19,7 @@ class Article{
 
     //http://localhost/honeyHouse/server/public/index.php?s=article/get_online_articles
     public function get_online_articles(){
+        header("Access-Control-Allow-Origin: *");
         $result_array = $this->ArticleServer->get_online_articles();
         echo arrayToJson($result_array);
     }
