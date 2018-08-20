@@ -186,3 +186,14 @@ create table address
   create_time  varchar(30) default null,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
+
+#文章
+create table article
+(
+  id bigint unsigned auto_increment,
+  #内容
+  content varchar(1024) not null default "",
+  #是否显示 1表示显示 0表示不显示
+  online tinyint not null default 1,
+  primary key(id)
+)ENGINE=InnoDB default charset=utf8;
