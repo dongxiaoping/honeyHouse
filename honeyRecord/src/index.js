@@ -1,6 +1,6 @@
 
 $(function(){
-    $.get("http://localhost/honeyHouse/server/public/index.php?s=article/get_online_articles",function(res,status){
+    $.get("https://dongxiaoping.cn/honeyHouse/server/public/index.php?s=article/get_online_articles",function(res,status){
         var list = JSON.parse(res);
         var contentIndex = list.data;
         var bodyOb = document.body;
