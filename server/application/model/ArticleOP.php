@@ -23,4 +23,9 @@ class ArticleOP extends BaseOP{
         $list =  Db::query("select *from article as t2 where t2.online=1");
         return $list;
     }
+
+    public function update_content($id,$content){
+        $list =  Db::query("update article set content='".$content."' where id=".$id);
+        return $list;
+    }
 }

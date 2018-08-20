@@ -25,9 +25,23 @@ class ArticleServer{
             $jsonString = $list[$i]["content"];
             $jsonString = str_replace(" ","",$jsonString);
             $array = json_decode($jsonString,true);
-            $items[] = $array;
+            $list[$i]["content"] = $array;
         }
-       return  getInterFaceArray(1,"success",$items);
+       return  getInterFaceArray(1,"success",$list);
     }
 
+    public function add_article_visit($id){
+        $item= $this->ArticleOP->get($id);
+        $content = $item["content"];
+        $content = json_decode($content,true);
+        $content["visit_count"]++;
+        $content = json_encode($content);
+        $content=$this->decodeUnicode($content);
+        $list= $this->ArticleOP->update_content($id,$content);
+        return  getInterFaceArray(1,"success","");
+    }
+
+    function decodeUnicode($str) {
+        return preg_replace_callback('/\\\\u([0-9a-f]{4})/i', create_function( '$matches', 'return mb_convert_encoding(pack("H*", $matches[1]), "UTF-8", "UCS-2BE");' ), $str);
+    }
 }

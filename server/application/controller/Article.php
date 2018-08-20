@@ -23,4 +23,16 @@ class Article{
         $result_array = $this->ArticleServer->get_online_articles();
         echo arrayToJson($result_array);
     }
+
+    public function add_article_visit(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["id"])){
+            $id = $_GET["id"];
+            $result_array = $this->ArticleServer->add_article_visit($id);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
+
 }
