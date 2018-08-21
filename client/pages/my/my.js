@@ -43,6 +43,12 @@ Page({
         });
     },
 
+    eventToOrderPage(){
+        wx.navigateTo({
+            url: "../allOrderPage/allOrderPage"
+        });
+    },
+
     setRecommendCount(recordList){
         let recommendUserCount = 0;
         let recommendBuyCount = 0;

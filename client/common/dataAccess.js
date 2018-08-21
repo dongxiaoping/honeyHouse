@@ -5,8 +5,25 @@
 let userInfo = require('../mock/userInfo');
 let recommendDataOfUser = require('../mock/recommendDataOfUser');
 let globalConst = require('./globalConst');
-let serverHttp = "https://dongxiaoping.cn/honeyHouse/server/public/index.php";
+let config = require('../common/config');
+let serverHttp = config.serverHttp;
 class DataAccess {
+
+
+    getOrdersOfUser(args){
+        wx.request({
+            url: serverHttp + '?s=order/get_orders_of_user',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     submitOrder(args){
         wx.request({
             url: serverHttp + '?s=order/submit_order',

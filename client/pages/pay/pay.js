@@ -127,6 +127,7 @@ Page({
                 good_id: item.id,
                 name: item.name,
                 good_unit: item.good_unit,
+                img:item.child_image,
                 price: item.good_price,
                 count: item.buy_count
             };

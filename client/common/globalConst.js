@@ -10,6 +10,24 @@ let interfaceStatus = {
     "TIME_OUT": 2
 };
 
+let OrderStatus = {
+    "all":0,
+    "wait_pay": 1,
+    "has_pay":2,
+    "good_delivered": 3,
+    "success": 4,
+    "cancel": 5
+};
+
+let OrderDes = [
+    "全部",
+    "待付款",
+    "待发货",
+    "待收货",
+    "已完成",
+    "已取消"
+];
+
 let rewardType = {
     "recommend_user": 1,
     "recommend_user_buy":2
@@ -26,5 +44,7 @@ module.exports = {
     webPageUrl:webPageUrl,
     rewardType:rewardType,
     interfaceStatus: interfaceStatus,
-    PageSort:PageSort
+    PageSort:PageSort,
+    OrderStatus:OrderStatus,
+    OrderDes:OrderDes
 };
