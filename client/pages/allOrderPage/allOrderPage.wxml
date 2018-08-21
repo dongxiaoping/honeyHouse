@@ -1,21 +1,21 @@
 <view class="navTopList">
 	<view class="ywc order-info">
 		<view class="ywc-icon active"></view>
-		<text  data-type="0" bindtap="eventOrderCategoryChange"  class="ywc-txt active">全部</text>
+		<text  data-type="0" bindtap="eventOrderCategoryChange"  class="ywc-txt {{selectedOrderType==0?'active':''}}">全部</text>
 	</view>
 	<view class="dfk order-info">
 		<view class="dfk-icon"></view>
-		<text data-type="4" bindtap="eventOrderCategoryChange" class="dfk-txt">已完成</text>
+		<text data-type="4" bindtap="eventOrderCategoryChange" class="dfk-txt {{selectedOrderType==4?'active':''}}">已完成</text>
 	</view>
-	<view data-type="1" bindtap="eventOrderCategoryChange" class="dfk order-info">
+	<view data-type="1" bindtap="eventOrderCategoryChange" class="dfk  order-info {{selectedOrderType==1?'active':''}}">
 		<view class="dfk-icon"></view>
 		<text class="dfk-txt">待付款</text>
 	</view>
-	<view data-type="2" bindtap="eventOrderCategoryChange"  class="dfh order-info">
+	<view data-type="2" bindtap="eventOrderCategoryChange"  class="dfh  order-info {{selectedOrderType==2?'active':''}}">
 		<view class="dfh-icon"></view>
 		<text class="dfh-txt">待发货</text>
 	</view>
-	<view data-type="3" bindtap="eventOrderCategoryChange"  class="dsh order-info">
+	<view data-type="3" bindtap="eventOrderCategoryChange"  class="dsh  order-info {{selectedOrderType==3?'active':''}}">
 		<view class="dsh-icon"></view>
 		<text class="dsh-txt">待收货</text>
 	</view>

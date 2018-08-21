@@ -9,6 +9,7 @@ Page({
    */
   data: {
       allOrderList:[],
+      selectedOrderType:0,
       showOrderList:[]
   },
 
@@ -48,14 +49,15 @@ Page({
 
     eventOrderCategoryChange(e){
         let type = e.currentTarget.dataset.type;
+        type = parseInt(type);
         let orderList = this.getOrderListByType(type);
         this.setData({
+            selectedOrderType:type,
             showOrderList:orderList
         });
     },
 
     getOrderListByType(type){
-        type = parseInt(type);
         let list = this.data.allOrderList;
         if(type===globalConst.OrderStatus.all){
             return list;

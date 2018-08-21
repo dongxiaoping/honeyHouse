@@ -37,7 +37,7 @@
 .navTopList .order-info text{
 	font-size: 34rpx;
 }
-.navTopList .order-info text.active{
+.active{
 	color:#ff6662;
 }
 .navTopList .ywc{
