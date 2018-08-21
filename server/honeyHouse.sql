@@ -83,6 +83,8 @@ create table order_good_record
   good_unit varchar(30) not null default "",
   #实际购入价格
   price decimal(6,2) not null default 0,
+  #单张图片
+  img varchar(80) not null default "",
   #数量
   count int  not null default 0,
   #创建时间
@@ -197,3 +199,32 @@ create table article
   online tinyint not null default 1,
   primary key(id)
 )ENGINE=InnoDB default charset=utf8;
+
+#微信支付流水
+create table wechat_cash_flow
+(
+    id bigint unsigned auto_increment,
+    #订单号
+    flow_num varchar(32) not null,
+    #金额
+    amount decimal(6,2) not null default 0,
+    #操作人code
+    operater_code  bigint unsigned not null,
+    #创建时间
+    create_time  varchar(30) default null,
+    primary key(id)
+)ENGINE=InnoDB default charset=utf8;
+
+#操作人表
+create table operater
+(
+    id bigint unsigned auto_increment,
+    #用户名称
+    name varchar(80) not null default "",
+    #操作人code
+    code varchar(120) not null default "",
+    #创建时间
+    create_time  varchar(30) default null,
+    primary key(id)
+)ENGINE=InnoDB default charset=utf8;
+

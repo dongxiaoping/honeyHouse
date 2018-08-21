@@ -18,5 +18,12 @@ class OrderRecordOP extends BaseOP{
         $this->order_record = new table\OrderRecord();
         parent::__construct($this->order_record);
     }
-
+    public function get_orders_of_user($user_id,$order_status){
+        if($order_status===null){
+            $list =  Db::query("select *from order_record as t2 where t2.user_id=".$user_id);
+        }else{
+            $list =  Db::query("select *from order_record as t2 where t2.user_id=".$user_id." and order_status=".$order_status);
+        }
+        return $list;
+    }
 }

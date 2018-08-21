@@ -49,4 +49,16 @@ class Order{
             echo getJsonStringByParam(0,"error","");
         }
     }
+
+    public function get_orders_of_user(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["user_id"])&&isset($_GET["order_status"])){
+            $user_id = $_GET["user_id"];
+            $order_status = $_GET["order_status"];
+            $result_array = $this->OrderServer->get_orders_of_user($user_id,$order_status);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
 }

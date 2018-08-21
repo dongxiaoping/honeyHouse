@@ -70,6 +70,16 @@ class OrderServer{
         return getInterFaceArray(0,"fail","");
     }
 
+    public function get_orders_of_user($user_id,$order_status){
+        $list = $this->OrderRecordOP->get_orders_of_user($user_id,$order_status);
+        for ($i= 0;$i< count($list); $i++){
+            $order_id = $list[$i]["id"];
+            $goodList = $this->OrderGoodRecordOP->get_goods_by_order_id($order_id);
+            $list[$i]["goods"] = $goodList;
+        }
+       return  getInterFaceArray(1,"success",$list);
+    }
+
     public function change_order_status($info){
         $order_id = $info["order_id"];
     }
