@@ -20,7 +20,7 @@ class WechatCashFlowOP extends BaseOP{
     }
 
     public function get_by_out_trade_no($out_trade_no){
-        $info =  $this->wechat_cash_flow->where("out_trade_no",$out_trade_no)->find();
+        $info =  $this->wechat_cash_flow->where("flow_num",$out_trade_no)->find();
         return $info;
     }
 }

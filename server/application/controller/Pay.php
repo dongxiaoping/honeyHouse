@@ -17,6 +17,23 @@ class Pay{
     }
 
     public function test(){//      lssLog("note",$content);
+        $content="<xml><appid><![CDATA[wx295e9a9b71a0ac11]]></appid>
+<bank_type><![CDATA[CFT]]></bank_type>
+<cash_fee><![CDATA[20]]></cash_fee>
+<fee_type><![CDATA[CNY]]></fee_type>
+<is_subscribe><![CDATA[N]]></is_subscribe>
+<mch_id><![CDATA[1511988301]]></mch_id>
+<nonce_str><![CDATA[HweCeORoXmCf1hVYEpugYQPgjJB0fyuZ]]></nonce_str>
+<openid><![CDATA[okaH949YZhPCpEOXuH9bfX3wyy10]]></openid>
+<out_trade_no><![CDATA[08221508770309]]></out_trade_no>
+<result_code><![CDATA[SUCCESS]]></result_code>
+<return_code><![CDATA[SUCCESS]]></return_code>
+<sign><![CDATA[50FFDE851E9CBCECA861A6FEABC6A9B8]]></sign>
+<time_end><![CDATA[20180822150901]]></time_end>
+<total_fee>20</total_fee>
+<trade_type><![CDATA[JSAPI]]></trade_type>
+<transaction_id><![CDATA[4200000165201808221995374552]]></transaction_id>
+</xml>";
     }
 
     public function notice(){
