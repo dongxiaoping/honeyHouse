@@ -23,11 +23,10 @@ Page({
         this.setData({
             randNum: randNum
         });
-        Log.d(randNum);
         if(this.isShareCome(options)){
             app.clearUser();
             app.globalData.userInfo.recommend_user_code = options.recommendQCode;
-           // url = options.url;
+            Log.d(options);
             url = globalConst.webPageUrl;
             time=1000;
             Log.d("转发文章进入Activity");
@@ -36,7 +35,6 @@ Page({
             Log.d("Tab跳转进入Activity");
             url = globalConst.webPageUrl;
         }
-        Log.d(time);
         setTimeout(function(){
             let userInfo = app.globalData.userInfo;
             let recommendQCode =  userInfo.recommend_code;
@@ -104,7 +102,7 @@ Page({
         let param = this.getParamFromWebViewUrl(webViewUrl);
         let appUrl = "pages/activity/activity?url="+url+"&"+param;
         return {
-            title: "土蜂蜜 原汁原味",
+            title: "喝好蜂蜜 来蜜之屋",
             path: appUrl,
             success: function(res) {
             },

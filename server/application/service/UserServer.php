@@ -58,6 +58,7 @@ class UserServer{
             "last_mod"=>date("Y-m-d H:i:s")
         ];
         $this->RecommendRecordServer->insert_record($record_info);
+        $this->UserOP->add_cash_by_user_id($own_cash_user_id,RECOMMEND_PRICE["recommend_user"]);
         return getInterFaceArray(1,"success_has_recommend",$new_user_id);//有推荐用户
     }
 

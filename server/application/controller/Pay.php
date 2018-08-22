@@ -16,7 +16,7 @@ class Pay{
         $this->PayServer = new service\PayServer();
     }
 
-    public function test(){//      lssLog("note",$content);
+    public function test(){//      lssLog("debug",$content);
         $content="<xml><appid><![CDATA[wx295e9a9b71a0ac11]]></appid>
 <bank_type><![CDATA[CFT]]></bank_type>
 <cash_fee><![CDATA[20]]></cash_fee>
@@ -35,7 +35,7 @@ class Pay{
 <transaction_id><![CDATA[4200000165201808221995374552]]></transaction_id>
 </xml>";
     }
-
+//http://localhost/honeyHouse/server/public/index.php
     public function notice(){
         header('Access-Control-Allow-Origin: *');
         $content = file_get_contents("php://input");

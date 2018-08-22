@@ -23,6 +23,7 @@ class PayServer{
 
         $this->WechatCashFlowOP = new model\WechatCashFlowOP();
         $this->OrderRecordOP = new model\OrderRecordOP();
+        $this->UserOP = new model\UserOP();
     }
 
     public function notice_pay_success($out_trade_no,$cash_fee){
@@ -35,13 +36,34 @@ class PayServer{
         $info["amount"] = $cash_fee;
         $info["code"] = "wechat";
         $info["create_time"] = date("Y-m-d H:i:s");
+        lssLog("debug",$out_trade_no."：插入流水记录");
         $result = $this->WechatCashFlowOP->insert($info);
         if($result){
-            $this->OrderRecordOP->setOrderPayById($out_trade_no);
+            $this->dealNewWechatCashFlow($out_trade_no);
             return getInterFaceArray(1,"success","");
         }else{
             return getInterFaceArray(0,"fail","");
         }
+    }
+
+    public function dealNewWechatCashFlow($out_trade_no){
+       lssLog("debug",$out_trade_no."：支付流水记录完毕");
+       $this->OrderRecordOP->setOrderPayById($out_trade_no);
+        $order_record_item = $this->OrderRecordOP->get($out_trade_no);
+       if($order_record_item){
+           $user_id = $order_record_item["user_id"];
+           lssLog("debug","订单所属用户：".$user_id);
+           $user_info = $this->UserOP->get($user_id);
+           if($user_info){
+               $recommend_user_code = $user_info["recommend_user_code"];
+               if($recommend_user_code!=0){
+                   lssLog("debug",$recommend_user_code.":给该推荐码的用户发奖金");
+                   $this->UserOP->add_cash_by_recommend_code($recommend_user_code,RECOMMEND_PRICE["recommend_user_buy"]);
+               }
+           }else{
+               lssLog("debug",$user_id.":该用户无用户推荐");
+           }
+       }
     }
 
     public function get_pay_sign($list){

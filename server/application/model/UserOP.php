@@ -11,7 +11,7 @@
 
 namespace app\model;
 use \app\model\table;
-
+use think\Db;
 class UserOP extends BaseOP{
     public function __construct() {
         $this->user = new table\User();
@@ -33,4 +33,19 @@ class UserOP extends BaseOP{
         return $info;
     }
 
+    public function add_cash_by_user_id($id,$cash){
+        $item = $this->get($id);
+        if($item){
+            $new_cash = $item["amount"]+$cash;
+             Db::query("update user set amount=".$new_cash." where id=".$id);
+        }
+    }
+
+    public function add_cash_by_recommend_code($recommend_code,$cash){
+        $item = $this->get_user_info_by_recommend_code($recommend_code);
+        if($item){
+            $new_cash = $item["amount"]+$cash;
+            Db::query("update user set amount=".$new_cash." where recommend_code=".$recommend_code);
+        }
+    }
 }

@@ -64,7 +64,7 @@ function getDateString(){
 
 function lssLog($flag,$message){
     try{
-        $log_error_reporting = "error|warn|deploy|note";
+        $log_error_reporting = "error|warn|info|debug";
         $log_file = __DIR__."/logs/log";
 
         $is_exist = strpos($log_error_reporting,$flag);
