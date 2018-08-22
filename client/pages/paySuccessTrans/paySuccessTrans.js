@@ -50,6 +50,18 @@ Page({
   
   },
 
+  eventToActivityPage(){
+    wx.switchTab({
+        url: "../activity/activity"
+    });
+  },
+
+  eventToOrderPage(){
+      wx.navigateTo({
+          url: "../allOrderPage/allOrderPage"
+      });
+  },
+
   /**
    * 页面上拉触底事件的处理函数
    */

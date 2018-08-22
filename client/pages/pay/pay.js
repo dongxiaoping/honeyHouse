@@ -73,7 +73,7 @@ Page({
     },
 
     toStartPayPage:function(orderReturnInfo){
-        console.log(orderReturnInfo);
+        Log.d(orderReturnInfo);
         let appid = orderReturnInfo.appid;
         let noncestr = orderReturnInfo.noncestr;
         let packaged = orderReturnInfo.package;
@@ -94,17 +94,27 @@ Page({
             callback: function(status, res) {
                 Log.d(res);
                 if (res.status === globalConst.interfaceStatus.SUCCESS) {
-                    wx.requestPayment({//                'total_fee':10,
+                    wx.requestPayment({
                         'timeStamp': timestamp,
                         'nonceStr': noncestr,
                         'package': "prepay_id="+prepayid,
                         'signType': 'MD5',
                         'paySign': res.data,
                         'success':function(res){
-                            console.log(res);
+                            Log.d(res);
+                            let errMsg = res.errMsg;
+                            if(errMsg==="requestPayment:ok"){//成功
+                                wx.navigateTo({
+                                    url: "../paySuccessTrans/paySuccessTrans"
+                                });
+                            }else if(errMsg==="requestPayment:fail cancel"){//取消
+
+                            }else{ //失败
+
+                            }
                         },
-                        'fail':function(res){
-                            console.log(res);
+                        'fail':function(res){ //失败
+                            Log.e(res);
                         }
                     })
                 }

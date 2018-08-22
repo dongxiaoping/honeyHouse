@@ -6,6 +6,6 @@
     </view>
 </view>
 <view class="btn-group">
-  <button type="primary" style="background-color:#f9364f" class="continue">转发文章挣钱</button>
-  <button type="primary" style="background-color:#c9c9c9;color:#656565"  class="see">查看订单</button>
+  <button  catchtap="eventToActivityPage" type="primary" style="background-color:#f9364f" class="continue">转发文章挣现金</button>
+  <button catchtap="eventToOrderPage" type="primary" style="background-color:#c9c9c9;color:#656565"  class="see">查看订单</button>
 </view>
