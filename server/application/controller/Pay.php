@@ -21,7 +21,7 @@ class Pay{
     }
 
     public function notice(){
-        echo "notice";
+        lssLog("note","function:getCacheInfo");
     }
 
     public function get_pay_sign(){
