@@ -58,9 +58,9 @@ return [
     // 禁止访问模块
     'deny_module_list'       => ['common'],
     // 默认控制器名
-    'default_controller'     => 'user',
+    'default_controller'     => 'pay',
     // 默认操作名
-    'default_action'         => 'test',
+    'default_action'         => 'notice',
     // 默认验证器
     'default_validate'       => '',
     // 默认的空模块名

@@ -60,5 +60,5 @@ define('WECHAT',array(
     'appid'=>"wx295e9a9b71a0ac11",
     'mch_id'=>"1511988301",
     'key'=>"",
-    'notify_url'=>"https://dongxiaoping.cn/happyFriendRe/happy_friend_server/public/index.php/user/test"
+    'notify_url'=>"https://dongxiaoping.cn/honeyHouse/server/public/index.php"
 ));

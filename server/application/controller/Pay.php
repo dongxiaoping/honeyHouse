@@ -20,6 +20,10 @@ class Pay{
 
     }
 
+    public function notice(){
+        echo "notice";
+    }
+
     public function get_pay_sign(){
         header('Access-Control-Allow-Origin: *');
         $content = file_get_contents("php://input");
