@@ -26,4 +26,9 @@ class OrderRecordOP extends BaseOP{
         }
         return $list;
     }
+
+    public function setOrderPayById($id){
+        $list =  Db::query("update order_record set order_status='".ORDER_STATUS["has_pay"]."' where id=".$id);
+        return $list;
+    }
 }

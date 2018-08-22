@@ -18,4 +18,9 @@ class WechatCashFlowOP extends BaseOP{
         $this->wechat_cash_flow = new table\WechatCashFlow();
         parent::__construct($this->wechat_cash_flow);
     }
+
+    public function get_by_out_trade_no($out_trade_no){
+        $info =  $this->wechat_cash_flow->where("out_trade_no",$out_trade_no)->find();
+        return $info;
+    }
 }

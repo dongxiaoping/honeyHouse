@@ -22,9 +22,14 @@ class PayServer{
         $this->wechatAppPay = new common\WechatAppPay($this->appid, $this->mch_id, $this->notify_url, $this->key);
 
         $this->WechatCashFlowOP = new model\WechatCashFlowOP();
+        $this->OrderRecordOP = new model\OrderRecordOP();
     }
 
     public function notice_pay_success($out_trade_no,$cash_fee){
+        $result = $this->WechatCashFlowOP->get_by_out_trade_no($out_trade_no);
+        if($result){
+            return getInterFaceArray(0,"fail","repeat");
+        }
         $info = array();
         $info["flow_num"] = $out_trade_no;
         $info["amount"] = $cash_fee;
@@ -32,6 +37,7 @@ class PayServer{
         $info["create_time"] = date("Y-m-d H:i:s");
         $result = $this->WechatCashFlowOP->insert($info);
         if($result){
+            $this->OrderRecordOP->setOrderPayById($out_trade_no);
             return getInterFaceArray(1,"success","");
         }else{
             return getInterFaceArray(0,"fail","");
