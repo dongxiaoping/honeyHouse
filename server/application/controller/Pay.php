@@ -21,7 +21,10 @@ class Pay{
     }
 
     public function notice(){
-        lssLog("note","function:getCacheInfo");
+        header('Access-Control-Allow-Origin: *');
+        $content = file_get_contents("php://input");
+        $content = (string)$content;
+        lssLog("note",$content);
     }
 
     public function get_pay_sign(){
