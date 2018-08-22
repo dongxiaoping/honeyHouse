@@ -11,6 +11,7 @@
 
 namespace app\service;
 use \app\common;
+use \app\model;
 
 class PayServer{
     public function __construct() {
@@ -19,6 +20,22 @@ class PayServer{
         $this->key = WECHAT["key"];
         $this->notify_url = WECHAT["notify_url"];
         $this->wechatAppPay = new common\WechatAppPay($this->appid, $this->mch_id, $this->notify_url, $this->key);
+
+        $this->WechatCashFlowOP = new model\WechatCashFlowOP();
+    }
+
+    public function notice_pay_success($out_trade_no,$cash_fee){
+        $info = array();
+        $info["flow_num"] = $out_trade_no;
+        $info["amount"] = $cash_fee;
+        $info["code"] = "wechat";
+        $info["create_time"] = date("Y-m-d H:i:s");
+        $result = $this->WechatCashFlowOP->insert($info);
+        if($result){
+            return getInterFaceArray(1,"success","");
+        }else{
+            return getInterFaceArray(0,"fail","");
+        }
     }
 
     public function get_pay_sign($list){

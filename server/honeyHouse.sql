@@ -209,7 +209,7 @@ create table wechat_cash_flow
     #金额
     amount decimal(6,2) not null default 0,
     #操作人code
-    operater_code  bigint unsigned not null,
+    code varchar(120) not null default "",
     #创建时间
     create_time  varchar(30) default null,
     primary key(id)

@@ -89,3 +89,15 @@ function lssLog($flag,$message){
         echo $err->getMessage();
     }
 }
+
+/**
+ * XML转数组
+ * @param string $xmlstring XML字符串
+ *
+ * @return array XML数组
+ */
+function xmlToArray($xmlstring){
+    $object = simplexml_load_string($xmlstring, 'SimpleXMLElement', LIBXML_NOCDATA | LIBXML_NOBLANKS);
+    return @json_decode(@json_encode($object),1);
+}
+
