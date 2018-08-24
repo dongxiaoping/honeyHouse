@@ -72,4 +72,17 @@ class User
             echo getJsonStringByParam(0,"param_error","");
         }
     }
+    //http://localhost/honeyHouse/server/public/index.php?s=user/log_report
+    public function log_report(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["info"])){
+            $info = $_GET["info"];
+            $info = (string)$info;
+            lssLog("error",$info);
+            echo getJsonStringByParam(1,"success","");
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
+
 }

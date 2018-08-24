@@ -15,19 +15,23 @@
     <view class="title">我的订单</view>
   </view>
 
+  <view catchtap="testClearInfo" class="function_item" style="border-top:20rpx solid #F7F7F7;">
+    <view class="title">测试清空数据</view>
+  </view>
+
   <view class="function_item">
-    <view class="title">转发蜂蜜记文章赚现金</view>
+    <view class="title">转发文章得客户，挣现金</view>
   </view>
   <view class="function_item">
-    <view class="title">转发阅读人数</view>
+    <view class="title">推荐客户数</view>
     <view style='margin-left:{{windowWidth/3}}px;'> {{recommendUserCount}}
       <span style="font-size:12px;"> (0.5元/人)</span>
     </view>
   </view>
   <view class="function_item">
-    <view class="title">转发购买人数</view>
+    <view class="title">客户购买数</view>
     <view style='margin-left:{{windowWidth/3}}px;'>  {{recommendBuyCount}}
-      <span style="font-size:12px;"> (5元/人)</span>
+      <span style="font-size:12px;"> (5元/次)</span>
     </view>
   </view>
 <!--  <view style="height:280px;" class="function_item">

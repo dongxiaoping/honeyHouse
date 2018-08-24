@@ -71,6 +71,9 @@ function lssLog($flag,$message){
         if(FALSE === $is_exist){
             return;
         }
+        if(is_array($message)){
+            $message=implode(",",$message);
+        }
         $date =  $flag." ".@date("Y-m-d H:i:s")." : ".$message."\n";
         $year = @date("Y");
         $moth = @date("m");
