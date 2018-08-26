@@ -39,14 +39,14 @@ class Order{
     }
 
     public function change_order_status(){
-        header('Access-Control-Allow-Origin: *');
-        $content = file_get_contents("php://input");
-        $content = (string)$content;
-        $content = json_decode($content,true);
-        if($content["order_id"]&&$content["user_id"]&&$content["status"]){
-            $result_array = $this->OrderServer->change_order_status($content);
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["order_id"])&&isset($_GET["status"])){
+            $order_id = $_GET["order_id"];
+            $status = $_GET["status"];
+            $result_array = $this->OrderServer->change_order_status($order_id,$status);
+            echo arrayToJson($result_array);
         }else{
-            echo getJsonStringByParam(0,"error","");
+            echo getJsonStringByParam(0,"param_error","");
         }
     }
 
@@ -60,5 +60,17 @@ class Order{
         }else{
             echo getJsonStringByParam(0,"param_error","");
         }
+    }
+
+    public function get_orders_count_for_deliver(){
+        header("Access-Control-Allow-Origin: *");
+        $result_array = $this->OrderServer->get_orders_count_for_deliver();
+        echo arrayToJson($result_array);
+    }
+
+    public function get_orders_list_for_deliver(){
+        header("Access-Control-Allow-Origin: *");
+        $result_array = $this->OrderServer->get_orders_list_for_deliver();
+        echo arrayToJson($result_array);
     }
 }

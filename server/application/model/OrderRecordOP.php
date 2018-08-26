@@ -31,4 +31,19 @@ class OrderRecordOP extends BaseOP{
         $list =  Db::query("update order_record set order_status='".ORDER_STATUS["has_pay"]."' where id=".$id);
         return $list;
     }
+
+    public function get_orders_count_for_deliver(){
+        $info =  Db::query("select count(*) as count from order_record as t2 where t2.order_status=".ORDER_STATUS["has_pay"]);
+        return $info[0];
+    }
+
+    public function get_orders_list_for_deliver(){
+        $info =  Db::query("select *from order_record as t2 where t2.order_status=".ORDER_STATUS["has_pay"]);
+        return $info;
+    }
+
+    public function change_order_status($order_id,$status){
+        $list =  Db::query("update order_record set order_status='".$status."' where id=".$order_id);
+        return $list;
+    }
 }

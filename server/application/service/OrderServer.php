@@ -17,6 +17,7 @@ class OrderServer{
         $this->PayServer = new service\PayServer();
         $this->OrderRecordOP = new model\OrderRecordOP();
         $this->OrderGoodRecordOP = new model\OrderGoodRecordOP();
+        $this->AddressOP = new model\AddressOP();
     }
 
     public function submit_order($info){
@@ -65,6 +66,9 @@ class OrderServer{
             $order_id = $info["id"];
             $list = $this->OrderGoodRecordOP->get_goods_by_order_id($order_id);
             $info["goods"] = $list;
+            $user_id = $info["user_id"];
+            $addrList = $this->AddressOP->get_addr_by_user_id($user_id);
+            $info["addr"] = $addrList[0];
             return  getInterFaceArray(1,"success",$info);
         }
         return getInterFaceArray(0,"fail","");
@@ -80,7 +84,18 @@ class OrderServer{
        return  getInterFaceArray(1,"success",$list);
     }
 
-    public function change_order_status($info){
-        $order_id = $info["order_id"];
+    public function change_order_status($order_id,$status){
+        $this->OrderRecordOP->change_order_status($order_id,$status);
+        return getInterFaceArray(1,"success","");
+    }
+
+    public function get_orders_count_for_deliver(){
+        $count = $this->OrderRecordOP->get_orders_count_for_deliver();
+        return  getInterFaceArray(1,"success",$count);
+    }
+
+    public function get_orders_list_for_deliver(){
+        $list = $this->OrderRecordOP->get_orders_list_for_deliver();
+        return  getInterFaceArray(1,"success",$list);
     }
 }

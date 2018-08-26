@@ -13,24 +13,65 @@
 </style>
 
 <body>
-<div data-role="page" id="pageone">
-    <div data-role="header">
-        <h1>页面标题</h1>
-    </div>
 
+
+<!--BEGIN 首页-->
+<div data-role="page" id="page_index">
+    <div data-role="header">
+        <h1>首页</h1>
+    </div>
     <div data-role="content">
-        <div class="item-box" style="float:left;">订单</div>
+        <div id="order_box_id" class="item-box" style="float:left;"></div>
         <div  class="item-box" style="float:right;">空白</div>
     </div>
-
-<!--    <div data-role="footer">
-        <h1>页面底部内容</h1>
-    </div>-->
 </div>
-</body>
+<!--END 首页-->
 
+<!--BEGIN 订单列表页面-->
+<div data-role="page" id="page_order_list">
+    <div data-role="header">
+        <h1>订单列表</h1>
+    </div>
+    <div  id="order_list_id"  data-role="content">
+        <ul  data-role="listview">
+        </ul>
+    </div>
+</div>
+<!--END 订单列表页面-->
+
+<!--BEGIN 发货页面-->
+<div data-role="page" id="page_deliver">
+    <div data-role="header">
+        <h1>发货</h1>
+    </div>
+    <div data-role="content">
+        <p style="color:red;">订单信息</p>
+        <p id="page_deliver_order_status_id"></p>
+        <p id="page_deliver_bh_id"></p>
+        <p id="page_deliver_time_id"></p>
+        <p id="page_deliver_good_name_id"></p>
+        <p id="page_deliver_count_id"></p>
+        <p id="page_deliver_ly_id"></p>
+        <p  style="color:red;">地址</p>
+        <p id="page_deliver_name_id"></p>
+        <p id="page_deliver_phone_id"></p>
+        <p id="page_deliver_address_id"></p>
+        <div data-role="controlgroup" data-type="vertical">
+            <p  style="color:red;">操作:</p>
+            <a href="#" id="page_deliver_fh_id" class="ui-btn">发货</a>
+            <a href="#" id="page_deliver_refresh_id" style="margin-top: 10px;" class="ui-btn">刷新</a>
+            <a href="#" id="page_deliver_cancel_id" class="ui-btn" style="margin-top: 10px;">取消订单</a>
+        </div>
+    </div>
+    </div>
+</div>
+<!--END 发货页面-->
+
+</body>
 <script src="../honeyRecord/src/lib/jquery/jquery.min.js"></script>
 <script src="../honeyRecord/src/lib/jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
 <script src="./js/common.js"></script>
 <script src="./index.js"></script>
+<script src="./page/deliver.js"></script>
+<script src="./page/order_list.js"></script>
 </html>
