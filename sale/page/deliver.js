@@ -91,6 +91,8 @@ $(document).on("pagecreate","#page_deliver",function(e, data){
             document.getElementById("page_deliver_order_status_id").innerText="订单状态：待发货";
         }else if(order_status===3){
             document.getElementById("page_deliver_order_status_id").innerText="订单状态：已发货";
+        }else if(order_status===5){
+            document.getElementById("page_deliver_order_status_id").innerText="订单状态：订单已取消";
         }else{
             document.getElementById("page_deliver_order_status_id").innerText="订单状态："+order_status;
         }
