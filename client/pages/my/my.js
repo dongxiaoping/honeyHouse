@@ -10,7 +10,7 @@ Page({
     windowHeight: "",
     windowWidth: "",
     userInfo: "", //用户基本信息
-    recommendConfig:null,
+    recommendConfig: null,
     recommendUserCount: 0,
     recommendBuyCount: 0
   },
@@ -31,14 +31,14 @@ Page({
     });
 
     dataAccess.getRecommendConfig({
-        callback: function(status, res) {
-            if (res.status === globalConst.interfaceStatus.SUCCESS) {
-                let info = res.data;
-                this.setData({
-                    recommendConfig: info,
-                });
-            }
+      callback: function(status, res) {
+        if (res.status === globalConst.interfaceStatus.SUCCESS) {
+          let info = res.data;
+          this.setData({
+            recommendConfig: info,
+          });
         }
+      }
     })
   },
 
@@ -48,10 +48,10 @@ Page({
     });
   },
 
-    zfTipEvent(){
-      wx.switchTab({
-          url: "../activity/activity"
-      });
+  zfTipEvent() {
+    wx.switchTab({
+      url: "../activity/activity"
+    });
   },
 
   setRecommendCount(recordList) {
@@ -115,14 +115,14 @@ Page({
     });
   },
 
-  testClearInfo:function(){
-      app.clearUser();
-      wx.showToast({
-          title: '清空完成！',
-          duration:3000,
-          icon: 'none'
-      });
-      Log.d("清空缓存数据");
+  testClearInfo: function() {
+    app.clearUser();
+    wx.showToast({
+      title: '清空完成！',
+      duration: 3000,
+      icon: 'none'
+    });
+    Log.d("清空缓存数据");
   },
   /**
    * 生命周期函数--监听页面隐藏
