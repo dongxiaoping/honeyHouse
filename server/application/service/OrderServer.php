@@ -18,6 +18,7 @@ class OrderServer{
         $this->OrderRecordOP = new model\OrderRecordOP();
         $this->OrderGoodRecordOP = new model\OrderGoodRecordOP();
         $this->AddressOP = new model\AddressOP();
+        $this->UserOP = new model\UserOP();
     }
 
     public function submit_order($info){
@@ -25,10 +26,22 @@ class OrderServer{
         $good_list = $info["goods"];
         $set_time = date("Y-m-d H:i:s");
         $order_id=substr(date("ymdHis"),2,8).mt_rand(100000,999999);
+        $pay_type = PAY_TYPE["wechat"];
+        $total_fee = $this->get_order_price($good_list);//订单金额 分
+
+
+        $user_info = $this->UserOP->get($user_id);
+        if(!$user_info){
+            return getInterFaceArray(0,"user_not_exist","");
+        }
+        $amount = $user_info["amount"];
+        if($amount*100>$total_fee){
+            $pay_type = PAY_TYPE["account"];
+        }
         $order = array(
             "id"=>$order_id,
             "user_id"=>$user_id,
-            "pay_type"=>PAY_TYPE["other"],
+            "pay_type"=>$pay_type,
             "order_status"=>ORDER_STATUS["wait_pay"],
             "create_time"=> $set_time,
             "last_mod"=>$set_time
@@ -42,11 +55,16 @@ class OrderServer{
             }
             $this->OrderGoodRecordOP->insertAll($good_list);
             $out_trade_no = $order_id;
-            $total_fee = $this->get_order_price($good_list);//订单金额 分
             $openid = $info["wechat_id"];
-            $result =$this->PayServer->payOrderReqToWechat($out_trade_no,$total_fee,$openid);
-            if($result){
-                return getInterFaceArray(1,"success",$result);
+            if($pay_type===PAY_TYPE["wechat"]){
+                $result =$this->PayServer->payOrderReqToWechat($out_trade_no,$total_fee,$openid);
+                if($result){
+                    return getInterFaceArray(1,PAY_TYPE["wechat"],$result);
+                }
+            }else{
+                $new_amount = $amount - $total_fee/100;
+                $this->UserOP->change_cash_by_user_id($user_id,$new_amount);
+                return getInterFaceArray(1,PAY_TYPE["account"],"");
             }
             return getInterFaceArray(0,"fail","");
         }

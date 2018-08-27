@@ -27,4 +27,11 @@ class Recommend{
             echo getJsonStringByParam(0,"param_error","");
         }
     }
+
+    public function get_recommend_config(){
+        header("Access-Control-Allow-Origin: *");
+        $result_array = $this->RecommendRecordServer->get_recommend_config();
+        echo arrayToJson($result_array);
+    }
+
 }

@@ -15,25 +15,28 @@
     <view class="title">我的订单</view>
   </view>
 
-  <view catchtap="testClearInfo" class="function_item" style="border-top:20rpx solid #F7F7F7;">
+  <view catchtap="testClearInfo" class="function_item">
     <view class="title">测试清空数据</view>
   </view>
 
-  <view class="function_item">
-    <view class="title">转发文章得客户，挣现金</view>
+  <view  catchtap="zfTipEvent" class="function_item"  style="border-bottom:0px solid white;">
+    <view class="title">转发文章做推广，挣现金</view>
   </view>
-  <view class="function_item">
-    <view class="title">推荐客户数</view>
+  <view  catchtap="zfTipEvent" class="function_item" style="border-bottom:0px solid white;">
+    <view class="title">文章访问客户数</view>
     <view style='margin-left:{{windowWidth/3}}px;'> {{recommendUserCount}}
-      <span style="font-size:12px;"> (0.5元/人)</span>
+      <span style="font-size:12px;"> ({{recommendConfig.recommend_user}}元/人)</span>
     </view>
   </view>
-  <view class="function_item">
-    <view class="title">客户购买数</view>
+  <view  catchtap="zfTipEvent" class="function_item">
+    <view class="title">客户下单购买数</view>
     <view style='margin-left:{{windowWidth/3}}px;'>  {{recommendBuyCount}}
-      <span style="font-size:12px;"> (5元/次)</span>
+      <span style="font-size:12px;"> ({{recommendConfig.recommend_user_buy}}元/次)</span>
     </view>
   </view>
+    <view class="function_item">
+      <view class="title">联系客服</view>
+    </view>
 <!--  <view style="height:280px;" class="function_item">
     <text>
             说明:

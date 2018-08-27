@@ -10,6 +10,20 @@ let serverHttp = config.serverHttp;
 class DataAccess {
 
 
+    getRecommendConfig(args){
+        wx.request({
+            url: serverHttp + '?s=recommend/get_recommend_config',
+            data: "",
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     getOrdersOfUser(args){
         wx.request({
             url: serverHttp + '?s=order/get_orders_of_user',

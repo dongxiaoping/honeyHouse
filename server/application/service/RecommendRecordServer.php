@@ -27,4 +27,8 @@ class RecommendRecordServer
         return  getInterFaceArray(1,"success",$return_info);
     }
 
+    public function get_recommend_config(){
+        $info = array("recommend_user"=>RECOMMEND_PRICE["recommend_user"],"recommend_user_buy"=>RECOMMEND_PRICE["recommend_user_buy"]);
+        return  getInterFaceArray(1,"success",$info);
+    }
 }

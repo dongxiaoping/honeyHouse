@@ -41,6 +41,13 @@ class UserOP extends BaseOP{
         }
     }
 
+    public function change_cash_by_user_id($id,$cash){
+        $item = $this->get($id);
+        if($item){
+            Db::query("update user set amount=".$cash." where id=".$id);
+        }
+    }
+
     public function add_cash_by_recommend_code($recommend_code,$cash){
         $item = $this->get_user_info_by_recommend_code($recommend_code);
         if($item){

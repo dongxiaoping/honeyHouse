@@ -10,6 +10,7 @@ Page({
     windowHeight: "",
     windowWidth: "",
     userInfo: "", //用户基本信息
+    recommendConfig:null,
     recommendUserCount: 0,
     recommendBuyCount: 0
   },
@@ -28,12 +29,29 @@ Page({
         })
       }
     });
+
+    dataAccess.getRecommendConfig({
+        callback: function(status, res) {
+            if (res.status === globalConst.interfaceStatus.SUCCESS) {
+                let info = res.data;
+                this.setData({
+                    recommendConfig: info,
+                });
+            }
+        }
+    })
   },
 
   eventToOrderPage() {
     wx.navigateTo({
       url: "../allOrderPage/allOrderPage"
     });
+  },
+
+    zfTipEvent(){
+      wx.switchTab({
+          url: "../activity/activity"
+      });
   },
 
   setRecommendCount(recordList) {
@@ -120,15 +138,10 @@ Page({
 
   },
 
-
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
 
-  },
-  honeyPromotionEvent: function() {
-    console.log("转发推广二维码");
   }
 })

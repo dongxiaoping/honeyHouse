@@ -19,6 +19,13 @@ let OrderStatus = {
     "cancel": 5
 };
 
+let PayType = {
+    wechat:1,//微信
+    account:2,//账户
+    mix:3,
+    other:4,
+};
+
 let OrderDes = [
     "全部",
     "待付款",
@@ -46,5 +53,6 @@ module.exports = {
     interfaceStatus: interfaceStatus,
     PageSort:PageSort,
     OrderStatus:OrderStatus,
+    PayType:PayType,
     OrderDes:OrderDes
 };

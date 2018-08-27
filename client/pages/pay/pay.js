@@ -20,7 +20,15 @@ Page({
         that.setData({
             goodsList: goodsList
         });
-        this.totalPrice();
+        let allGoodsPrice = this.getTotalPrice();
+        that.setData({
+            allGoodsPrice: allGoodsPrice
+        });
+        let userInfo = app.globalData.userInfo;
+        let accountCash = userInfo.amount;
+        that.setData({
+            isUserAccountPay: accountCash>allGoodsPrice
+        });
     },
 
     isAddressExist(){
@@ -31,7 +39,7 @@ Page({
     },
 
     // 计算订单总价
-    totalPrice: function() {
+    getTotalPrice: function() {
         let that = this;
         let goodsList = this.data.goodsList;
         let allGoodsPrice = 0;
@@ -39,9 +47,8 @@ Page({
             let carShopBean = goodsList[i];
             allGoodsPrice += carShopBean.good_price * carShopBean.buy_count;
         }
-        that.setData({
-            allGoodsPrice: allGoodsPrice.toFixed(2)
-        })
+        allGoodsPrice = allGoodsPrice.toFixed(2);
+        return allGoodsPrice;
     },
 
     // 提交订单
@@ -64,9 +71,17 @@ Page({
                 wx.hideLoading();
                 Log.d(res);
                 if (res.status === globalConst.interfaceStatus.SUCCESS) {
-                    let orderReturnInfo = res.data;
-                    that.toStartPayPage(orderReturnInfo);
+                    if(res.message===globalConst.PayType.wechat){
+                        let orderReturnInfo = res.data;
+                        that.toStartPayPage(orderReturnInfo);
+                    }else{
+                        wx.navigateTo({
+                            url: "../paySuccessTrans/paySuccessTrans"
+                        });
+                    }
+                    return ;
                 }
+                Log.e("订单提交失败");
             }
         });
         Log.d(orderForSubmit);
