@@ -19,11 +19,13 @@ App({
     orderInfo: null //订单信息
   },
   onLaunch: function() {
+    Log.d("onLaunch");
     let that = this;
       dataAccess.getAppConfigInfo({
           callback: function(status, res) {
               if (res.status === globalConst.interfaceStatus.SUCCESS) {
                   let appConfigInfo = res.data;
+                  Log.d("应用配置信息");
                   Log.d(appConfigInfo);
                   that.globalData.appConfigInfo = appConfigInfo;
               }

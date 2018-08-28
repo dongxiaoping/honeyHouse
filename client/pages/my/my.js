@@ -34,7 +34,7 @@ Page({
       callback: function(status, res) {
         if (res.status === globalConst.interfaceStatus.SUCCESS) {
           let info = res.data;
-          this.setData({
+            that.setData({
             recommendConfig: info,
           });
         }

@@ -19,7 +19,6 @@ class AppServer{
     }
 
     public function get_app_config_info(){
-        var_dump( APP_PATH."Config.php");
         $list = array("customer_service_phone"=>"13396080754","cooper_group_code_img"=>"");
         return  getInterFaceArray(1,"success",$list);
     }
