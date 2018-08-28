@@ -34,7 +34,7 @@
     <view class="title">推广合作</view>
   </view>
 
-  <view class="function_item">
+  <view catchtap="eventToServicePhone" class="function_item">
     <view class="title">联系客服</view>
   </view>
 

@@ -3,6 +3,7 @@ let globalConst = require('./common/globalConst');
 let Log = require('./common/Log');
 App({
   globalData: {
+    appConfigInfo:null,
     userInfo: {
       sex: globalConst.sex.UNKOWN,
       nick_name: "",
@@ -18,7 +19,16 @@ App({
     orderInfo: null //订单信息
   },
   onLaunch: function() {
-
+    let that = this;
+      dataAccess.getAppConfigInfo({
+          callback: function(status, res) {
+              if (res.status === globalConst.interfaceStatus.SUCCESS) {
+                  let appConfigInfo = res.data;
+                  Log.d(appConfigInfo);
+                  that.globalData.appConfigInfo = appConfigInfo;
+              }
+          }
+      });
   },
 
   clearUser:function(){

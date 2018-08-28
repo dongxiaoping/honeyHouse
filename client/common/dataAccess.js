@@ -8,7 +8,19 @@ let globalConst = require('./globalConst');
 let config = require('../common/config');
 let serverHttp = config.serverHttp;
 class DataAccess {
-
+    getAppConfigInfo(args){
+        wx.request({
+            url: serverHttp + '?s=app/get_app_config_info',
+            data: "",
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
 
     getRecommendConfig(args){
         wx.request({

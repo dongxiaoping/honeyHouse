@@ -115,6 +115,11 @@ Page({
     });
   },
 
+  eventToServicePhone:function(){
+    let phone = app.globalData.appConfigInfo.customer_service_phone;
+    Log.d("电话："+phone);
+  },
+
   testClearInfo: function() {
     app.clearUser();
     wx.showToast({
