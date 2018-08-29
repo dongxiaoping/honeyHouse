@@ -8,6 +8,34 @@ let globalConst = require('./globalConst');
 let config = require('../common/config');
 let serverHttp = config.serverHttp;
 class DataAccess {
+    get_cash_extract_wait_deal(args){
+        wx.request({
+            url: serverHttp + '?s=cashextract/get_cash_extract_wait_deal',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
+    cashExtractReq(args){
+        wx.request({
+            url: serverHttp + '?s=cashextract/cash_extract_req',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     getAppConfigInfo(args){
         wx.request({
             url: serverHttp + '?s=app/get_app_config_info',
@@ -147,7 +175,7 @@ class DataAccess {
                 args.callback(globalConst.interfaceStatus.FAILL, "");
             },
             complete: function() {
-               // args.callback(globalConst.interfaceStatus.TIME_OUT, "");
+                // args.callback(globalConst.interfaceStatus.TIME_OUT, "");
             }
         })
     }
@@ -195,7 +223,7 @@ class DataAccess {
                 args.callback(globalConst.interfaceStatus.FAILL, "");
             },
             complete: function() {
-              //  args.callback(globalConst.interfaceStatus.TIME_OUT, "");
+                //  args.callback(globalConst.interfaceStatus.TIME_OUT, "");
             }
         })
     }

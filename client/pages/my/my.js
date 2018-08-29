@@ -115,11 +115,17 @@ Page({
     });
   },
 
-  eventToServicePhone:function(){
-    let phone = app.globalData.appConfigInfo.customer_service_phone;
-    Log.d("电话："+phone);
+  eventContract: function () {
+    wx.navigateTo({
+      url: "../contract/contract"
+    });
   },
 
+  eventMoney:function(){
+    wx.navigateTo({
+      url: "../getCash/getCash"
+    });
+  },
   testClearInfo: function() {
     app.clearUser();
     wx.showToast({

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/contract/contract",
+    "pages/getCash/getCash",
     "pages/allOrderPage/allOrderPage",
     "pages/orderDetail/orderDetail",
     "pages/activity/activity",

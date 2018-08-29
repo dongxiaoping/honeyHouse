@@ -28,6 +28,9 @@ Page({
       },
       callback: function(status, res) {
         if (res.status === globalConst.interfaceStatus.SUCCESS) {
+          if (wx.hideLoading()) {
+            wx.hideLoading()
+          }
           let goodInfo = res.data; //接口原始商品数据
           goodInfo.good_sell_count = that.getGoodSellCount(goodInfo);
           let swipeImages = that.getSwipeImages(goodInfo);
@@ -43,9 +46,6 @@ Page({
       }
     });
     app.initUser(globalConst.PageSort.INDEX);
-    if (wx.hideLoading()) {
-      wx.hideLoading()
-    }
   },
 
   getGoodSellCount: function(goodInfo) {

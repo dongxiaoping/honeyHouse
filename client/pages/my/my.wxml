@@ -30,11 +30,7 @@
     <view class="title">我的订单</view>
   </view>
 
-  <view class="function_item">
-    <view class="title">推广合作</view>
-  </view>
-
-  <view catchtap="eventToServicePhone" class="function_item">
+  <view catchtap="eventContract" class="function_item">
     <view class="title">联系客服</view>
   </view>
 

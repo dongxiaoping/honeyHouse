@@ -1,0 +1,4 @@
+<view>
+<button style="margin-top:30px;" open-type="contact">进入客服会话</button>
+<button catchtap="eventToServicePhone" style="margin-top:30px;">电话联系客服</button>
+</view>
