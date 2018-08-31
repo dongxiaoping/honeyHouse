@@ -58,4 +58,41 @@ class CashExtractRecordServer
         return getInterFaceArray(1,"",$flow_num);
     }
 
+    public function get_cash_by_flow_num_with_extract($flow_num){
+        $return_info = $this->CashExtractRecordOP->get_cash_extract_wait_deal_by_num($flow_num);
+        if($return_info){
+            $info = $return_info[0];
+            $user_id = $info["user_id"];
+            $user_info = $this->UserOP->get($user_id);
+            if($user_info){
+                $cash = $user_info["amount"];
+                return  getInterFaceArray(1,"",$cash);
+            }else{
+                return  getInterFaceArray(0,"user_not_exist","");
+            }
+        }else{
+            return  getInterFaceArray(0,"flow_wait_deal_not_exist","");
+        }
+    }
+
+    public function deal_by_flow_num($flow_num){
+        $return_info = $this->CashExtractRecordOP->get_cash_extract_wait_deal_by_num($flow_num);
+        if($return_info){
+            $info = $return_info[0];
+            $user_id = $info["user_id"];
+            $user_info = $this->UserOP->get($user_id);
+            if($user_info){
+                $cash = $user_info["amount"];
+                $this->UserOP->change_cash_by_user_id($user_id,0);
+                $mod_time = date("Y-m-d H:i:s");
+                $this->CashExtractRecordOP->deal_by_flow_num($flow_num,$cash,$mod_time);
+                return  getInterFaceArray(1,"success","");
+            }else{
+                return  getInterFaceArray(0,"user_not_exist","");
+            }
+        }else{
+            return  getInterFaceArray(0,"flow_wait_deal_not_exist","");
+        }
+    }
+
 }

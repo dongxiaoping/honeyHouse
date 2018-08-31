@@ -40,4 +40,28 @@ class Cashextract
             echo getJsonStringByParam(0,"param_error","");
         }
     }
+
+    //根据流水号(待提取状态的)获取用户信息
+    public function get_cash_by_flow_num_with_extract(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["flow_num"])){
+            $flow_num = $_GET["flow_num"];
+            $result_array = $this->CashExtractRecordServer->get_cash_by_flow_num_with_extract($flow_num);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
+
+    public function deal_by_flow_num(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["flow_num"])){
+            $flow_num = $_GET["flow_num"];
+            $result_array = $this->CashExtractRecordServer->deal_by_flow_num($flow_num);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
+
 }
