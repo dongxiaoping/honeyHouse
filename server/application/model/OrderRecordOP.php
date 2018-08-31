@@ -28,7 +28,8 @@ class OrderRecordOP extends BaseOP{
     }
 
     public function setOrderPayById($id){
-        $list =  Db::query("update order_record set order_status='".ORDER_STATUS["has_pay"]."' where id=".$id);
+        $last_mod =  date("Y-m-d H:i:s");
+        $list =  Db::query("update order_record set order_status='".ORDER_STATUS["has_pay"]."',last_mod='".$last_mod."' where id=".$id);
         return $list;
     }
 
@@ -43,7 +44,8 @@ class OrderRecordOP extends BaseOP{
     }
 
     public function change_order_status($order_id,$status){
-        $list =  Db::query("update order_record set order_status='".$status."' where id=".$order_id);
+        $last_mod =  date("Y-m-d H:i:s");
+        $list =  Db::query("update order_record set order_status='".$status."',last_mod='".$last_mod."' where id=".$order_id);
         return $list;
     }
 }

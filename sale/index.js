@@ -7,6 +7,11 @@ $(document).on("pagecreate","#page_index",function(){
             { transition: "slideup" });
     });
 
+    $("#account_cash_id").on("tap",function(){
+        $.mobile.changePage("#page_account_cash",
+            { transition: "slideup" });
+    });
+
     setOrderDeliverCount();
     setInterval(setOrderDeliverCount,1000*60);
 });

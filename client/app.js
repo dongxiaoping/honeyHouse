@@ -69,6 +69,7 @@ App({
             Log.d(res6);
             if (res6.status === globalConst.interfaceStatus.SUCCESS) { //成功获取用户唯一标识
               let openid = res6.data.openid;
+              Log.d("用户信息:" + JSON.stringify(res6.data));
               Log.d("用户唯一标识:" + openid);
               dataAccess.getUserInfoByWechatId({
                 data: {

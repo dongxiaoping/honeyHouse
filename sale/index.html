@@ -22,7 +22,7 @@
     </div>
     <div data-role="content">
         <div id="order_box_id" class="item-box" style="float:left;"></div>
-        <div  class="item-box" style="float:right;">空白</div>
+        <div id="account_cash_id"  class="item-box" style="float:right;">金额兑现</div>
     </div>
 </div>
 <!--END 首页-->
@@ -50,6 +50,7 @@
         <p id="page_deliver_bh_id"></p>
         <p id="page_deliver_time_id"></p>
         <p id="page_deliver_good_name_id"></p>
+        <p id="page_deliver_good_count_id"></p>
         <p id="page_deliver_count_id"></p>
         <p id="page_deliver_ly_id"></p>
         <p  style="color:red;">地址</p>
@@ -63,10 +64,25 @@
             <a href="#" id="page_deliver_cancel_id" class="ui-btn" style="margin-top: 10px;">取消订单</a>
         </div>
     </div>
-    </div>
 </div>
 <!--END 发货页面-->
 
+<!--BEGIN 账户金额兑现页面-->
+<div data-role="page" id="page_account_cash">
+    <div data-role="header">
+        <h1>提取现金</h1>
+    </div>
+    <div data-role="content">
+        <div data-role="controlgroup" data-type="vertical">
+            <p  style="color:red;">操作:</p>
+            <textarea id="flow_num_id"></textarea>
+            <a href="#" id="button_get_cash_id" class="ui-btn">获取金额</a>
+            <textarea id="cash_value_id" style="margin-top: 150px;"></textarea>
+            <a href="#" id="button_sure_cash_id"  class="ui-btn" style="margin-top: 10px;">确认兑现</a>
+        </div>
+    </div>
+</div>
+<!--BEGIN 账户金额兑现页面-->
 </body>
 <script src="../honeyRecord/src/lib/jquery/jquery.min.js"></script>
 <script src="../honeyRecord/src/lib/jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
@@ -74,4 +90,5 @@
 <script src="./index.js"></script>
 <script src="./page/deliver.js"></script>
 <script src="./page/order_list.js"></script>
+<script src="./page/account_cash.js"></script>
 </html>

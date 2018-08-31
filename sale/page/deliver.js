@@ -101,6 +101,7 @@ $(document).on("pagecreate","#page_deliver",function(e, data){
         document.getElementById("page_deliver_time_id").innerText="下单时间："+info.create_time;
 
         document.getElementById("page_deliver_good_name_id").innerText="商品名称："+goodItem.name;
+        document.getElementById("page_deliver_good_count_id").innerText="数量："+goodItem.count;
         document.getElementById("page_deliver_count_id").innerText="商品数量："+goodItem.count;
         document.getElementById("page_deliver_count_id").innerText="留言："+"暂无留言";
 

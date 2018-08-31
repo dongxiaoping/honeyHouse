@@ -3,5 +3,7 @@
   <textarea value="{{extractReqCode}}"  style='height:120rpx;line-height:120rpx;'/>
 </view>
 <button catchtap="eventGetCashCode" style='margin-top:30rpx;'>获取现金提取码</button>
-<button style='margin-top:60rpx;' open-type="contact">将提取码发送给客服</button>
+<button style='margin-top:60rpx;' open-type="contact">联系客服</button>
+<view style="color:red;margin-top:40rpx;">说明：</view>
+<view >点击获取现金提取码，复制获取的提取码，点击联系客服按钮，将提取码粘贴发送给客服。客服会在24小时内将现金打入到您的微信账户！</view>
 </view>
