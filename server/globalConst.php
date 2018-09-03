@@ -56,6 +56,13 @@ define('PAY_TYPE',array(
     'other'=>4
 ));
 
+//代金券状态
+define('CASH_VOUCHER_STATUS',array(
+    'un_use'=>1,//未使用
+    'has_use'=>2,//已使用
+    'can_not_use'=>3//已弃用
+));
+
 define('WECHAT',array(
     'appid'=>"wx295e9a9b71a0ac11",
     'mch_id'=>"1511988301",

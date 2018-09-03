@@ -234,6 +234,26 @@ create table cash_extract_record
     primary key(id)
 )ENGINE=InnoDB default charset=utf8;
 
+
+#代金券充值
+create table cash_voucher
+(
+    id bigint unsigned auto_increment,
+    #用户ID
+    user_id bigint unsigned default 0,
+    #券号
+    flow_num varchar(32) not null,
+    #金额
+    amount decimal(6,2) not null default 0,
+    #状态 状态 1 未使用 2已使用  3已弃用
+    status tinyint not null default 1,
+    #最后一次修改时间
+    last_mod varchar(30) default null,
+    #创建时间
+    create_time  varchar(30) default null,
+    primary key(id)
+)ENGINE=InnoDB default charset=utf8;
+
 #操作人表
 create table operater
 (
