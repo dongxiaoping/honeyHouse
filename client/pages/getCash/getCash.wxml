@@ -2,8 +2,10 @@
 <view class="section">
   <textarea value="{{extractReqCode}}"  style='height:120rpx;line-height:120rpx;'/>
 </view>
-<button catchtap="eventGetCashCode" style='margin-top:30rpx;'>获取现金提取码</button>
-<button style='margin-top:60rpx;' open-type="contact">联系客服</button>
+<view class="btn-group">
+<button  catchtap="eventGetCashCode" type="primary" style="background-color:#f9364f" class="continue">获取现金提取码</button>
+<button catchtap="eventToOrderPage" type="primary" style="background-color:#c9c9c9;color:#656565;margin-top:60rpx;" open-type="contact"  class="see">联系客服</button>
+</view>
 <view style="color:red;margin-top:40rpx;">说明：</view>
 <view >(1)点击获取现金提取码按钮</view>
 <view >(2)复制获取的提取码</view>

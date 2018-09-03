@@ -1,0 +1,7 @@
+<!--pages/rechargeVoucher/rechargeVoucher.wxml-->
+<view class="section">
+  <form bindsubmit="bindFormSubmit">
+    <textarea placeholder="输入代金券码" name="textarea"/>
+    <button form-type="submit">确认充值</button>
+  </form>
+</view>

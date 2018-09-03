@@ -1,0 +1,10 @@
+<!--pages/cashOp/cashOp.wxml-->
+<view>
+        <view catchtap="eventMoney" class="function_item">
+        <view class="title">提现</view>
+        </view>
+
+        <view catchtap="eventRechargeVoucher" class="function_item">
+        <view class="title">代金券充值</view>
+        </view>
+</view>

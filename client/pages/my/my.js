@@ -123,7 +123,7 @@ Page({
 
   eventMoney:function(){
     wx.navigateTo({
-      url: "../getCash/getCash"
+      url: "../cashOp/cashOp"
     });
   },
   testClearInfo: function() {

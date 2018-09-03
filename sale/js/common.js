@@ -2,6 +2,7 @@
  * Created by dongxiaoping-nb on 2018/8/18.
  */
 var httpLocation = "https://dongxiaoping.cn";
+//var httpLocation = "http://localhost";
 function getUrlParam(name) {
     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
     var r = window.location.search.substr(1).match(reg);

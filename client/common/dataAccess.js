@@ -8,6 +8,20 @@ let globalConst = require('./globalConst');
 let config = require('../common/config');
 let serverHttp = config.serverHttp;
 class DataAccess {
+    cash_voucher_to_user(args){
+        wx.request({
+            url: serverHttp + '?s=cashvoucher/cash_voucher_to_user',
+            data: args.data,
+            method: 'GET',
+            success: function(res) {
+                args.callback(globalConst.interfaceStatus.SUCCESS, res.data);
+            },
+            fail: function() {
+                args.callback(globalConst.interfaceStatus.FAILL, "");
+            }
+        })
+    }
+
     get_cash_extract_wait_deal(args){
         wx.request({
             url: serverHttp + '?s=cashextract/get_cash_extract_wait_deal',
