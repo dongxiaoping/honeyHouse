@@ -64,6 +64,7 @@ class OrderServer{
             }else{
                 $new_amount = $amount - $total_fee/100;
                 $this->UserOP->change_cash_by_user_id($user_id,$new_amount);
+                $this->change_order_status($order_id,ORDER_STATUS["has_pay"]);
                 return getInterFaceArray(1,PAY_TYPE["account"],"");
             }
             return getInterFaceArray(0,"fail","");
