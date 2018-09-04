@@ -46,9 +46,10 @@
 <!--END 物品详情参数面板-->
 
 <!--BEGIN 底部操作区-->
-  <view class="{{isChildPanelShow == false ? 'display-block':'display-none'}} goods_bottom_btn display-flex-row">
-    <view bindtap="saveOrder" class="goods_bug_button bg_ff0036 color_fff">立即购买</view>
-  </view>
+<view class="{{isChildPanelShow == false ? 'display-block':'display-none'}} goods_bottom_btn display-flex-row">
+  <button open-type="contact" style="width:50%;float:left;border-radius:0px;border:0px solid white;" class="goods_bug_button bg_888 color_fff">联系客服</button>
+  <view bindtap="saveOrder" style="width:50%;float:right;" class="goods_bug_button bg_ff0036 color_fff">立即购买</view>
+</view>
 <!--END 底部操作区-->
 
 
@@ -70,7 +71,8 @@
       <view class="catalog_name">类型</view>
       <view class="catalog_items display-flex-row">
         <block wx:key="id" wx:for="{{goodInfo.child_list}}">
-          <text data-child-image="{{item.child_image}}"  data-good-price="{{item.good_price}}" data-good-orin-price="{{item.good_orin_price}}" data-good-unit="{{item.good_unit}}"   data-good-code="{{item.id}}" data-good-name="{{item.name}}" class="{{item.id == selectedChildInfo.id ? 'active':''}} catalog_item" bindtap="chooseChildGood">{{item.name}}
+          <text data-child-image="{{item.child_image}}" data-good-price="{{item.good_price}}" data-good-orin-price="{{item.good_orin_price}}" data-good-unit="{{item.good_unit}}" data-good-code="{{item.id}}" data-good-name="{{item.name}}" class="{{item.id == selectedChildInfo.id ? 'active':''}} catalog_item"
+            bindtap="chooseChildGood">{{item.name}}
             </text>
         </block>
       </view>
@@ -90,7 +92,8 @@
   </scroll-view>
   <view class="btn_hidden"></view>
   <view style="margin:0rpx;" class="btn_area display-flex-row">
-    <view bindtap="saveOrder" class="goods_bug_button bg_ff0036 color_fff">立即购买</view>
+    <button open-type="contact" style="width:50%;float:left;border-radius:0px;" class="goods_bug_button bg_888 color_fff">联系客服</button>
+    <view bindtap="saveOrder" style="width:50%;float:right;" class="goods_bug_button bg_ff0036 color_fff">立即购买</view>
   </view>
 </view>
 <!--END 物品子类型选择面板-->

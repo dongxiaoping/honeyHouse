@@ -52,6 +52,10 @@
   background-color: #09bb07; /**绿**/
 }
 
+.bg_F7F7F7 {
+  background-color: #F7F7F7; /**淡灰色**/
+}
+
 .bg_888 {
   background-color: #888; /**灰**/
 }
