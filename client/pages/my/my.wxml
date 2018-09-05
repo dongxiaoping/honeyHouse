@@ -11,20 +11,6 @@
     <view style='margin-left:{{windowWidth/3}}px;'> {{userInfo.amount}} 元</view>
   </view>
 
-    <view class="function_item">
-      <view class="title">推广用户</view>
-      <view style='margin-left:{{windowWidth/3}}px;'> {{recommendUserCount}}
-        <span style="font-size:12px;"> ({{recommendConfig.recommend_user}}元/人)</span>
-      </view>
-    </view>
-
-    <view  class="function_item">
-      <view class="title">用户购买</view>
-      <view style='margin-left:{{windowWidth/3}}px;'> {{recommendBuyCount}}
-        <span style="font-size:12px;"> ({{recommendConfig.recommend_user_buy}}元/次)</span>
-      </view>
-    </view>
-
 
   <view catchtap="eventToOrderPage" class="function_item" style="border-top:20rpx solid #F7F7F7;">
     <view class="title">我的订单</view>
@@ -34,12 +20,11 @@
     <view class="title">联系客服</view>
   </view>
 
+    <view catchtap="obtainMoney" class="function_item">
+      <view class="title">挣取的现金</view>
+    </view>
+
   <view catchtap="testClearInfo" class="function_item">
     <view class="title">测试清空数据</view>
   </view>
-
-  <view catchtap="zfTipEvent" class="function_item" style="border-bottom:0px solid white;">
-    <view class="title">转发文章，挣现金</view>
-  </view>
-
 </view>

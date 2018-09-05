@@ -10,9 +10,6 @@ Page({
     windowHeight: "",
     windowWidth: "",
     userInfo: "", //用户基本信息
-    recommendConfig: null,
-    recommendUserCount: 0,
-    recommendBuyCount: 0
   },
 
   /**
@@ -29,17 +26,6 @@ Page({
         })
       }
     });
-
-    dataAccess.getRecommendConfig({
-      callback: function(status, res) {
-        if (res.status === globalConst.interfaceStatus.SUCCESS) {
-          let info = res.data;
-            that.setData({
-            recommendConfig: info,
-          });
-        }
-      }
-    })
   },
 
   eventToOrderPage() {
@@ -48,26 +34,10 @@ Page({
     });
   },
 
-  zfTipEvent() {
-    wx.switchTab({
-      url: "../activity/activity"
-    });
-  },
-
-  setRecommendCount(recordList) {
-    let recommendUserCount = 0;
-    let recommendBuyCount = 0;
-    recordList.forEach(item => {
-      if (item.model === globalConst.rewardType.recommend_user) {
-        recommendUserCount++;
-      } else {
-        recommendBuyCount++;
-      }
-    });
-    this.setData({
-      recommendUserCount: recommendUserCount,
-      recommendBuyCount: recommendBuyCount
-    });
+  obtainMoney(){
+      wx.navigateTo({
+          url: "../obtainMoney/obtainMoney"
+      });
   },
 
   /**
@@ -86,18 +56,7 @@ Page({
     let userInfo = app.globalData.userInfo;
     let wechat_id = userInfo.wechat_id;
     Log.d(userInfo);
-    dataAccess.getRecommendRecordsByUserId({
-      data: {
-        id: userInfo.id
-      },
-      callback: function(status, res) {
-        if (res.status === globalConst.interfaceStatus.SUCCESS) {
-          let recordList = res.data;
-          that.setRecommendCount(recordList);
-          Log.d(recordList);
-        }
-      }
-    });
+
     dataAccess.getUserInfoByWechatId({
       data: {
         id: wechat_id

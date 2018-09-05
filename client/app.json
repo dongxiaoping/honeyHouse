@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/obtainMoney/obtainMoney",
     "pages/rechargeVoucher/rechargeVoucher",
     "pages/cashOp/cashOp",
     "pages/contract/contract",

@@ -1,0 +1,18 @@
+<!--pages/obtainMoney/obtainMoney.wxml-->
+<view class="function_item">
+  <view class="title">推广用户</view>
+  <view style='margin-left:{{windowWidth/3}}px;'> {{recommendUserCount}}
+    <span style="font-size:12px;"> ({{recommendConfig.recommend_user}}元/人)</span>
+  </view>
+</view>
+
+<view class="function_item">
+  <view class="title">用户购买</view>
+  <view style='margin-left:{{windowWidth/3}}px;'> {{recommendBuyCount}}
+    <span style="font-size:12px;"> ({{recommendConfig.recommend_user_buy}}元/次)</span>
+  </view>
+</view>
+
+<view catchtap="zfTipEvent" class="function_item" style="border-bottom:0px solid white;">
+  <view class="title">点击去转发文章，挣现金</view>
+</view>
