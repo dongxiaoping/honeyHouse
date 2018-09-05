@@ -105,6 +105,8 @@ class OrderServer{
     }
 
     public function get_orders_of_user($user_id,$order_status){
+        $this->deal_with_wait_pay($user_id);
+        $this->deal_with_has_delivered($user_id);
         $list = $this->OrderRecordOP->get_orders_of_user($user_id,$order_status);
         for ($i= 0;$i< count($list); $i++){
             $order_id = $list[$i]["id"];
@@ -112,6 +114,32 @@ class OrderServer{
             $list[$i]["goods"] = $goodList;
         }
        return  getInterFaceArray(1,"success",$list);
+    }
+
+    public function deal_with_wait_pay($user_id){
+        $list = $this->OrderRecordOP->get_orders_of_user($user_id,ORDER_STATUS["wait_pay"]);
+        for ($i= 0;$i< count($list); $i++){
+            $mod_time = $list[$i]["last_mod"];
+            $mod_time = strtotime($mod_time);
+            $now = time();
+            if($now-$mod_time>60*60*24*1){
+                $id = $list[$i]["id"];
+                $this->OrderRecordOP->change_order_status($id,ORDER_STATUS["cancel"]);
+            }
+        }
+    }
+
+    public function deal_with_has_delivered($user_id){
+        $list = $this->OrderRecordOP->get_orders_of_user($user_id,ORDER_STATUS["good_delivered"]);
+        for ($i= 0;$i< count($list); $i++){
+            $mod_time = $list[$i]["last_mod"];
+            $mod_time = strtotime($mod_time);
+            $now = time();
+            if($now-$mod_time>60*60*24*8){
+                $id = $list[$i]["id"];
+                $this->OrderRecordOP->change_order_status($id,ORDER_STATUS["success"]);
+            }
+        }
     }
 
     public function change_order_status($order_id,$status){
