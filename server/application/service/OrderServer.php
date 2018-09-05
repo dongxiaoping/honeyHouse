@@ -84,7 +84,7 @@ class OrderServer{
     public function update_sell_count($order_good_list){
         foreach( $order_good_list as $key => $value ){
             $add_count = $value["count"];
-            $good_id = $value["id"];
+            $good_id = $value["good_id"];
             $this->GoodServer->add_sell_count($good_id,$add_count);
         }
     }
