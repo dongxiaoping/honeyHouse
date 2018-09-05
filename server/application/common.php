@@ -104,3 +104,13 @@ function xmlToArray($xmlstring){
     return @json_decode(@json_encode($object),1);
 }
 
+function generate_password( $length = 18 ) {
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    $password = '';
+    for ( $i = 0; $i < $length; $i++ )
+    {
+        $password .= $chars[ mt_rand(0, strlen($chars) - 1) ];
+    }
+    return $password;
+}
+

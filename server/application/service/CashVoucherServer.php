@@ -39,4 +39,27 @@ class CashVoucherServer
         }
         return  getInterFaceArray(0,"代金券不存在","");
     }
+
+    public function create_cash_voucher($password,$num,$cash){
+        if($password!=="243589"){
+            return  getInterFaceArray(0,"error","");
+        }
+        $numArray = [];
+        $list = [];
+        for($i=0;$i<$num;$i++){
+            $flow_num = generate_password();
+            $item = [
+                "user_id" => 0,
+                "flow_num"=>$flow_num,
+                "amount"=>$cash,
+                "status"=>CASH_VOUCHER_STATUS["un_use"],
+                "last_mod"=>date("Y-m-d H:i:s"),
+                "create_time"=>date("Y-m-d H:i:s")
+            ];
+            $numArray[] = $flow_num;
+            $list[] = $item;
+        }
+        $this->CashVoucherOP->insertAll($list);
+        return  getInterFaceArray(1,"",$numArray);
+    }
 }

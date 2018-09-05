@@ -42,7 +42,7 @@ Page({
     dataAccess.cash_voucher_to_user({
         data: {
             user_id: userId,
-            code:valueCode
+            code:"'"+valueCode+"'"
         },
         callback: function(status, res) {
             if (res.status === globalConst.interfaceStatus.SUCCESS) {

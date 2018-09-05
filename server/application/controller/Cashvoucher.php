@@ -30,4 +30,19 @@ class Cashvoucher
             echo getJsonStringByParam(0,"param_error","");
         }
     }
+
+ //http://localhost/honeyHouse/server/public/index.php?s=cashvoucher/create_cash_voucher&password=243589&num=2&cash=40
+    public function create_cash_voucher(){
+        header("Access-Control-Allow-Origin: *");
+        if(isset($_GET["password"])&&isset($_GET["num"])&&isset($_GET["cash"])){
+            $password = $_GET["password"];
+            $num =  $_GET["num"];
+            $cash=  $_GET["cash"];
+            $result_array = $this->CashVoucherServer->create_cash_voucher($password,$num,$cash);
+            echo arrayToJson($result_array);
+        }else{
+            echo getJsonStringByParam(0,"param_error","");
+        }
+    }
+
 }
