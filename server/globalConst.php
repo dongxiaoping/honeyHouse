@@ -33,7 +33,7 @@ define("APP_PATH",__DIR__.'/application/');
  *recommend_user ：推荐一个用户的获取收益值
  * recommend_user_buy：推荐用户购买一次的获取收益值
  * */
-define('RECOMMEND_PRICE',array('recommend_user'=>0.3,'recommend_user_buy'=>5));
+define('RECOMMEND_PRICE',array('recommend_user'=>0.3,'recommend_user_buy'=>3));
 
 /*获取收益的方式定义
  *recommend_user ：推荐用户
