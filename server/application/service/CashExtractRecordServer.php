@@ -18,9 +18,18 @@ class CashExtractRecordServer
     public function __construct() {
         $this->CashExtractRecordOP = new model\CashExtractRecordOP();
         $this->UserOP = new model\UserOP();
+        $this->limit_cash = 60;
     }
 
     public function get_cash_extract_wait_deal($user_id){
+        $info = $this->UserOP->get($user_id);
+        if(!$info){
+            return  getInterFaceArray(0,"use-not-exist","");
+        }
+        $cash = $info["amount"];
+        if($cash<$this->limit_cash){
+            return  getInterFaceArray(0,"cash-not-enough",$this->limit_cash);
+        }
         $return_info = $this->CashExtractRecordOP->get_cash_extract_wait_deal($user_id);
         if($return_info){
             return  getInterFaceArray(1,"",$return_info[0]);
@@ -35,8 +44,8 @@ class CashExtractRecordServer
             return  getInterFaceArray(0,"use-not-exist","");
         }
         $cash = $info["amount"];
-        if($cash<60){
-            return  getInterFaceArray(0,"cash-not-enough",60);
+        if($cash<$this->limit_cash){
+            return  getInterFaceArray(0,"cash-not-enough",$this->limit_cash);
         }
         $items= $this->CashExtractRecordOP->get_cash_extract_wait_deal($user_id);
         if($items){
