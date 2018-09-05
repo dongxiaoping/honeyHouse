@@ -19,6 +19,7 @@ class OrderServer{
         $this->OrderGoodRecordOP = new model\OrderGoodRecordOP();
         $this->AddressOP = new model\AddressOP();
         $this->UserOP = new model\UserOP();
+        $this->GoodServer = new service\GoodServer();
     }
 
     public function submit_order($info){
@@ -56,6 +57,7 @@ class OrderServer{
             $this->OrderGoodRecordOP->insertAll($good_list);
             $out_trade_no = $order_id;
             $openid = $info["wechat_id"];
+            $this->update_sell_count($good_list);
             if($pay_type===PAY_TYPE["wechat"]){
                 $result =$this->PayServer->payOrderReqToWechat($out_trade_no,$total_fee,$openid);
                 if($result){
@@ -78,6 +80,15 @@ class OrderServer{
         }
         return 100*$price;
     }
+
+    public function update_sell_count($order_good_list){
+        foreach( $order_good_list as $key => $value ){
+            $add_count = $value["count"];
+            $good_id = $value["id"];
+            $this->GoodServer->add_sell_count($good_id,$add_count);
+        }
+    }
+
 
     public function get_order_info($id){
         $info = $this->OrderRecordOP->get($id);

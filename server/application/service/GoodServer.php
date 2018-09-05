@@ -53,5 +53,8 @@ class GoodServer
         return  getInterFaceArray(1,"success",$list);
     }
 
+    public function add_sell_count($good_id,$add_count){
+        $this->GoodOP->add_sell_count($good_id,$add_count);
+    }
 
 }

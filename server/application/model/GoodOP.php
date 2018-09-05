@@ -30,4 +30,11 @@ class GoodOP extends BaseOP{
         return $category_info;
     }
 
+   public function add_sell_count($good_id,$add_count){
+        $item = $this->get($good_id);
+        $old_count = $item["good_sell_count"];
+        $new_count = $old_count+$add_count;
+        Db::query("update good set good_sell_count='".$new_count."' where id=".$good_id);
+   }
+
 }
