@@ -12,6 +12,7 @@
 namespace app\service;
 use \app\common;
 use \app\model;
+use \app\service;
 
 class PayServer{
     public function __construct() {
@@ -24,6 +25,7 @@ class PayServer{
         $this->WechatCashFlowOP = new model\WechatCashFlowOP();
         $this->OrderRecordOP = new model\OrderRecordOP();
         $this->UserOP = new model\UserOP();
+        $this->RecommendRecordServer = new service\RecommendRecordServer();
     }
 
     public function notice_pay_success($out_trade_no,$cash_fee){
@@ -59,6 +61,16 @@ class PayServer{
                if($recommend_user_code!=0){
                    lssLog("debug",$recommend_user_code.":给该推荐码的用户发奖金");
                    $this->UserOP->add_cash_by_recommend_code($recommend_user_code,RECOMMEND_PRICE["recommend_user_buy"]);
+                   $own_cash_user_info = $this->UserOP->get_user_info_by_recommend_code($recommend_user_code);
+                   $record_info = [
+                       "own_cash_user_id" => $own_cash_user_info["id"],
+                       "new_user_id"=>$user_id,
+                       "model"=>REWARD_TYPE["recommend_user_buy"],
+                       "reward_price"=>RECOMMEND_PRICE["recommend_user_buy"],
+                       "create_time"=>date("Y-m-d H:i:s"),
+                       "last_mod"=>date("Y-m-d H:i:s")
+                   ];
+                   $this->RecommendRecordServer->insert_record($record_info);
                }
            }else{
                lssLog("debug",$user_id.":该用户无用户推荐");
