@@ -34,13 +34,13 @@ class CashExtractRecordServer
         if(!$info){
             return  getInterFaceArray(0,"use-not-exist","");
         }
-        $items= $this->CashExtractRecordOP->get_cash_extract_wait_deal($user_id);
-        if($items){
-            return  getInterFaceArray(1,"",$items[0]["flow_num"]);
-        }
         $cash = $info["amount"];
         if($cash<60){
             return  getInterFaceArray(0,"cash-not-enough",60);
+        }
+        $items= $this->CashExtractRecordOP->get_cash_extract_wait_deal($user_id);
+        if($items){
+            return  getInterFaceArray(1,"",$items[0]["flow_num"]);
         }
         $flow_num = substr(date("ymdHis"),2,8).mt_rand(100000,999999);
         $setInfo = [
