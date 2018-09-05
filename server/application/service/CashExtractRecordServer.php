@@ -39,8 +39,8 @@ class CashExtractRecordServer
             return  getInterFaceArray(1,"",$items[0]["flow_num"]);
         }
         $cash = $info["amount"];
-        if($cash<30){
-            return  getInterFaceArray(0,"cash-not-enough",30);
+        if($cash<60){
+            return  getInterFaceArray(0,"cash-not-enough",60);
         }
         $flow_num = substr(date("ymdHis"),2,8).mt_rand(100000,999999);
         $setInfo = [
