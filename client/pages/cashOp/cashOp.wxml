@@ -5,6 +5,6 @@
         </view>
 
         <view catchtap="eventRechargeVoucher" class="function_item">
-        <view class="title">代金券充值</view>
+        <view class="title">充值码充值</view>
         </view>
 </view>

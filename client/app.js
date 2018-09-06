@@ -84,17 +84,17 @@ App({
                     Log.d("推荐人推荐码:"+recommend_user_code);
                     if (recommend_code == recommend_user_code) {
                         Log.d("进入自己转发的文章！");
-                        wx.showToast({
+/*                        wx.showToast({
                             title: '进入自己转发的文章！',
                             duration:3000,
                             icon: 'none'
-                        });
+                        });*/
                     }else{
-                        wx.showToast({
+/*                        wx.showToast({
                             title: '欢迎回到蜜之屋！',
                             duration:3000,
                             icon: 'none'
-                        });
+                        });*/
                     }
                     that.globalData.userInfo = res2.data;
                     that.userVisit();
@@ -116,11 +116,11 @@ App({
                             if (res4.status === globalConst.interfaceStatus.SUCCESS) {
                               if (location === globalConst.PageSort.ACTIVITY) {
                                 Log.d("新用户，从别人转发的文章进入");
-                                  wx.showToast({
+/*                                  wx.showToast({
                                       title: '欢迎新用户加入蜜之屋！',
                                       duration:3000,
                                       icon: 'none'
-                                  });
+                                  });*/
                               } else {
                                 Log.d("新用户，从首页入口进入");
                               }

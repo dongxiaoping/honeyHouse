@@ -5,6 +5,7 @@ var app = getApp();
 Page({
   data: {
     goodInfo: null,
+    isFirstShow:true,
     swipeImages: [], ////轮播图
     selectedChildInfo: null,
     isChildPanelShow: false,
@@ -17,7 +18,22 @@ Page({
    */
   onLoad: function(options) {
     let that = this;
-    if (wx.showLoading) {
+    app.initUser(globalConst.PageSort.INDEX);
+  },
+
+  getGoodSellCount: function(goodInfo) {
+    let count = 0;
+    let list = goodInfo.child_list;
+    list.forEach(item => {
+      count += item.good_sell_count;
+    });
+    return count;
+  },
+
+  onShow: function() {
+    let that = this;
+    if (wx.showLoading&&this.data.isFirstShow) {
+      this.data.isFirstShow = false;
       wx.showLoading({
         title: '加载中',
       })
@@ -27,10 +43,10 @@ Page({
         id: 1
       },
       callback: function(status, res) {
-        if (res.status === globalConst.interfaceStatus.SUCCESS) {
           if (wx.hideLoading()) {
-            wx.hideLoading()
+              wx.hideLoading()
           }
+        if (res.status === globalConst.interfaceStatus.SUCCESS) {
           let goodInfo = res.data; //接口原始商品数据
           goodInfo.good_sell_count = that.getGoodSellCount(goodInfo);
           let swipeImages = that.getSwipeImages(goodInfo);
@@ -45,16 +61,10 @@ Page({
         }
       }
     });
-    app.initUser(globalConst.PageSort.INDEX);
   },
 
-  getGoodSellCount: function(goodInfo) {
-    let count = 0;
-    let list = goodInfo.child_list;
-    list.forEach(item => {
-      count += item.good_sell_count;
-    });
-    return count;
+  onHide: function() {
+      this.hideModal();
   },
 
   getSwipeImages: function(goodInfo) {
@@ -146,7 +156,7 @@ Page({
     app.globalData.orderInfo = [selectedGoods];
     Log.d(app.globalData.orderInfo);
     wx.navigateTo({
-        url: "../pay/pay"
+      url: "../pay/pay"
     });
   },
 

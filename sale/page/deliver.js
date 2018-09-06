@@ -102,8 +102,7 @@ $(document).on("pagecreate","#page_deliver",function(e, data){
 
         document.getElementById("page_deliver_good_name_id").innerText="商品名称："+goodItem.name;
         document.getElementById("page_deliver_good_count_id").innerText="数量："+goodItem.count;
-        document.getElementById("page_deliver_count_id").innerText="商品数量："+goodItem.count;
-        document.getElementById("page_deliver_count_id").innerText="留言："+"暂无留言";
+        document.getElementById("page_deliver_pay_type_id").innerText=info.pay_type===1?"支付方式：微信支付":"支付方式：账户支付";
 
         document.getElementById("page_deliver_name_id").innerText="收货人名称："+address.name;
         document.getElementById("page_deliver_phone_id").innerText="收货人电话："+address.tel;
